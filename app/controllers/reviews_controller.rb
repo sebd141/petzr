@@ -8,12 +8,25 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.find(params[:writer_id])
+    @review = Review.new(review_params)
+    @review.writer = current_user
+    @review.recipient = User.find(params[:user_id])
+    if @review.save
+      redirect_to user_path(@review.recipient)
+    else
+      render :new
+    end
+  end
 
+  def show
+    @review = Review.all
   end
 
   private
 
-  params.require(:review).permit(:rating, :content)
+
+  def review_params
+    params.require(:review).permit(:rating, :comment)
+  end
 
 end
