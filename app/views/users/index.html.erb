@@ -1,0 +1,10 @@
+<h1>find the best pet-sitters for your query</h1>
+
+<% @users.each do |user| %>
+<%= user.first_name %>
+<%= user.last_name %>
+<%= user.price %>
+<%= user.location %>
+<%= user.type_of_service %>
+<%= user.type_of_pets %>
+<% end %>

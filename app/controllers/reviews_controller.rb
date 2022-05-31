@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.all
+    @review = Review.find(params[:id])
   end
 
   private

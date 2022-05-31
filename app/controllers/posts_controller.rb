@@ -32,10 +32,10 @@ class PostsController < ApplicationController
     redirect_to contract_path(@post.contract)
   end
 
-  # def destroy
-  #   @post.destroy
-  #   redirect_to contract_path(@post.contract)
-  # end
+  def destroy
+    @post.destroy
+    redirect_to contract_path(@post.contract)
+  end
 
   private
 
