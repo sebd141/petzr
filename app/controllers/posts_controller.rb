@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_contract, only: %i[create new]
-  before_action :set_post, only: %i[update show edit destroy]
+  before_action :set_post, only: %i[update show edit]
   def index
     @posts = Post.all
   end
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @user = current_user
+    @post.user = current_user
     if @post.save
       redirect_to contract_path(@contract_id)
     else
@@ -32,10 +32,10 @@ class PostsController < ApplicationController
     redirect_to contract_path(@post.contract)
   end
 
-  def destroy
-    @post.destroy
-    redirect_to contract_path(@post.contract)
-  end
+  # def destroy
+  #   @post.destroy
+  #   redirect_to contract_path(@post.contract)
+  # end
 
   private
 
