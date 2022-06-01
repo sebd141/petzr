@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   end
   resources :posts, only: %i[edit update destroy]
   resources :pets, only: %i[edit update destroy]
+
+  patch "/become_pet_sitter", to: "users#become_pet_sitter", as: :become_pet_sitter
+  get "/become_pet_sitter", to: "users#add_pet_sitter_details", as: :new_pet_sitter_form
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
