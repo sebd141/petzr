@@ -10,6 +10,14 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <%= f.input :first_name,
+                hint: "How can we call you? :)",
+                required: false,
+                input_html: { autocomplete: "Your first name" } %>
+    <%= f.input :last_name,
+                hint: "Tell us your last name :)",
+                required: false,
+                input_html: { autocomplete: "Your last name" } %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -21,6 +29,20 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :pet_sitters_status,
+                hint: "Do you want to become a Pet Sitter?",
+                :as => :boolean,
+                :input_html => { :checked => "checked" } %>
+    <%= f.input :location,
+                      :size=>"40",
+                      placeholder: 'Street number, street name, postal code, country',
+                      input_html: { autocomplete: "your address" } %>
+    <%= f.input :type_of_pet, collection: ["dog", "cat", "fish", "bird", "rabbit"], multiple: true, as: :check_boxes  %>
+    <%= f.input :type_of_service, collection: ["walk", "feed", "wash"], multiple: true, as: :check_boxes  %>
+    <%= f.input :price,
+                hint: "What is your price per hour?",
+                required: false,
+                input_html: { autocomplete: "Your first name" } %>
 
   </div>
 
