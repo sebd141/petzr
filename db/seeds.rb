@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # require 'open-uri'
+require 'faker'
 
 puts "Cleaning database..."
 if Rails.env.development?
@@ -18,8 +19,8 @@ end
 
 puts "Creating User"
 
-bob = User.create({ email: "a@a.com", password: "lewagon", pet_sitters_status: false })
-seb = User.create({ email: "b@b.com", password: "lewagon", pet_sitters_status: true })
+bob = User.create({ email: "a@a.com", password: "lewagon", pet_sitters_status: false})
+seb = User.create({ email: "b@b.com", password: "lewagon", pet_sitters_status: true, first_name: "Sébastien", last_name: "Dellis",  location: "Be Central, Brussels", price: 10, type_of_pet: ["cat", "dog", "bird"], type_of_service: ["walk", "feed"] })
 # seb = User.create({email: "sebastien.dellis@gmail.com", password: "lewagon"})
 
 # puts "Creating Toilets.."
@@ -35,9 +36,24 @@ seb = User.create({ email: "b@b.com", password: "lewagon", pet_sitters_status: t
 #   )
 # end
 
+puts "Creating Pet sitters"
+
+15.times do
+  User.create!(
+    email: Faker::Internet.email,
+    password: "lewagon",
+    pet_sitters_status: true,
+    first_name: ['Seb', 'Val', 'Archi', 'Antoine', 'Nikos', 'Jack', 'Valentin', 'Alexandre'].sample,
+    last_name: ['RobinHood', 'Pocaonthas', 'Simba', 'Snow', 'Targaryan', 'Conor', 'Smith', 'Dupont'].sample,
+    location: ['Be Central, Brussels', 'Rue Neuve, 1000 Brussels', 'Boulevard de l industrie, 100, Brussels', 'Bozar, 1000 Brussels', 'Avenue louise 86, Brussels', 'Atomium, Brussels', 'Avenue Louise 203, 1050 Ixells'].sample,
+    price: [10.5, 5.5, 6.5, 7.5].sample,
+    type_of_pet: ["cat", "dog", "bird", "fish", "snake"].sample,
+    type_of_service: ["walk", "feed", "medication"].sample,
+  )
+end
 puts "Creating Pets"
 
-10.times do
+15.times do
   Pet.create!(
     name: ['bobby', 'val', 'sebby', 'tony', 'pierouk'].sample,
     breed: ['cat', 'dog', 'bird'].sample,
