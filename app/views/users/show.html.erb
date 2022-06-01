@@ -2,13 +2,15 @@
 pet sitter détail
  user profile
  <h1>My Pets</h1>
+ <br>
 <% @user.pets.each do |pet| %>
   <h3><%= pet.name %></h3>
-  <h3><%= pet.breed %></h3>
-  <%= link_to "Edit #{pet.name}", edit_pet_path(pet) %>
+  <%= pet.breed %>
+  <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-primary" %>
+  <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-primary", data: {confirm: "Do you really want to delete this pet ?"} %></p>
 <% end %>
 
 
+<%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-success" %>
+<%= link_to "edit my pets",  pet_path(@pets), class: "btn btn-success"  %>
 
-<%= link_to "add a pet",   new_user_pet_path(@user)  %>
-<%= link_to "edit my pets",  pet_path(@pets)  %>
