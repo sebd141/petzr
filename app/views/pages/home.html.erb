@@ -2,27 +2,27 @@
   <div class="container">
     <h1>Petzr helps you to find the <strong>best</strong> pet sitter for your pet !</h1>
     <p>Rest assured with our pet sitter experts</p>
-    <a class="btn btn-green" href="#">Apply now</a>
+    <% if user_signed_in? %>
+      <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
+    <% else %>
+      <%= link_to "Sign up now", new_user_registration_path, class: "btn btn-green"  %>
+    <% end %>
   </div>
 </div>
 
 <div class="items">
   <div class="discover">
-    <div class="half">
       <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
-    </div>
-    <div class="half">
       <img width="560" height="440" src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2948&q=80" alt="Discover">
-    </div>
   </div>
 
   <div class="sign_up">
     <img width="560" height="440" src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2948&q=80" alt="Discover">
-    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-green"  %>
+    <%= link_to "Link to something", new_user_registration_path, class: "btn btn-green"  %>
   </div>
 
   <div class="edit_profile">
-    <%= link_to "Edit my profile",  edit_user_registration_path, class: "btn btn-green"  %>
+    <%= link_to "Link to something",  edit_user_registration_path, class: "btn btn-green"  %>
     <img width="560" height="440" src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2948&q=80" alt="Discover">
   </div>
 
@@ -30,7 +30,7 @@
     <div class="show_profile_link">
       <img width="560" height="440" src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2948&q=80" alt="Discover">
       <%# CHANGE PATH !!! %>
-      <%= link_to "Show my profile", user_path(1), class: "btn btn-green" %>
+      <%= link_to "Link to something", user_path(1), class: "btn btn-green" %>
     </div>
   </div>
 </div>
