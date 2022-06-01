@@ -1,5 +1,5 @@
+<div class="log">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
@@ -29,21 +29,25 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :pet_sitters_status,
-                hint: "Do you want to become a Pet Sitter?",
-                :as => :boolean,
-                :input_html => { :checked => "checked" } %>
-    <%= f.input :location,
-                      :size=>"40",
-                      placeholder: 'Street number, street name, postal code, country',
-                      input_html: { autocomplete: "your address" } %>
-    <%= f.input :type_of_pet, collection: ["dog", "cat", "fish", "bird", "rabbit"], multiple: true, as: :check_boxes  %>
-    <%= f.input :type_of_service, collection: ["walk", "feed", "wash"], multiple: true, as: :check_boxes  %>
-    <%= f.input :price,
-                hint: "What is your price per hour?",
-                required: false,
-                input_html: { autocomplete: "Your first name" } %>
 
+
+    <div class="hidden_form d_none" >
+
+      <%= f.input :pet_sitters_status,
+                  hint: "Do you want to become a Pet Sitter?",
+                  :as => :boolean,
+                  :input_html => { :checked => "checked" } %>
+      <%= f.input :location,
+                        :size=>"40",
+                        placeholder: 'Street number, street name, postal code, country',
+                        input_html: { autocomplete: "your address" } %>
+      <%= f.input :type_of_pet, collection: ["dog", "cat", "fish", "bird", "rabbit"], multiple: true, as: :check_boxes  %>
+      <%= f.input :type_of_service, collection: ["walk", "feed", "wash"], multiple: true, as: :check_boxes  %>
+      <%= f.input :price,
+                  hint: "What is your price per hour?",
+                  required: false,
+                  input_html: { autocomplete: "Your first name" } %>
+    </div>
   </div>
 
   <div class="form-actions">
@@ -51,8 +55,10 @@
   </div>
 <% end %>
 
+
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>
