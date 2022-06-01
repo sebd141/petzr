@@ -1,14 +1,26 @@
+<div class="log">
 
 pet sitter détail
  user profile
- <h1>My Pets</h1>
- <br>
-<% @user.pets.each do |pet| %>
-  <h3><%= pet.name %></h3>
-  <%= pet.breed %>
-  <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-primary" %>
-  <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-primary", data: {confirm: "Do you really want to delete this pet ?"} %></p>
-<% end %>
+</div>
+  <h1>My Pets</h1>
+<div class="cards">
 
-
-<%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-success" %>
+  <br>
+  <% @user.pets.each do |pet| %>
+    <div class="card-product">
+      <h3><%= pet.name %></h3>
+      <div class="card-product-image">
+       <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
+        <%# <%= image_tag("black_lab.jpeg") %>
+      </div>
+     <div class="card-product-infos">
+        <%= pet.breed %>
+        <br>
+        <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
+        <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+     </div>
+   </div>
+  <% end %>
+</div>
+  <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
