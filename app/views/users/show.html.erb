@@ -10,4 +10,5 @@ pet sitter détail
   <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-primary", data: {confirm: "Do you really want to delete this pet ?"} %></p>
 <% end %>
 
+
 <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-success" %>
