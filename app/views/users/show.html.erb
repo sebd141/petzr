@@ -1,1 +1,5 @@
 pet sitter détail
+<% @user.pets.each do |pet| %>
+  <%= @user.pets.name %>
+  <%= @user.pets.breed %>
+<% end %>

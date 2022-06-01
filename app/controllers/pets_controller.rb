@@ -4,6 +4,7 @@ class PetsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @pet = Pet.new
   end
 
@@ -13,7 +14,7 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.find(pet_params)
+    @pet = Pet.new(pet_params)
     @pet.user = current_user
     if @pet.save
       redirect_to user_path(current_user)
