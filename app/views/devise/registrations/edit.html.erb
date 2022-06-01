@@ -37,7 +37,12 @@
                       :size=>"40",
                       placeholder: 'Street number, street name, postal code, country',
                       input_html: { autocomplete: "your address" } %>
-    <%= f.input :type_of_pet, collection: ["dog", "cat"] %>
+    <%= f.input :type_of_pet, collection: ["dog", "cat", "fish", "bird", "rabbit"], multiple: true, as: :check_boxes  %>
+    <%= f.input :type_of_service, collection: ["walk", "feed", "wash"], multiple: true, as: :check_boxes  %>
+    <%= f.input :price,
+                hint: "What is your price per hour?",
+                required: false,
+                input_html: { autocomplete: "Your first name" } %>
 
   </div>
 
