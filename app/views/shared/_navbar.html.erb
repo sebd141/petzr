@@ -23,6 +23,7 @@
               <%= link_to "Add a pet", new_user_pet_path(current_user), class: "dropdown-item" %>
               <%= link_to "See my profile", user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Edit my profile",  edit_user_registration_path, class: "dropdown-item"  %>
+              <%= link_to "Add a contract", new_contract_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
