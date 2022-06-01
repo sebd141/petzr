@@ -1,6 +1,6 @@
 <div class="log">
   <h1>Happy for your pet sitter, review him!</h1>
-  <%= simple_form_for([@contract, current_user], url: new_contract_path, method: :post) do |f|%>
+  <%= simple_form_for(@contract) do |f|%>
     <%= f.input :description %>
     <%= f.input :date %>
     <%= f.input :status %>
