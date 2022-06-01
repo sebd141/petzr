@@ -1,11 +1,11 @@
-if pet sitter
-pet sitter détail
-<% @user.pets.each do |pet| %>
-  <%= @user.pets.name %>
-  <%= @user.pets.breed %>
-<% end %>
 
-else
-show the user profile
+pet sitter détail
+ user profile
+ <h1>My Pets</h1>
+<% @user.pets.each do |pet| %>
+  <h3><%= pet.name %></h3>
+  <h3><%= pet.breed %></h3>
+  <%= link_to "Edit #{pet.name}", edit_pet_path(pet) %>
+<% end %>
 
 <%= link_to "add a pet",   new_user_pet_path(@user)  %>

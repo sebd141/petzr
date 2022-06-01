@@ -29,6 +29,7 @@ class PetsController < ApplicationController
   end
 
   def update
+    @pet = Pet.find(params[:id])
     @pet.update(pet_params)
     redirect_to user_path(current_user)
   end
