@@ -4,14 +4,15 @@ class ContractsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @contract = Contract.new
   end
 
   def create
-    @contract = Contract.find(contract_params)
+    @contract = Contract.new(contract_params)
     @contract.user = current_user
     if @contract.save
-      redirect_to contract_path(@contract)
+      redirect_to contracts_path(@contract)
     else
       render :new
     end
