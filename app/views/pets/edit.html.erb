@@ -1,7 +1,11 @@
-<h1>Psss it's time to update your fav pet</h1>
-<%= simple_form_for([@user, @pet]) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :breed %>
-  <%# TO UPDATE the PICTURE OF YOUR PET f.input :photo, as: :file %>
-  <%= f.button :submit, "Update 🐾 !" %>
-<% end %>
+<div class="log">
+  <h1>Psss it's time to update your fav pet</h1>
+  <%= simple_form_for([@user, @pet]) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :breed %>
+    <%# TO UPDATE the PICTURE OF YOUR PET f.input :photo, as: :file %>
+  <div class="form-actions btn btn-ghost">
+    <%= f.button :submit, "Update 🐾 !" , class: "btn btn-success"%>
+  </div>
+  <% end %>
+  </div>

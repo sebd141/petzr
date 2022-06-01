@@ -4,16 +4,17 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @receiver = User.find(params[:user_id])
     @review = Review.new
   end
 
   def create
     @review = Review.new(review_params)
+    @receiver = User.find(params[:user_id])
+    @review.receiver = @receiver
     @review.writer = current_user
-    @review.recipient = User.find(params[:user_id])
-    if @review.save
-      redirect_to user_path(@review.recipient)
+    if @receiver.save
+      redirect_to user_path(@review.receiver)
     else
       render :new
     end
