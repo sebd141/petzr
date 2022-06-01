@@ -15,7 +15,14 @@
             <%= link_to "Home", "#", class: "nav-link" %>
           </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+          <li class="nav-item">
+            <%= link_to "Pet sitters", users_path, class: "nav-link" %>
+          </li>
+>>>>>>> master
+=======
+
           <li class="nav-item">
             <%= link_to "Pet sitters", users_path, class: "nav-link" %>
           </li>
@@ -26,8 +33,14 @@
               <%= link_to "Add a pet", new_user_pet_path(current_user), class: "dropdown-item" %>
               <%= link_to "See my profile", user_path(current_user), class: "dropdown-item" %>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <%= link_to "Become a pet sitter", become_pet_sitter_path, method: :patch, class: "dropdown-item" %>
 =======
+              <%= link_to "Edit my profile",  edit_user_registration_path, class: "dropdown-item"  %>
+>>>>>>> master
+=======
+
+              <%= link_to "Become a pet sitter", become_pet_sitter_path, method: :patch, class: "dropdown-item" %>
               <%= link_to "Edit my profile",  edit_user_registration_path, class: "dropdown-item"  %>
 >>>>>>> master
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
