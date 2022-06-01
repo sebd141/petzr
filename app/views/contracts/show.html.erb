@@ -1,0 +1,16 @@
+<% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
+  <div>
+    <% current_user.contracts_user.each do |contract| %>
+      <p><%=contract.description%></p>
+      <p><%=contract.date%></p>
+      <p><%=contract.status%></p>
+    <% end %>
+  </div>
+<% else %>
+  <div>
+    <% Contract.all.each do |contract| %>
+      <%= contract.description %>
+    <% end %>
+  </div>
+
+<% end %>

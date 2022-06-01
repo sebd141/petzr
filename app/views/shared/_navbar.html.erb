@@ -12,7 +12,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Home", "/", class: "nav-link" %>
           </li>
 
           <li class="nav-item">
@@ -22,17 +22,18 @@
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Add a pet", new_user_pet_path(current_user), class: "dropdown-item" %>
               <%= link_to "See my profile", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Add a pet", new_user_pet_path(current_user), class: "dropdown-item" %>
               <%= link_to "Become a pet sitter", become_pet_sitter_path, method: :patch, class: "dropdown-item" %>
               <%= link_to "Edit my profile",  edit_user_registration_path, class: "dropdown-item"  %>
+              <%= link_to "Add a contract", new_contract_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
           <!--li class="nav-item"-->
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Home", "/", class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Pet sitters", users_path, class: "nav-link" %>
