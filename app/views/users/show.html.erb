@@ -1,5 +1,11 @@
+if pet sitter
 pet sitter détail
 <% @user.pets.each do |pet| %>
   <%= @user.pets.name %>
   <%= @user.pets.breed %>
 <% end %>
+
+else
+show the user profile
+
+<%= link_to "add a pet",   new_user_pet_path(@user)  %>
