@@ -3,13 +3,13 @@
     <% current_user.contracts_user.each do |contract| %>
       <p><%=contract.description%></p>
       <p><%=contract.date%></p>
-      <p><%=contract.status%></p>
     <% end %>
   </div>
 <% else %>
   <div>
     <% Contract.all.each do |contract| %>
       <%= contract.description %>
+      <p><%=contract.status%></p>
     <% end %>
   </div>
 
