@@ -1,0 +1,12 @@
+<div class="log">
+  <h1>Happy for your pet sitter, review him!</h1>
+  <%= simple_form_for([@user, @review], url: new_user_review_path, method: :post) do |f|%>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+  <div class="log_btn">
+    <div class="form-actions btn btn-ghost">
+      <%= f.button :submit, "Send my review"%>
+      <% end %>
+    </div>
+  </div>
+ </div>
