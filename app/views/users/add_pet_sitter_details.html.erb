@@ -1,6 +1,8 @@
 <div class="log">
+<h1>Become a pet sitter now!</h1>
   <%= simple_form_for(@user) do |f| %>
         <%= f.input :location,
+                    labels: "Test",
                           :size=>"40",
                           placeholder: 'Street number, street name, postal code, country',
                           input_html: { autocomplete: "your address" } %>

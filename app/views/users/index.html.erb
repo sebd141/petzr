@@ -1,10 +1,18 @@
-<h1>find the best pet-sitters for your query</h1>
-
-<% @users.each do |user| %>
-  <%= user.first_name %>
-  <%= user.last_name %>
-  <%= user.price %>
-  <%= user.location %>
-  <%= user.type_of_service[1..-1] %>
-  <%= user.type_of_pet[1..-1]  %>
-<% end %>
+<h1>Find the best pet sitters arround you!</h1>
+<div class="container-wide">
+<img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoicGllcnJpY2sxMTIyIiwiYSI6ImNsMnVlenBjNzAxZW0zZG96ZmVsa3hvMTMifQ.VdN2bQ6VRMmZVMzdwAp-UA'>
+  <div class="cards">
+    <% @users.each do |user| %>
+    <div class="card-trip">
+      <img src="#{['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg, https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp, https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp].sample}">
+      <H3><%= user.first_name %> <%= user.last_name %> </H3>
+      <div class="card-trip-infos">
+        <%= user.location %>
+          <h2 class="card-trip-pricing"><%= user.price %></h2>
+        <%= user.type_of_service[1..-1] %>
+        <%= user.type_of_pet[1..-1]  %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
