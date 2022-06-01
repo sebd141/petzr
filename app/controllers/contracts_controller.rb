@@ -10,9 +10,10 @@ class ContractsController < ApplicationController
 
   def create
     @contract = Contract.new(contract_params)
-    @contract.user = current_user
+    @user = current_user
+    @contract.user = @user
     if @contract.save
-      redirect_to contracts_path(@contract)
+      redirect_to users_path(@user)
     else
       render :new
     end
@@ -37,6 +38,6 @@ class ContractsController < ApplicationController
   private
 
   def contract_params
-    params.require(:contract).permit(:date, :id_pet_sitter)
+    params.require(:contract).permit(:date, :description, :status)
   end
 end
