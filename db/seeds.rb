@@ -5,17 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-require 'faker'
 # require 'open-uri'
 
 puts "Cleaning database..."
 if Rails.env.development?
-  User.destroy_all
   Review.destroy_all
   Contract.destroy_all
   Post.destroy_all
   Pet.destroy_all
+  User.destroy_all
 end
 
 puts "Creating User"
@@ -41,9 +39,11 @@ puts "Creating Pets"
 
 10.times do
   Pet.create!(
-    name: Faker::Name.middle_name,
-    breed: Faker::Name.middle_name,
+    name: ['bobby', 'val', 'sebby', 'tony', 'pierouk'].sample,
+    breed: ['cat', 'dog', 'bird'].sample,
     user: bob
   )
 end
+
+
 puts "Finished!"
