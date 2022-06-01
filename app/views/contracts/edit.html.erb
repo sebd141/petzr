@@ -3,11 +3,9 @@
   <%= simple_form_for(@contract) do |f|%>
     <%= f.input :description %>
     <%= f.input :date %>
-    <%= f.input :status %>
-  <div class="log_btn">
+    <%# <%= f.input :status %>
     <div class="form-actions btn btn-ghost">
-      <%= f.button :submit, "Send my review"%>
+      <%= f.button :submit, "Update 🐾 !" , class: "btn btn-success"%>
       <% end %>
     </div>
-  </div>
- </div>
+</div>
