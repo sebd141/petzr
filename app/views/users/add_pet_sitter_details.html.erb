@@ -1,17 +1,29 @@
 <div class="log">
 <h1>Become a pet sitter now!</h1>
   <%= simple_form_for(@user) do |f| %>
+  Tell us a little more about you!
+        <%= f.input :description,
+                          label: false,
+                          :size=>"400",
+                          placeholder: 'Our clients want to know you more' %>
+  Thanks, that's nice. The same in one line?
+        <%= f.input :short_desc,
+                          label: false,
+                          :size=>"400",
+                          placeholder: 'Who you are in one line' %>
+  Where do you live?
         <%= f.input :location,
-                    labels: "Test",
+                    label: false,
                           :size=>"40",
                           placeholder: 'Street number, street name, postal code, country',
                           input_html: { autocomplete: "your address" } %>
-        <%= f.input :type_of_pet, collection: ["dog", "cat", "fish", "bird", "rabbit"], multiple: true, as: :check_boxes  %>
-        <%= f.input :type_of_service, collection: ["walk", "feed", "wash"], multiple: true, as: :check_boxes  %>
-        <%= f.input :price,
-                    hint: "What is your price per hour?",
-                    required: false,
-                    input_html: { autocomplete: "Your first name" } %>
-    <%= f.submit "Complete Pet Sitter requests" %>
+   Which species do you accept?
+        <%= f.input :type_of_pet, label: false, collection: ["dog", "cat", "fish", "bird", "rabbit"], multiple: true, as: :check_boxes  %>
+    Which services do you offer?
+        <%= f.input :type_of_service, label: false, collection: ["walk", "feed", "wash"], multiple: true, as: :check_boxes  %>
+    What is your price per hour?
+        <%= f.input :price, label: false,
+                    input_html: { autocomplete: "What is your price per hour?" } %>
+    <%= f.submit "I want to become a pet sitter!" %>
   <% end %>
 </div>

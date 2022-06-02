@@ -1,8 +1,21 @@
-<div class="log">
+if I'm a user with a pet sitter status : true
 
-pet sitter détail
- user profile
-</div>
+<% @user = current_user %>
+
+<% if @user.pet_sitters_status = true %>
+
+
+I'm Sébastien
+
+
+
+
+
+<% else %>
+
+
+
+If I'm a user with pet sitter status : false
   <h1>My Pets</h1>
 <div class="cards">
 
@@ -24,3 +37,5 @@ pet sitter détail
   <% end %>
 </div>
   <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
+
+<% end %>
