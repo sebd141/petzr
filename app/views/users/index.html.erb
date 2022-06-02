@@ -14,12 +14,15 @@
 <%# #       'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
       <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
       <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
-      <H3><%= user.first_name %> <%= user.last_name %> </H3>
       <div class="card-trip-infos">
-        <%= user.location %>
-          <h2 class="card-trip-pricing"><%= user.price %></h2>
-        <%= user.type_of_service[1..-1] %>
-        <%= user.type_of_pet[1..-1]  %>
+        <div>
+          <H2><%= user.first_name %> <%= user.last_name %> </H2>
+            <p><%= user.short_desc %></p>
+            <p><strong><%= user.location %></strong></p>
+            <p><%= user.type_of_service[1..-1] %></p>
+            <p><%= user.type_of_pet[1..-1]  %></p>
+          </div>
+              <h2 class="card-trip-pricing"><%= user.price %>€/hour</h2>
       </div>
     </div>
     <% end %>
