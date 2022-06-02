@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :pets, only: %i[new create]
   end
   resources :contracts do
+    get :accept, on: :member
     resources :posts, only: %i[new create]
   end
   resources :posts, only: %i[edit update destroy]
