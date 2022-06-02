@@ -1,0 +1,37 @@
+.faq_container {
+  text-align: center;
+  margin: 50px;
+  color: #04DDF1;
+}
+
+h2 {
+  text-align: center;
+  color: #04DDF1;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+h4 {
+  text-decoration-line: underline;
+}
+
+.faq_item {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+.faq_item_content_left {
+  margin-right: 0px;
+  margin-left: 40px;
+  width: 50%;
+  border-right: 1px solid grey;
+  padding-right: 40px;
+}
+
+.faq_item_content_right {
+  margin-left: 40px;
+  margin-right: 40px;
+  width: 50%;
+}
