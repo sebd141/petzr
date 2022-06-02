@@ -1,0 +1,38 @@
+<h1>Bookings show page</h1>
+<h1>Current user email is: <%= current_user.email %></h1>
+<h1>Current user ID is: <%= current_user.id %></h1>
+
+<% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
+  <div>
+    <% current_user.contracts_user.each do |contract| %>
+      <p><%=contract.description%></p>
+      <p><%=contract.start_date%></p>
+      <p><%=contract.end_date%></p>
+      <p><%=contract.status%></p>
+      <%= link_to "Edit", edit_contract_path(contract), class: "btn btn-blue" %>
+      <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+<% end %>
+
+
+
+<% else %>
+  <div>
+    <% current_user.contracts_user.each do |contract| %>
+      <p>Contract ID: <%=contract.id%></p>
+      <p>Descr: <%=contract.description%></p>
+      <p>Start: <%=contract.start_date%></p>
+      <p>End: <%=contract.end_date%></p>
+      <% if contract.status.nil? %>
+        <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
+        <%# <p><%= link_to "free", accept_contract_path(contract),  class: "btn btn-blue" %>
+      <% elsif contract.status == true %>
+        <%= link_to "Decline", decline_contract_path(contract), class: "btn btn-blue" %>
+      <%# <p><%= link_to "taken", accept_contract_path(contract),  class: "btn btn-blue" %>
+      <% else %>
+        <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
+      <% end %>
+      <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+    <% end %>
+  </div>
+
+<% end %>

@@ -16,8 +16,9 @@ class ContractsController < ApplicationController
     @contract.pet_sitter = @pet_sitter
     if @contract.save
       # send mail to pet sitter that contract needs answer
-      # UserMailer.with(user: user).notification.deliver_now
-      redirect_to contract_path(@user)
+      mail = UserMailer.with(user: @pet_sitter).notification
+      mail.deliver_now
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -46,14 +47,14 @@ class ContractsController < ApplicationController
     @accept.user = current_user
     @accept.update_attribute(:status, true)
     # UserMailer.with(user: current_user).notification.deliver_now
-    redirect_to contract_path(current_user)
+    redirect_to dashboard_path
   end
 
   def decline
     @decline = Contract.find(params[:id])
     @decline.user = current_user
     @decline.update_attribute(:status, false)
-    redirect_to contract_path(current_user)
+    redirect_to dashboard_path
   end
 
   private
