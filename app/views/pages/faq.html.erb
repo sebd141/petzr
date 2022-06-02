@@ -1,0 +1,68 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1534551767192-78b8dd45b51b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80);">
+  <div class="faq_container">
+    <h1>Welcome on the FAQ page</h1>
+    <p>Contact us in case you don't find your answer !</p>
+    <% if user_signed_in? %>
+      <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
+    <% else %>
+      <%= link_to "Sign up now", new_user_registration_path, class: "btn btn-green"  %>
+    <% end %>
+  </div>
+</div>
+
+<div class="faq_item">
+  <div class="faq_item_content_left">
+    <h2>FAQ for pet owners</h2>
+    <br>
+    <h4>How does Petzr work ?</h4>
+    <p>Petzr is a self-service platform for finding trusted and insured pet sitters. Both boarding with a host family (ideal for dogs) and home visits (ideal for cats), as well as other pet-related services such as dog walking and day care, are available.</p>
+    <p>You can search for a pet sitter in your area by entering your address or home town in the search box. Filtering for the service and period you need will give you the best results.</p>
+    <p>You can contact sitters via their profile for free to organise a meet & greet. You will find the “Contact” button on the top right on the profile of each pet sitter.</p>
+    <p>Petzr invites everyone to meet & greet before making a reservation to ensure the best possible experience for pets and people.</p>
+    <p>We recommend you contact at least 2-3 pet sitters to find one that best suits you and your pet. Make sure to check their average response time.</p>
+    <p>You get along well? Please confirm the booking and pay via the Petzr website.</p>
+    <p>The price of the sitting is determined by the pet sitter and is displayed on their profile. There are no hidden costs on Petzr: the total amount you see when you book includes both the payment of the pet sitter and the contribution for the Petzr team.</p>
+    <p>While your pet is staying with the pet sitter or getting regular home visits, you will receive daily photo and text updates via the website or the Petzr app. Also for peace of mind your furry friend is covered by The Petzr Guarantee which includes veterinary coverage and more.</p>
+    <p>You will be able to leave a review for a sitter at the end of the booking period.</p>
+    <p>Please contact us if you have any more questions.</p>
+    <br>
+    <h4>How can I find a pet sitter ?</h4>
+    <p>Whether you are looking for a dog sitter, a cat sitter or a sitter for your guinea pig, rabbit or goldfish, you have come to the right place.</p>
+    <p>Here's how to find your sitter:</p>
+    <ol>
+      <li>Go to the Petzr homepage and type your hometown or suburb in the search</li>
+      <li>Choose your service - Not sure which one is right? Check this article.</li>
+      <li>Choose your start and end date (or estimated dates if you're not quite sure yet)</li>
+      <li>Click on Find a sitter.</li>
+      <li>Browse the profiles of pet sitters in your area and contact the one(s) you like using the green contact button on their profiles in order to ask for a meeting in person.</li>
+    </ol>
+    <p>You can move the map by clicking on it and dragging in any direction if you want to change the search area, or widen it by zooming out.</p>
+  </div>
+
+
+  <div class="faq_item_content_right">
+    <h2>FAQ for pet sitters</h2>
+    <br>
+    <h4>What services can I offer and what should they include ?</h4>
+    <p>Pet sitters on Petzr can be booked for the following services:</p>
+    <ol>
+      <li>Home dog boarding</li>
+      <li>Doggy daycare</li>
+      <li>Dog walking</li>
+      <li>Home visits</li>
+      <li>House Sitting</li>
+    </ol>
+    <br>
+    <h4>How can I register as a pet sitter ?</h4>
+    <p>You can do so via this link:</p>
+    <ol>
+      <li><a href="https://en.wikipedia.org/wiki/Belgium" target="_blank">Belgium</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Germany" target="_blank">Germany</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/France" target="_blank">France</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Luxembourg" target="_blank">Luxembourg</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Netherlands" target="_blank">Netherlands</a></li>
+    </ol>
+    <p>Just follow the on-site instructions, choose which services you would like to offer, and upload a few nice pictures to complete your profile.</p>
+    <p>If you have additional questions before signing up, check out the dedicated section in our Help Centre about Becoming a Pet Sitter.</p>
+  </div>
+</div>
