@@ -1,41 +1,78 @@
-if I'm a user with a pet sitter status : true
+<div class="log">
+<% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
+  <div class="cards">
+      <div class="card-product">
+            <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
+            <div class="card-product-infos">
+              <%= current_user.first_name%>
+              <%= current_user.last_name%>
+            </div>
 
-<% @user = current_user %>
-
-<% if @user.pet_sitters_status = true %>
-
-
-I'm Sébastien
+      </div>
+  </div>
 
 
-
-
+    <h1>My Pets</h1>
+  <div class="cards">
+    <br>
+    <% @user.pets.each do |pet| %>
+      <div class="card-product">
+        <h3><%= pet.name %></h3>
+        <div class="card-product-image">
+        <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
+          <%# <%= image_tag("black_lab.jpeg") %>
+        </div>
+      <div class="card-product-infos">
+          <%= pet.breed %>
+          <br>
+          <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
+          <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <br>
+    <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
 
 <% else %>
+  Heyyyy I'm a pet sitter !
+  Pet sitter details:
+ <div class="cards">
+      <div class="card-product">
+            <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
+            <div class="card-product-infos">
+              <%= current_user.first_name%>
+              <%= current_user.last_name%>
+              <%= current_user.short_desc %>
+            </div>
 
-
-
-If I'm a user with pet sitter status : false
-  <h1>My Pets</h1>
-<div class="cards">
-
-  <br>
-  <% @user.pets.each do |pet| %>
-    <div class="card-product">
-      <h3><%= pet.name %></h3>
-      <div class="card-product-image">
-       <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
-        <%# <%= image_tag("black_lab.jpeg") %>
       </div>
-     <div class="card-product-infos">
-        <%= pet.breed %>
-        <br>
-        <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
-        <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
-     </div>
-   </div>
-  <% end %>
-</div>
-  <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
+  </div>
+  And as a Petlover I also have some animals, that would need to be kept from time to time
 
+  <div>
+    <%= current_user.description %>
+
+  </div>
+  <h1>My Pets</h1>
+  <div class="cards">
+    <br>
+    <% @user.pets.each do |pet| %>
+      <div class="card-product">
+        <h3><%= pet.name %></h3>
+        <div class="card-product-image">
+        <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
+          <%# <%= image_tag("black_lab.jpeg") %>
+        </div>
+      <div class="card-product-infos">
+          <%= pet.breed %>
+          <br>
+          <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
+          <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+      </div>
+    </div>
+    <% end %>
+    <br>
+    <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
+ </div>
 <% end %>
