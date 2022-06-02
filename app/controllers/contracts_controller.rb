@@ -15,7 +15,8 @@ class ContractsController < ApplicationController
     @pet_sitter = User.find(params[:user_id])
     if @contract.save
       # send mail to pet sitter that contract needs answer
-      redirect_to contract_path(@user)
+      UserMailer.with(user: user).notification.deliver_now
+      redirect_to new_contract_path(@user)
     else
       render :new
     end

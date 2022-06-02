@@ -1,6 +1,14 @@
 <h1>Find the best pet sitters arround you!</h1>
 <div class="container-wide">
-<img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoicGllcnJpY2sxMTIyIiwiYSI6ImNsMnVlenBjNzAxZW0zZG96ZmVsa3hvMTMifQ.VdN2bQ6VRMmZVMzdwAp-UA'>
+  <%= form_tag movies_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a movie"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+  <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoicGllcnJpY2sxMTIyIiwiYSI6ImNsMnVlenBjNzAxZW0zZG96ZmVsa3hvMTMifQ.VdN2bQ6VRMmZVMzdwAp-UA'>
   <div class="cards">
     <% @users.each do |user| %>
     <div class="card-trip">
@@ -12,7 +20,9 @@
           <h2 class="card-trip-pricing"><%= user.price %></h2>
         <%= user.type_of_service[1..-1] %>
         <%= user.type_of_pet[1..-1]  %>
-        <%= link_to "Book", class: "btn btn-blue" %>
+        <%= link_to "Book", contract_path , method: :post, class: "btn btn-blue" %>
+
+        <%# simple form for each pet sitter, hidden pre-filled fields %>
       </div>
     </div>
     <% end %>
