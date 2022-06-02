@@ -5,16 +5,25 @@
 
 }
 
+.items h1 {
+  text-align: center;
+  margin: 20px;
+  color: #1400F5;
+}
 // FIRST PART OF THE PAGE
-.discover {
+.item {
   margin: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.discover_content {
+.item_content_left {
   margin-right: 50px;
+}
+
+.item_content_right {
+  margin-left: 50px;
 }
 
 // SIGN UP
