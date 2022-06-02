@@ -13,10 +13,15 @@ class UsersController < ApplicationController
   def become_pet_sitter
     @user = current_user
     @user.update(pet_sitters_status: true)
+    @user.save
     redirect_to new_pet_sitter_form_path
   end
 
+
   def add_pet_sitter_details
     @user = current_user
+    @user.update(pet_sitters_status: true)
+    @user.save
+    redirect_to new_pet_sitter_form_path
   end
 end
