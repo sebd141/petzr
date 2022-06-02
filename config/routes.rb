@@ -15,5 +15,6 @@ Rails.application.routes.draw do
 
   patch "/become_pet_sitter", to: "users#become_pet_sitter", as: :become_pet_sitter
   get "/become_pet_sitter", to: "users#add_pet_sitter_details", as: :new_pet_sitter_form
+  get "/faq", to: "pages#faq", as: :faq
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
