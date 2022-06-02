@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show update] do
     resources :reviews, only: %i[new create]
     resources :pets, only: %i[new create]
+    resources :contracts, only: :create
   end
-  resources :contracts do
+  resources :contracts, except: :create do
     get :accept, on: :member
     get :decline, on: :member
     resources :posts, only: %i[new create]
