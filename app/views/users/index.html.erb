@@ -47,6 +47,7 @@
             <p><strong><%= user.location %></strong></p>
             <p><%= user.type_of_service[1..-1] %></p>
             <p><%= user.type_of_pet[1..-1]  %></p>
+            <%= link_to "show more", user_path(user)%>
           </div>
               <h2 class="card-trip-pricing"><%= user.price %>€/hour</h2>
 
