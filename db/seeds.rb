@@ -21,6 +21,8 @@ puts "Creating User"
 
 bob = User.create({ email: "a@a.com", password: "lewagon", pet_sitters_status: false})
 seb = User.create({ email: "b@b.com", password: "lewagon", pet_sitters_status: true, first_name: "Sébastien", last_name: "Dellis",  location: "Be Central, Brussels", price: 10, type_of_pet: ["cat", "dog", "bird"], type_of_service: ["walk", "feed"] })
+archi = User.create({ email: "archibaldsaen98@gmail.com", password: "lewagon", pet_sitters_status: true, first_name: "Archibald", last_name: "Khutse",  location: "Be Central, Brussels", price: 10, type_of_pet: ["cat", "dog", "bird"], type_of_service: ["walk", "feed"] })
+
 # seb = User.create({email: "sebastien.dellis@gmail.com", password: "lewagon"})
 
 # puts "Creating Toilets.."

@@ -34,7 +34,6 @@
           <H2><%= user.first_name %> <%= user.last_name %> </H2>
             <p><%= user.short_desc %></p>
             <p><strong><%= user.location %></strong></p>
-            <%# <% user.type_of_service[1..-1].each do |service| %>
             <p>What I offer: </p>
             <% user.type_of_service[1..-1].each do |service| %>
               <span class="badge bg-secondary"><%= service %></span>
@@ -43,7 +42,7 @@
             <% user.type_of_pet[1..-1].each do |pet|  %>
             <span class="badge bg-secondary"><%= pet %></span>
             <% end %>
-
+            <%= link_to "show more", user_path(user)%>
         <% if params[:start_date] && params[:end_date] %>
           <%= simple_form_for([user, Contract.new]) do |f| %>
             <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
