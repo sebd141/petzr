@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_06_02_122638) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,13 +63,15 @@ ActiveRecord::Schema.define(version: 2022_06_02_122638) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "pet_sitters_status"
+    t.boolean "pet_sitters_status", default: false
     t.string "first_name"
     t.string "last_name"
     t.string "location"
     t.float "price"
     t.string "type_of_pet", default: [], array: true
     t.string "type_of_service", default: [], array: true
+    t.text "description"
+    t.string "short_desc"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

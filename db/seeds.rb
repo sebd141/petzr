@@ -49,6 +49,8 @@ puts "Creating Pet sitters"
     price: [10.5, 5.5, 6.5, 7.5].sample,
     type_of_pet: ["cat", "dog", "bird", "fish", "snake"].sample,
     type_of_service: ["walk", "feed", "medication"].sample,
+    description: Faker::Lorem.paragraph,
+    short_desc: "Hello I'm User, I will take care of your pet!",
   )
 end
 puts "Creating Pets"

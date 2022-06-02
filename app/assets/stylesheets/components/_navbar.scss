@@ -1,7 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgba(68, 68, 68, 0.4);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index:10;
 }
+
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -9,4 +14,8 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 90px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.882);
 }
