@@ -1,0 +1,11 @@
+<div class="log">
+  <h1>Place a contract to find a pet sitter!</h1>
+  <%= simple_form_for(@contract) do |f|%>
+    <%= f.input :description %>
+    <%# <%= f.input :date %>
+    <%# <%= f.input :status %>
+    <div class="form-actions btn btn-ghost">
+      <%= f.button :submit, "Update 🐾 !" , class: "btn btn-success"%>
+      <% end %>
+    </div>
+</div>
