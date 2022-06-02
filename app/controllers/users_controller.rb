@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    raise
   end
 
   def show
