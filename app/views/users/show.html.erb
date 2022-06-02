@@ -1,6 +1,16 @@
 <div class="log">
 <% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
-  <%  %>
+  <div class="cards">
+      <div class="card-product">
+            <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
+            <div class="card-product-infos">
+              <%= current_user.first_name%>
+              <%= current_user.last_name%>
+            </div>
+
+      </div>
+  </div>
+
 
     <h1>My Pets</h1>
   <div class="cards">
