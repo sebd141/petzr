@@ -12,7 +12,9 @@ class ContractsController < ApplicationController
     @contract = Contract.new(contract_params)
     @user = current_user
     @contract.user = @user
+    @pet_sitter = User.find(params[:user_id])
     if @contract.save
+      # send mail to pet sitter that contract needs answer
       redirect_to contract_path(@user)
     else
       render :new
@@ -41,6 +43,7 @@ class ContractsController < ApplicationController
     @accept = Contract.find(params[:id])
     @accept.user = current_user
     @accept.update_attribute(:status, true)
+    # UserMailer.with(user: current_user).notification.deliver_now
     redirect_to contract_path(current_user)
   end
 
