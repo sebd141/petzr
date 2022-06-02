@@ -36,6 +36,9 @@
             <p><strong><%= user.location %></strong></p>
             <p><%= user.type_of_service[1..-1] %></p>
             <p><%= user.type_of_pet[1..-1]  %></p>
+<<<<<<< HEAD
+            <%= link_to "show more", user_path(user)%>
+=======
 
         <% if params[:start_date] && params[:end_date] %>
           <%= simple_form_for([user, Contract.new]) do |f| %>
@@ -44,6 +47,7 @@
             <%= f.submit "Book #{user.first_name}" %>
           <% end %>
         <% end %>
+>>>>>>> 7a51d68cc72e8e887b3e71ca6485967ca48b0d16
           </div>
               <h2 class="card-trip-pricing"><%= user.price %>€/hour</h2>
 
