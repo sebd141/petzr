@@ -37,8 +37,23 @@
 <% else %>
   Heyyyy I'm a pet sitter !
   Pet sitter details:
+ <div class="cards">
+      <div class="card-product">
+            <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
+            <div class="card-product-infos">
+              <%= current_user.first_name%>
+              <%= current_user.last_name%>
+              <%= current_user.short_desc %>
+            </div>
 
+      </div>
+  </div>
   And as a Petlover I also have some animals, that would need to be kept from time to time
+
+  <div>
+    <%= current_user.description %>
+
+  </div>
   <h1>My Pets</h1>
   <div class="cards">
     <br>
