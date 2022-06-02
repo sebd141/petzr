@@ -1,11 +1,14 @@
 <h1>Find the best pet sitters arround you!</h1>
 <div class="container-wide">
-  <%= form_tag movies_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a movie"
-    %>
+  <%= form_tag users_path, method: :get do %>
+    <%= datetime_field_tag(:start_date, value = nil, options = {
+      min: DateTime.now,
+      max: DateTime.now + 2.months
+    }) %>
+    <%= datetime_field_tag(:end_date, value = nil, options = {
+      min: DateTime.now + 1.hour,
+      max: DateTime.now + 2.months
+    }) %>
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
   <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoicGllcnJpY2sxMTIyIiwiYSI6ImNsMnVlenBjNzAxZW0zZG96ZmVsa3hvMTMifQ.VdN2bQ6VRMmZVMzdwAp-UA'>
@@ -20,9 +23,15 @@
           <h2 class="card-trip-pricing"><%= user.price %></h2>
         <%= user.type_of_service[1..-1] %>
         <%= user.type_of_pet[1..-1]  %>
-        <%= link_to "Book", contract_path , method: :post, class: "btn btn-blue" %>
+        <%#= link_to "Book", contract_path , method: :post, class: "btn btn-blue" %>
 
-        <%# simple form for each pet sitter, hidden pre-filled fields %>
+        <% if params[:start_date] && params[:end_date] %>
+          <%= simple_form_for([user, Contract.new]) do |f| %>
+            <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+            <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+            <%= f.submit "Book" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <% end %>

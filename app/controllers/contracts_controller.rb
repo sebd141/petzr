@@ -13,10 +13,11 @@ class ContractsController < ApplicationController
     @user = current_user
     @contract.user = @user
     @pet_sitter = User.find(params[:user_id])
+    @contract.pet_sitter = @pet_sitter
     if @contract.save
       # send mail to pet sitter that contract needs answer
       UserMailer.with(user: user).notification.deliver_now
-      redirect_to new_contract_path(@user)
+      redirect_to contract_path(@user)
     else
       render :new
     end
@@ -58,6 +59,6 @@ class ContractsController < ApplicationController
   private
 
   def contract_params
-    params.require(:contract).permit(:date, :description, :status)
+    params.require(:contract).permit(:start_date, :end_date, :description, :status)
   end
 end

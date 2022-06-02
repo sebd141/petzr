@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def index
     @users = User.all.order("created_at desc")
+    # if params[:start_date] && params[:end_date]
+    #   @users =
+
+    # end
   end
 
   def update
