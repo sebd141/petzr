@@ -17,11 +17,12 @@
     <% Contract.all.each do |contract| %>
       <p><%=contract.description%></p>
       <p><%=contract.date%></p>
-        <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
-          <% if contract.status == nil %>
-            <p><%= link_to "free", accept_contract_path(contract),  class: "btn btn-blue" %></p>
+          <% if contract.status == false %>
+            <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
+            <%# <p><%= link_to "free", accept_contract_path(contract),  class: "btn btn-blue" %>
           <% elsif contract.status == true %>
-          <p><%= link_to "taken", accept_contract_path(contract),  class: "btn btn-blue" %></p>
+          <%= link_to "Decline", decline_contract_path(contract), class: "btn btn-blue" %>
+          <%# <p><%= link_to "taken", accept_contract_path(contract),  class: "btn btn-blue" %>
           <% end %>
           <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
     <% end %>

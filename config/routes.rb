@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :contracts do
     get :accept, on: :member
+    get :decline, on: :member
     resources :posts, only: %i[new create]
   end
   resources :posts, only: %i[edit update destroy]
