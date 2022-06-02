@@ -37,6 +37,20 @@ class ContractsController < ApplicationController
     redirect_to contract_path(current_user)
   end
 
+  def accept
+    @accept = Contract.find(params[:id])
+    @accept.user = current_user
+    @accept.update_attribute(:status, true)
+    redirect_to contract_path(current_user)
+  end
+
+  def decline
+    @decline = Contract.find(params[:id])
+    @decline.user = current_user
+    @decline.update_attribute(:status, false)
+    redirect_to contract_path(current_user)
+  end
+
   private
 
   def contract_params
