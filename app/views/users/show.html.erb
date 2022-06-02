@@ -45,68 +45,65 @@
 
     <h1>My Pets</h1>
 
-<div class="cointainer-wide">
-  <div class="cards">
-    <br>
-    <% @user.pets.each do |pet| %>
+<div class="log">
+      <% @user.pets.each do |pet| %>
       <div class="card-product">
-        <h3><%= pet.name %></h3>
+         <h3><%= pet.name %></h3>
         <div class="card-product-image">
-        <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
+          <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
           <%# <%= image_tag("black_lab.jpeg") %>
         </div>
-      <div class="card-product-infos">
-          <%= pet.breed %>
-          <br>
-          <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
-          <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+        <div class="card-product-infos">
+            <%= pet.breed %>
+            <br>
+            <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
+            <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+        </div>
       </div>
-    </div>
-    <% end %>
-  </div>
-  <br>
+  <% end %>
+</div>
     <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
 
 <% else %>
-  Heyyyy I'm a pet sitter !
-  Pet sitter details:
- <div class="cards">
-      <div class="card-product">
-            <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
-            <div class="card-product-infos">
-              <%= @user.first_name%>
-              <%= @user.last_name%>
-              <%= @user.short_desc %>
-            </div>
+<div class="log">
+  <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
+    <div>
+        <div class="card-trip">
+              <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+            <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
+            <%# #'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
+            <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
+            <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
+            <div class="card-trip-infos">
+          <div>
+          <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
+            <p><%= @user.short_desc %></p>
+            <p><%= @user.description %></p>
+            <p><strong><%= @user.location %></strong></p>
+            <p>What I offer: </p>
+            <% @user.type_of_service[1..-1].each do |service| %>
+              <span class="badge bg-secondary"><%= service %></span>
+            <% end %>
+            <p>Animals I take care of: </p>
+            <% @user.type_of_pet[1..-1].each do |pet|  %>
+            <span class="badge bg-secondary"><%= pet %></span>
+            <% end %>
+        <% if params[:start_date] && params[:end_date] %>
+          <%= simple_form_for([@user, Contract.new]) do |f| %>
+            <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+            <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+            <%= f.submit "Book #{@user.first_name}" %>
+          <% end %>
+        <% end %>
+          </div>
+              <h2 class="card-trip-pricing"><%= @user.price %>€/hour</h2>
 
-      </div>
-  </div>
-  And as a Petlover I also have some animals, that would need to be kept from time to time
-
-  <div>
-    <%= current_user.description %>
-
-  </div>
-  <h1>My Pets</h1>
-  <div class="cards">
-    <br>
-    <% @user.pets.each do |pet| %>
-      <div class="card-product">
-        <h3><%= pet.name %></h3>
-        <div class="card-product-image">
-        <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
-          <%# <%= image_tag("black_lab.jpeg") %>
-        </div>
-      <div class="card-product-infos">
-          <%= pet.breed %>
-          <br>
-          <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
-          <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
-      </div>
     </div>
     <% end %>
-    <br>
-    <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
- </div>
-<% end %>
+    </div>
 </div>
