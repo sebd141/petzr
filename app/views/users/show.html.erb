@@ -1,17 +1,17 @@
 <div class="log">
-<% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
+  <% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
 
-<div class="container d-flex justify-content-center mt-5">
+  <div class="container d-flex justify-content-center mt-5">
 
-	<div class="card">
+	  <div class="card">
 
-		<div class="top-container">
-			<img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="img-fluid profile-image" width="70">
+		  <div class="top-container">
+			  <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="img-fluid profile-image" width="70">
 
-			<div class="ml-3">
-				<h5 class="name"><%= @user.first_name%> <%= @user.last_name%></h5>
-				<p class="mail"><%= @user.email%></p>
-			</div>
+        <div class="ml-3">
+          <h5 class="name"><%= @user.first_name%> <%= @user.last_name%></h5>
+          <p class="mail"><%= @user.email%></p>
+        </div>
 		</div>
 
 
@@ -44,6 +44,8 @@
 -----
 
     <h1>My Pets</h1>
+
+<div class="cointainer-wide">
   <div class="cards">
     <br>
     <% @user.pets.each do |pet| %>
@@ -107,3 +109,4 @@
     <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
  </div>
 <% end %>
+</div>
