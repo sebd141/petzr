@@ -1,8 +1,9 @@
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  margin: 2s0px;
+  grid-gap: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 .image {
   height: 300px
