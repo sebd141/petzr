@@ -13,7 +13,7 @@ class ContractsController < ApplicationController
     @user = current_user
     @contract.user = @user
     if @contract.save
-      redirect_to users_path(@user)
+      redirect_to contract_path(@user)
     else
       render :new
     end
@@ -30,10 +30,12 @@ class ContractsController < ApplicationController
     redirect_to contract_path(@contract)
   end
 
-  # def destroy
-  #   @contract = Contract.find(params[:id])
-  #   @contract.destroy
-  # end
+  def destroy
+    @contract = Contract.find(params[:id])
+    @contract.user = current_user
+    @contract.destroy
+    redirect_to contract_path(current_user)
+  end
 
   private
 
