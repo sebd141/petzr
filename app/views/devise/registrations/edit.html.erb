@@ -30,13 +30,10 @@
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
 
-
-    <div class="hidden_form d_none" >
+<% if current_user.pet_sitters_status = true  %>
 
       <%= f.input :pet_sitters_status,
-                  hint: "Do you want to become a Pet Sitter?",
-                  :as => :boolean,
-                  :input_html => { :checked => "checked" } %>
+                  :as => :boolean %>
       <%= f.input :location,
                         :size=>"40",
                         placeholder: 'Street number, street name, postal code, country',
@@ -47,6 +44,9 @@
                   hint: "What is your price per hour?",
                   required: false,
                   input_html: { autocomplete: "Your first name" } %>
+
+                  <% else %>
+        <% end %>
     </div>
   </div>
 
