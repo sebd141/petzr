@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all.order("created_at desc")
+    @users = User.where(pet_sitters_status: true).order("created_at desc")
     # if params[:start_date] && params[:end_date]
     #   @users =
 
