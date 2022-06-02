@@ -47,8 +47,8 @@ puts "Creating Pet sitters"
     last_name: ['RobinHood', 'Pocaonthas', 'Simba', 'Snow', 'Targaryan', 'Conor', 'Smith', 'Dupont'].sample,
     location: ['Be Central, Brussels', 'Rue Neuve, 1000 Brussels', 'Boulevard de l industrie, 100, Brussels', 'Bozar, 1000 Brussels', 'Avenue louise 86, Brussels', 'Atomium, Brussels', 'Avenue Louise 203, 1050 Ixells'].sample,
     price: [10.5, 5.5, 6.5, 7.5].sample,
-    type_of_pet: ["cat", "dog", "bird", "fish", "snake"].sample,
-    type_of_service: ["walk", "feed", "medication"].sample,
+    type_of_pet: ["cat", "dog", "bird", "fish", "snake"].sample(rand(2..5)),
+    type_of_service: ["walk", "feed", "medication"].sample(rand(2..3)),
     description: Faker::Lorem.paragraph,
     short_desc: "Hello I'm User, I will take care of your pet!",
   )
