@@ -12,7 +12,7 @@
 
 <%= simple_form_for [@contract, @post],
   remote: true,
-  html: {class: "d-flex"} do |f|
+  html: {data: {action: "ajax:success->contract-subscription#resetForm"}, class: "d-flex" } do |f|
 %>
   <%= f.input :content,
     label: false,
