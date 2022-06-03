@@ -62,6 +62,7 @@
         <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
       <% end %>
       <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+      <%= link_to 'chatroom', contract_path(contract), class: "btn btn-blue" %>
     <% end %>
   <% end %>
 </div>
