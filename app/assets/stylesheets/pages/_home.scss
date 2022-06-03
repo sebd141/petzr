@@ -1,28 +1,48 @@
 // Specific CSS for your home-page
 
 // MAIN DIV
-.items {
-
+.home_items {
+ background-color: rgb(41, 41, 41);
 }
 
-.items h1 {
+.home_items h1 {
   text-align: center;
-  margin: 20px;
-  color: #1400F5;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  color: #ffffff;
+  border-top: 1px solid #ffffff;
+  margin-left: 150px;
+  margin-right: 150px;
 }
+
+.home_items h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+.home_items h4 {
+  color: #ffffff;
+  font-family: inherit;
+}
+
+.home_items p {
+  color: #ffffff;
+}
+
 // FIRST PART OF THE PAGE
-.item {
+.home_item {
   margin: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.item_content_left {
+.home_item_content_left {
   margin-right: 50px;
 }
 
-.item_content_right {
+.home_item_content_right {
   margin-left: 50px;
 }
 
@@ -51,5 +71,15 @@
 }
 
 .show_profile_link {
+
+}
+
+#advantages_banner {
+  border-top: 1px solid #ffffff;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.home_centered {
 
 }
