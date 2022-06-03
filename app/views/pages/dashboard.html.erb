@@ -2,7 +2,7 @@
   <% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
     <% if current_user.contracts_user.exists? %>
       <div style="text-align: center;">
-        <h1>Your bookings<</h1>
+        <h1>Your bookings</h1>
       </div>
   <div class="cards">
       <% current_user.contracts_user.each do |contract| %>
