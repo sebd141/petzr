@@ -33,10 +33,12 @@
         </div>
       </div>
     </div>
-    <br>
 
 <% if @user.pets.exists?  %>
+<div class="log">
+
    <h2>My Pets</h2>
+   </div>
 <div class="container-wide2">
 
     <div class="cards">
@@ -58,13 +60,15 @@
               <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
           </div>
       </div>
+</div>
+</div>
     <% end %>
   <% end %>
 </div>
-</div>
-</div>
+    <div class="log">
 
     <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
+    </div>
 <% else %>
 <div class="log">
   <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
