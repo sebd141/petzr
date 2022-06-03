@@ -4,11 +4,10 @@
 }
 
 .container-wide2{
-  display: flex;
+  display: list-item;
   padding: 6%;
   margin-bottom: 50px;
   width: auto;
   align-items: start;
-  flex-direction: column;
-  background-color: rgb(41, 41, 41);
+  flex-direction: row-reverse;
 }
