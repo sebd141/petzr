@@ -1,16 +1,11 @@
-<div class="container chatroom">
+<div class="container chatroom" data-controller="contract-subscription"
+  data-contract-subscription-contract-id-value="<%= @contract.id %>">
 <h1>Current user email is: <%= current_user.email %></h1>
-  <h1>#<%= @contract.user.first_name%></h1>
+  <%# <h1>#<%= @contract.user.first_name%>
 
-  <div class="messages">
+  <div class="posts" data-contract-subscription-target="posts">
     <% @contract.posts.each do |post| %>
-      <div id="message-<%= post.id %>">
-        <small>
-          <strong><%= post.user.first_name %></strong>
-          <i><%= post.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= post.content %></p>
-      </div>
+      <%= render "posts/post", post: post %>
     <% end %>
   </div>
 </div>
