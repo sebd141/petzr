@@ -1,25 +1,25 @@
 <% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
-  <div class="container-wide">
+  <div class="log">
   <br>
-    <h1 style="color:white;">My profile</h1>
-    <div>
-      <div class="card-trip">
+    <h2>My profile</h2>
+    <div class="card-trip">
+      <div class="card-trip-info">
         <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+        </div>
         <div class="card-trip-infos">
           <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
-            <p>I have </p>
-          <div class="card-product-infos">
+            <p>I have
             <% @user.pets.map { |pet| pet.breed }.each do |breed| %>
               <% case breed %>
               <% when 'fish' %>
-                <p>🐠</p>
+                🐠
               <% when 'rabbit' %>
-                <p>🐰</p>
+                🐰
               <% when 'dog' %>
                 <p>🐶</p>
               <% when 'bird' %>
@@ -28,18 +28,20 @@
                 <p>🐱</p>
               <% end %>
             <% end %>
+            </p>
           </div>
         </div>
       </div>
     </div>
+    <br>
 
 <% if @user.pets.exists?  %>
-  <h1 style="color:white;">My Pets</h1>
-<div class="log">
+   <h2>My Pets</h2>
+<div class="container-wide2">
+
     <div class="cards">
       <% @user.pets.each do |pet| %>
       <div class="card-trip">
-        <div class="card-product-image">
           <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
@@ -47,19 +49,22 @@
             'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
                   <%# <%= image_tag("black_lab.jpeg") %>
-        </div>
-        <div class="card-trip-user">
-         <h3><%= pet.name %></h3>
-            <%= pet.breed %>
-            <br>
-            <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
-            <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
-        </div>
+        <div class="card-trip-infos">
+          <div>
+          <h2><%= pet.name %></h2>
+              <%= pet.breed %>
+              <br>
+              <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
+              <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+          </div>
       </div>
+    <% end %>
   <% end %>
-<% end %>
-    <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
 </div>
+</div>
+</div>
+
+    <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
 <% else %>
 <div class="log">
   <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
