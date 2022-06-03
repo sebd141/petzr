@@ -1,19 +1,54 @@
-<h1>Bookings show page</h1>
-<h1>Current user email is: <%= current_user.email %></h1>
-<h1>Current user ID is: <%= current_user.id %></h1>
-
-<% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
-  <div>
-    <% current_user.contracts_user.each do |contract| %>
-      <p><%=contract.description%></p>
-      <p><%=contract.start_date%></p>
-      <p><%=contract.end_date%></p>
-      <p><%=contract.status%></p>
-      <%= link_to "Edit", edit_contract_path(contract), class: "btn btn-blue" %>
-      <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+<div class="log">
+  <% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
+    <% if current_user.contracts_user.exists? %>
+      <% current_user.contracts_user.each do |contract| %>
+        <% if contract.status.nil? %>
+          <h1>Pending bookings</h1>
+          <div>
+              <% pet_sitter = User.find(contract.id_pet_sitter) %>
+              <div class="card-trip">
+                <div class="status">
+                    <h2 class="badge bg-secondary">pending</h2>
+                </div>
+                    <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                  'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+                  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+                  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+                  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+                  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+                  <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
+                  <%# #'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
+                  <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
+                  <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
+                <div class="card-trip-infos">
+                  <div>
+                    <H2><%= pet_sitter.first_name %> <%= pet_sitter.last_name %></H2>
+                    <p><%= pet_sitter.short_desc %></p>
+                    <p><strong><%= pet_sitter.location %></strong></p>
+                    <p>What <%= pet_sitter.first_name %> offers: </p>
+                      <% pet_sitter.type_of_service[1..-1].each do |service| %>
+                        <span class="badge bg-secondary"><%= service %></span>
+                      <% end %>
+                  </div>
+                  <h2 class="card-trip-pricing"><%= pet_sitter.price %>€/hour</h2>
+                </div>
+              </div>
+            </div>
+         <p><%=contract.description%></p>
+          <p><%=contract.start_date%></p>
+          <p><%=contract.end_date%></p>
+          <p><%=contract.status%></p>
+          <%= link_to "Edit", edit_contract_path(contract), class: "btn btn-blue" %>
+          <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+        <% end %>
+      <% end %>
+    <% else %>
+      <h1>Hooo.. It's seems you don't have any booking yet!</h1>
+      <p>Maybe you want to book a pet sitter?</p>
+      <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
     <% end %>
-<% else %>
-  <div>
+  <% else %>
+
     <% current_user.contracts_pet_sitter.each do |contract| %>
       <p>Contract ID: <%=contract.id%></p>
       <p>Descr: <%=contract.description%></p>
@@ -21,15 +56,12 @@
       <p>End: <%=contract.end_date%></p>
       <% if contract.status.nil? %>
         <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
-        <%# <p><%= link_to "free", accept_contract_path(contract),  class: "btn btn-blue" %>
       <% elsif contract.status == true %>
         <%= link_to "Decline", decline_contract_path(contract), class: "btn btn-blue" %>
-      <%# <p><%= link_to "taken", accept_contract_path(contract),  class: "btn btn-blue" %>
       <% else %>
         <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
       <% end %>
       <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
     <% end %>
-  </div>
-
-<% end %>
+  <% end %>
+</div>
