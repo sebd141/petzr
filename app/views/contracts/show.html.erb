@@ -1,0 +1,28 @@
+<div class="container chatroom">
+<h1>Current user email is: <%= current_user.email %></h1>
+  <h1>#<%= @contract.user.first_name%></h1>
+
+  <div class="messages">
+    <% @contract.posts.each do |post| %>
+      <div id="message-<%= post.id %>">
+        <small>
+          <strong><%= post.user.first_name %></strong>
+          <i><%= post.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= post.content %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= simple_form_for [@contract, @post],
+  remote: true,
+  html: {class: "d-flex"} do |f|
+%>
+  <%= f.input :content,
+    label: false,
+    placeholder: "Message ##{@contract.user.first_name}",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "btn btn-primary" %>
+<% end %>
