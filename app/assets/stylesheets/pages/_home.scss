@@ -1,55 +1,86 @@
 // Specific CSS for your home-page
 
 // MAIN DIV
-.items {
-
+.home_items {
+ background-color: rgb(41, 41, 41);
 }
 
-.items h1 {
+.home_items h1 {
   text-align: center;
-  margin: 20px;
-  color: #1400F5;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  color: #ffffff;
+  border-top: 1px solid #ffffff;
+  margin-left: 150px;
+  margin-right: 150px;
 }
+
+.home_items h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+.home_items h4 {
+  color: #ffffff;
+  font-family: inherit;
+}
+
+.home_items p {
+  color: #ffffff;
+}
+
 // FIRST PART OF THE PAGE
-.item {
-  margin: 50px;
+.home_item {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.item_content_left {
+.home_item_content_left {
   margin-right: 50px;
-}
-
-.item_content_right {
   margin-left: 50px;
+
 }
 
-// SIGN UP
-.sign_up {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-// EDIT PROFILE
-.edit_profile {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-// SHOW PROFILE
-.show_profile {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.home_item_content_right {
+  margin-left: 50px;
 }
 
 .show_profile_link {
 
+}
+
+#blank_line {
+  border-top: 1px solid #ffffff;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+#advantages {
+  padding: 100px;
+  .container p {
+    padding-right: 50%;
+    font-size: 16px;
+  }
+  .container h4 {
+
+  }
+}
+
+.home_centered {
+
+}
+
+img {
+
+}
+
+#advantages_banner {
+  img {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vh;
+  }
 }
