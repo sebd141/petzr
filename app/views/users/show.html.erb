@@ -43,8 +43,8 @@
 </div>
 -----
 
+<% if @user.pets.exists?  %>
     <h1>My Pets</h1>
-
 <div class="log">
       <% @user.pets.each do |pet| %>
       <div class="card-product">
@@ -61,8 +61,9 @@
         </div>
       </div>
   <% end %>
-</div>
+<% end %>
     <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
+</div>
 
 <% else %>
 <div class="log">
