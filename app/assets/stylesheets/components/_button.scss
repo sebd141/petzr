@@ -26,9 +26,24 @@
   align-items: center;
   margin-bottom: 3%;
 }
+.btn-red {
+  color: white;
+  border-radius: 4px;
+  background: red;
+  border: 1px solid #4A4A4A;
+  padding: 2px 6px;
+  font-weight: lighter;
+  font-size: 10px;
+  align-items: center;
+  margin-bottom: 3%;
+}
 
 
 .btn-blue:hover {
   background: #1205a8;
+  color: white;
+}
+.btn-red:hover {
+  background: darkred;
   color: white;
 }

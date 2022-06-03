@@ -9,13 +9,13 @@
 require 'faker'
 
 puts "Cleaning database..."
-if Rails.env.development?
+
   Review.destroy_all
   Contract.destroy_all
   Post.destroy_all
   Pet.destroy_all
   User.destroy_all
-end
+
 
 puts "Creating User"
 

@@ -30,7 +30,6 @@
   color: #ffffff;
 }
 
-// FIRST PART OF THE PAGE
 .home_item {
   display: flex;
   justify-content: center;
@@ -65,6 +64,25 @@
   }
   .container h4 {
 
+  }
+}
+
+#how_does_it_work {
+  padding: 100px;
+  text-align: center;
+
+  .container p {
+    font-size: 20px;
+  }
+
+  .container h2 {
+    color: white;
+    font-size: 70px;
+  }
+
+  .container h3 {
+    color: white;
+    font-size: 30px;
   }
 }
 
