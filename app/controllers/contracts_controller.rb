@@ -21,8 +21,8 @@ class ContractsController < ApplicationController
     @contract.pet_sitter = @pet_sitter
     if @contract.save
       # send mail to pet sitter that contract needs answer
-      mail = UserMailer.with(user: @pet_sitter).notification
-      mail.deliver_now
+      # mail = UserMailer.with(user: @pet_sitter).notification
+      # mail.deliver_now
       redirect_to dashboard_path
     else
       render :new
