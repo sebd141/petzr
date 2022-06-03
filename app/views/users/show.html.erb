@@ -34,9 +34,8 @@
     </div>
 
 <% if @user.pets.exists?  %>
-   h1 style="color:white;">My Pets</h1>
+  <h1 style="color:white;">My Pets</h1>
 <div class="log">
-
     <div class="cards">
       <% @user.pets.each do |pet| %>
       <div class="card-trip">
