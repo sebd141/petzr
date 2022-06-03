@@ -1,4 +1,9 @@
 .container-wide{
   display: flex;
-  flex-direction: row-reverse;
+  padding: 6%;
+  margin-bottom: 50px;
+  width: auto;
+  align-items: start;
+  flex-direction: column;
+  background-color: rgb(41, 41, 41);
 }
