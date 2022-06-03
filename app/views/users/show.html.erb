@@ -1,53 +1,42 @@
-<div class="log">
-  <% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
-
-  <div class="container d-flex justify-content-center mt-5">
-
-	  <div class="card">
-
-		  <div class="top-container">
-			  <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="img-fluid profile-image" width="70">
-
-        <div class="ml-3">
-          <h5 class="name"><%= @user.first_name%> <%= @user.last_name%></h5>
-          <p class="mail"><%= @user.email%></p>
+<% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
+  <div class="log">
+    <h1>My profile</h1>
+    <div>
+      <div class="card-trip">
+        <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+        <div class="card-trip-infos">
+          <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
+            <p>I have </p>
+          <div>
+            <% @user.pets.map { |pet| pet.breed }.each do |breed| %>
+              <% case breed %>
+              <% when 'fish' %>
+                <p>🐠</p>
+              <% when 'rabbit' %>
+                <p>🐰</p>
+              <% when 'dog' %>
+                <p>🐶</p>
+              <% when 'bird' %>
+                <p>🦜</p>
+              <% when 'cat' %>
+                <p>🐱</p>
+              <% end %>
+            <% end %>
+          </div>
         </div>
-		</div>
+      </div>
+    </div>
+  </div>
+  <h1>My Pets</h1>
+    <div class="cards">
 
-
-		<div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
-				<div class="dollar-div px-3">
-
-					<div class="round-div"><i class="fa fa-dollar dollar"></i></div>
-
-				</div>
-				<div class="d-flex flex-column text-right mr-2">
-					<span class="current-balance"></span>
-					<span class="amount"><span class="dollar-sign"></span></span>
-				</div>
-
-		</div>
-
-		<div class="recent-border mt-4">
-			<span class="recent-orders">Last</span>
-		</div>
-		<div class="wishlist-border pt-2">
-			<span class="wishlist">Wishlist</span>
-		</div>
-		<div class="fashion-studio-border pt-2">
-			<span class="fashion-studio">Fashion studio</span>
-		</div>
-
-	</div>
-
-</div>
------
-
-    <h1>My Pets</h1>
-
-<div class="log">
       <% @user.pets.each do |pet| %>
-      <div class="card-product">
+      <div class="card-trip">
          <h3><%= pet.name %></h3>
         <div class="card-product-image">
           <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
@@ -60,10 +49,9 @@
             <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
         </div>
       </div>
-  <% end %>
-</div>
+      <% end %>
+  </div>
     <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
-
 <% else %>
 <div class="log">
   <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>

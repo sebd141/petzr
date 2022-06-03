@@ -4,7 +4,8 @@
     What's the name of this lovely pet?
     <%= f.input :name, label: false, %>
     What's the species of this pet?
-    <%= f.input :breed, label: false, %>
+    <%= f.input :breed, collection: ["dog", "cat", "fish", "bird", "rabbit"], multiple: true, as: :check_boxes  %>
+
     <%# TO UPDATE the PICTURE OF YOUR PET f.input :photo, as: :file %>
   <div class="form-actions btn btn-ghost">
     <%= f.button :submit, "Update 🐾 !" , class: "btn btn-success"%>
