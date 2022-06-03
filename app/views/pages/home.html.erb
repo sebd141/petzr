@@ -1,5 +1,5 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80);">
-  <div class="container">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80); height: 100vh; padding-top: 20%;">
+  <div class="home_centered">
     <h1>Petzr helps you to find the <strong>best</strong> pet sitter for your pet !</h1>
     <p>Rest assured with our pet sitter experts</p>
     <% if user_signed_in? %>
@@ -10,10 +10,12 @@
   </div>
 </div>
 
-<div class="items">
-  <h1>Why should you choose Petzr ?</h1>
-  <div class="item">
-    <div class="item_content_left">
+<div class="home_items">
+  <div id="advantages_banner">
+  </div>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1557246565-8a3d3ab5d7f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80); height: 100vh;">
+    <div class="container">
+    <h2>Our advantages</h2>
       <h4>Personalised and flexible pet care</h4>
       <p>Petzr sitters provide one-on-one love and attention in a cosy home space.</p>
       <br>
@@ -21,37 +23,79 @@
       <p>Petzr dog sitters and pet sitters are vetted by our expert Trust and Safety team.</p>
       <br>
       <h4>A real community</h4>
-      <p>Petzr pet sitters are genuine pet lovers from your local neighbourhood</p>
+      <p>Petzr pet sitters are genuine pet lovers from your local neighbourhood.</p>
       <br>
       <h4>Veterinary Coverage</h4>
       <p>Enjoy peace of mind with free veterinary coverage for your pet with every booking. No hidden gap payments or subscription costs.</p>
-      <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
+      <%= link_to "More info", faq_path, class: "btn btn-green"  %>
     </div>
-    <img width="560" height="440" src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2948&q=80" alt="Discover">
   </div>
 
-  <div class="item">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="home_items">
+  <h1>Why Petzr ?</h1>
+  <div class="home_item">
+    <div class="home_item_content_left">
+      <h2>Our advantages</h2>
+      <h4>Personalised and flexible pet care</h4>
+      <p>Petzr sitters provide one-on-one love and attention in a cosy home space.</p>
+      <br>
+      <h4>Safety first for your peace of mind</h4>
+      <p>Petzr dog sitters and pet sitters are vetted by our expert Trust and Safety team.</p>
+      <br>
+      <h4>A real community</h4>
+      <p>Petzr pet sitters are genuine pet lovers from your local neighbourhood.</p>
+      <br>
+      <h4>Veterinary Coverage</h4>
+      <p>Enjoy peace of mind with free veterinary coverage for your pet with every booking. No hidden gap payments or subscription costs.</p>
+      <%= link_to "More info", faq_path, class: "btn btn-green"  %>
+    </div>
+    <img width="560" height="440" src="https://images.unsplash.com/photo-1557246565-8a3d3ab5d7f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="Advantages">
+  </div>
+
+
+
+
+  <div class="home_item">
     <img width="560" height="440" src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2948&q=80" alt="Discover">
-    <div class="item_content_right">
-      <h1>Hi !!</h1>
+    <div class="home_item_content_right">
+      <h2>Easy to use</h2>
+      <p></p>
+      <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
+    </div>
+  </div>
+
+  <div class="home_item">
+    <div class="home_item_content_left">
+      <h2>Hi !!</h2>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat enim modi hic error ipsa. Architecto, nihil quibusdam quo, molestias assumenda et, fugiat voluptatibus deserunt est in totam autem natus inventore!</p>
       <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
     </div>
-  </div>
-
-  <div class="item">
-    <div class="item_content_left">
-      <h1>Hi !!</h1>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat enim modi hic error ipsa. Architecto, nihil quibusdam quo, molestias assumenda et, fugiat voluptatibus deserunt est in totam autem natus inventore!</p>
-      <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
-    </div>
     <img width="560" height="440" src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2948&q=80" alt="Discover">
   </div>
 
-  <div class="item">
+  <div class="home_item">
     <img width="560" height="440" src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2948&q=80" alt="Discover">
-    <div class="item_content_right">
-      <h1>Hi !!</h1>
+    <div class="home_item_content_right">
+      <h2>Hi !!</h2>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat enim modi hic error ipsa. Architecto, nihil quibusdam quo, molestias assumenda et, fugiat voluptatibus deserunt est in totam autem natus inventore!</p>
       <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
     </div>
