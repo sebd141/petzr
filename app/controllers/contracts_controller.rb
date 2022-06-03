@@ -3,6 +3,11 @@ class ContractsController < ApplicationController
     @contracts = Contract.all
   end
 
+  def show
+    @contract = Contract.find(params[:id])
+    @post = Post.new
+  end
+
   def new
     @user = current_user
     @contract = Contract.new

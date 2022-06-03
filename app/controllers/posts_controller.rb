@@ -10,12 +10,14 @@ class PostsController < ApplicationController
   end
 
   def create
+    @contract = Contract.find(params[:contract_id])
     @post = Post.new(post_params)
+    @post.contract = @contract
     @post.user = current_user
     if @post.save
-      redirect_to contract_path(@contract_id)
+      redirect_to contract_path(@contract, anchor: "message-#{@message.id}" )
     else
-      render :new
+      render "chatrooms/show"
     end
   end
 
