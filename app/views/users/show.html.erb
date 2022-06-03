@@ -1,6 +1,7 @@
 <% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
-  <div class="log">
-    <h1>My profile</h1>
+  <div class="container-wide">
+  <br>
+    <h1 style="color:white;">My profile</h1>
     <div>
       <div class="card-trip">
         <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
@@ -12,7 +13,7 @@
         <div class="card-trip-infos">
           <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
             <p>I have </p>
-          <div>
+          <div class="card-product-infos">
             <% @user.pets.map { |pet| pet.breed }.each do |breed| %>
               <% case breed %>
               <% when 'fish' %>
@@ -31,18 +32,23 @@
         </div>
       </div>
     </div>
-  </div>
-  <h1>My Pets</h1>
+
+  <h1 style="color:white;">My Pets</h1>
     <div class="cards">
 
       <% @user.pets.each do |pet| %>
       <div class="card-trip">
-         <h3><%= pet.name %></h3>
         <div class="card-product-image">
-          <%= image_tag("black_lab.jpeg", style: "width: 100mh; height: auto;width: 400px;") %>
-          <%# <%= image_tag("black_lab.jpeg") %>
+          <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+                  <%# <%= image_tag("black_lab.jpeg") %>
         </div>
-        <div class="card-product-infos">
+        <div class="card-trip-user">
+         <h3><%= pet.name %></h3>
             <%= pet.breed %>
             <br>
             <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
@@ -94,4 +100,5 @@
     </div>
     <% end %>
     </div>
+</div>
 </div>

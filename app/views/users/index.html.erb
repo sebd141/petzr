@@ -36,7 +36,7 @@
             <p><strong><%= user.location %></strong></p>
             <p><%= user.type_of_service[1..-1] %></p>
             <p><%= user.type_of_pet[1..-1]  %></p>
-            <%= link_to "show more", user_path(user)%>
+            <%= link_to "show more", user_path(user), class: "btn btn-green"%>
 
         <% if params[:start_date] && params[:end_date] %>
           <%= simple_form_for([user, Contract.new]) do |f| %>
