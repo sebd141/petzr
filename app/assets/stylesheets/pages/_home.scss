@@ -32,7 +32,6 @@
 
 // FIRST PART OF THE PAGE
 .home_item {
-  margin: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,46 +39,48 @@
 
 .home_item_content_left {
   margin-right: 50px;
+  margin-left: 50px;
+
 }
 
 .home_item_content_right {
   margin-left: 50px;
 }
 
-// SIGN UP
-.sign_up {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-// EDIT PROFILE
-.edit_profile {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-// SHOW PROFILE
-.show_profile {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .show_profile_link {
 
 }
 
-#advantages_banner {
+#blank_line {
   border-top: 1px solid #ffffff;
   margin-left: 150px;
   margin-right: 150px;
 }
 
+#advantages {
+  padding: 100px;
+  .container p {
+    padding-right: 50%;
+    font-size: 16px;
+  }
+  .container h4 {
+
+  }
+}
+
 .home_centered {
 
+}
+
+img {
+
+}
+
+#advantages_banner {
+  img {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vh;
+  }
 }
