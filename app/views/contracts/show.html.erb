@@ -3,7 +3,7 @@
 <h1>Current user email is: <%= current_user.email %></h1>
   <%# <h1>#<%= @contract.user.first_name%>
 
-  <div class="posts" data-contract-subscription-target="posts">
+  <div class="messages" data-contract-subscription-target="posts">
     <% @contract.posts.each do |post| %>
       <%= render "posts/post", post: post %>
     <% end %>

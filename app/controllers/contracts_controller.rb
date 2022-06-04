@@ -44,7 +44,7 @@ class ContractsController < ApplicationController
     @contract = Contract.find(params[:id])
     @contract.user = current_user
     @contract.destroy
-    redirect_to contract_path(current_user)
+    redirect_to dashboard_path
   end
 
   def accept
