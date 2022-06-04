@@ -21,20 +21,19 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(pet_sitters_status: true)
      if @user.save
-      redirect_to new_pet_sitter_form_path
+       redirect_to new_pet_sitter_form_path
      else
-      render :edit
+       render :edit
      end
   end
 
-
   def add_pet_sitter_details
     @user = current_user
-
   end
+
   private
 
   def user_params
-    params.require(:user).permit(:description, :short_desc, :location, { type_of_pet: [] }, { type_of_service: [] }, :price)
+    params.require(:user).permit(:description, :short_desc, :location, { type_of_pet: [] }, { type_of_service: [] }, :price, :photo)
   end
 end
