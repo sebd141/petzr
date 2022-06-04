@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :contracts_user, class_name: 'Contract', foreign_key: :user_id, primary_key: :id
   has_many :posts
   has_many :pets
+  has_one_attached :photo
 end
