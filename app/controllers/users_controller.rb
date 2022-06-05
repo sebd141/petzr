@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def index
     @users = User.where(pet_sitters_status: true).order("created_at desc")
-    # if params[:start_date] && params[:end_date]
-    #   @users =
-
-    # end
+    @markers = @users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
   end
 
   def update
