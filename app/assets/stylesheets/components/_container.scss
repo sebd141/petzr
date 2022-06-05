@@ -4,10 +4,8 @@
 }
 
 .container-wide2{
-  display: list-item;
-  padding: 6%;
-  margin-bottom: 50px;
-  width: auto;
-  align-items: start;
-  flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+
 }
