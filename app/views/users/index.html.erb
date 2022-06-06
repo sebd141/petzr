@@ -20,10 +20,12 @@
 </div>
 
 <div class="container-wide">
-    <div style="width: 40%; height: 100vh; position: sticky"
-  data-controller="mapbox"
-  data-mapbox-markers-value="<%= @markers.to_json %>"
-  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div class="the-mapbox"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
   <%# <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoicGllcnJpY2sxMTIyIiwiYSI6ImNsMnVlenBjNzAxZW0zZG96ZmVsa3hvMTMifQ.VdN2bQ6VRMmZVMzdwAp-UA'> %>
   <div class="cards">
     <% @users.each do |user| %>
@@ -46,15 +48,17 @@
 
             <p>What I offer: </p>
             <% user.type_of_service[1..-1].each do |service| %>
-              <span class="badge bg-secondary" id="blue-badge"><%= service %></span>
+              <span class="badge" id="blue-badge"><%= service %></span>
             <% end %>
 
             <p>Animals I take care of: </p>
             <% user.type_of_pet[1..-1].each do |pet|  %>
-              <span class="badge bg-secondary" id="blue-badge"><%= pet %></span>
+              <span class="badge" id="blue-badge"><%= pet %></span>
             <% end %>
 
-            <%= link_to "show more", user_path(user)%>
+            <div id="show-more-users">
+              <%= link_to "Show more", user_path(user)%>
+            </div>
 
             <% if params[:start_date] && params[:end_date] %>
               <%= simple_form_for([user, Contract.new]) do |f| %>
