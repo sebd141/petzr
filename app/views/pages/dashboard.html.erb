@@ -12,16 +12,7 @@
               <div class="status">
                 <h2 class="badge" id="pending-badge">PENDING</h2>
               </div>
-              <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-              'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-              'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-              'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-              'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-              'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
-              <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
-              <%# #'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
-              <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
-              <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
+                <%= cl_image_tag pet_sitter.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
               <div class="card-trip-infos">
                 <div>
                   <H2><%= pet_sitter.first_name %> <%= pet_sitter.last_name %></H2>
@@ -53,30 +44,23 @@
       </div>
       <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
     <% end %>
-  <% else %>
-    <div style="text-align: center;">
+<% else %>
+  <% if current_user.contracts_pet_sitter.exists? %>
+  <div class="wrapper-footer">
+    <div style="text-align: center">
       <h1>Your pet sitter missions</h1>
     </div>
     <div class="cards">
       <% current_user.contracts_pet_sitter.each do |contract| %>
       <div>
-        <% user = User.find(contract.user_id) %>
+        <% current_user = User.find(contract.user_id) %>
         <div class="card-trip">
           <div class="status">
           </div>
-          <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-          'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-          'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-          'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-          'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-          'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
-          <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
-          <%# #'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
-          <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
-          <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
+           <%= cl_image_tag current_user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
           <div class="card-trip-infos">
             <div>
-              <H2>Request from: <%= user.email %></H2>
+              <H2>Request from: <%= current_user.email %></H2>
               <p><strong>Contract ID: <%=contract.id%></strong></p>
               <p>Descr: <%=contract.description%></p>
               <% current_user.type_of_service[1..-1].each do |service| %>
@@ -94,16 +78,21 @@
                   <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
                   <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
                 <% end %>
-                <%= link_to "Start a chat with #{user.first_name}", contract_path(contract), class: "btn btn-blue" %>
+                <%= link_to "Start a chat with #{current_user.first_name}", contract_path(contract), class: "btn btn-blue" %>
               </div>
             </div>
             <h2 class="card-trip-pricing"><%= current_user.price %>€/hour</h2>
           </div>
         </div>
       </div>
+      </div>
       <% end %>
+    <% else %>
+      <div class="wrapper-footer" style="text-align: center">
+          <h1>Hooo.. It's seems you don't have any mission yet!</h1>
+      </div>
+    <% end %>
     </div>
   <% end %>
   </div>
-  <div style="margin:5%;"></div>
 </div>
