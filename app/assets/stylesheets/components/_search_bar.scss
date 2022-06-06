@@ -4,12 +4,18 @@
   width: 90%;
   padding: 0px;
   margin: 20px;
-  border: 1px solid #040404;
+  // border: 1px solid #040404;
+  // opacity: 0.5;
   vertical-align: baseline;
   border-radius: 5px;
 }
-
 .align-search-bar .btn {
   margin: 0 auto;
   display: block;
+}
+.align-search-bar #start_date {
+  width: 30%;
+}
+.align-search-bar #end_date {
+  width: 30%;
 }
