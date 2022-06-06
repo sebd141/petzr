@@ -13,7 +13,7 @@
         <% @contract.posts.each do |post| %>
           <% if post.photo.attached? %>
           <%= render "posts/post", post: post %>
-          <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag post.photo.key, height: 301, width: 400, crop: :fill %>
           <% else %>
           <%= render "posts/post", post: post %>
           <% end %>
