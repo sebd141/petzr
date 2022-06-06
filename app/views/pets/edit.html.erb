@@ -6,10 +6,10 @@
       <%= f.input :name, label: false, wrapper_html: { class: 'forced-columns' } %>
       What's the species of this pet?
       <%= f.input :breed, label: false, collection: ["dog", "cat", "fish", "bird", "rabbit"], multiple: true, as: :check_boxes, wrapper_html: { class: 'forced-columns' } %>
-
-      <%# TO UPDATE the PICTURE OF YOUR PET f.input :photo, as: :file %>
+      <%= f.input :photo, as: :file ,
+                     wrapper_html: { class: 'forced-columns' }, required: true %>
     <div class="form-actions btn btn-ghost">
-      <%= f.button :submit, "Update 🐾 !" , class: "btn btn-green"%>
+      <%= f.button :submit, "Update 🐾 !" ,label: false, class: "btn btn-green"%>
     </div>
     <% end %>
   </div>

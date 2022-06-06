@@ -31,3 +31,10 @@
 .cards-profile{
   grid-template-columns: 1fr;
 }
+.cards-profile {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  margin-right: 1%;
+  margin-left: 1%;
+}
