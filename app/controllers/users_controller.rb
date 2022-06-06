@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: %i[index show]
+
   def index
-    @users = User.where(pet_sitters_status: true).order("created_at desc")
+    if params[:query].present?
+      sql_query = " \
+        users.first_name ILIKE :query \
+        OR users.last_name ILIKE :query \
+        OR users.location ILIKE :query \
+        "
+      @users = User.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @users = User.where(pet_sitters_status: true).order("created_at desc")
+    end
+
     @markers = @users.geocoded.map do |user|
       {
         lat: user.latitude,
@@ -37,6 +48,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:description, :short_desc, :location, { type_of_pet: [] }, { type_of_service: [] }, :price, :photo)
+    params.require(:user).permit(:description, :short_desc, :location, { type_of_pet: [] }, { type_of_service: [] }, :price, :photo, :pet_sitters_status)
   end
 end
