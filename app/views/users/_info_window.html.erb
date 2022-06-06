@@ -12,9 +12,14 @@
         <% end %></p>
       <% if params[:start_date] && params[:end_date] %>
       <%= simple_form_for([User, Contract.new]) do |f| %>
-        <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
-        <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
-        <%= f.submit "Book #{user.first_name}" %>
+        <% if params[:start_date].present? && params[:end_date].present? %>
+          <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+          <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+          <%= f.submit "Book #{user.first_name}" %>
+        <% else %>
+        <%= f.input :start_date, as: :hidden %>
+        <%= f.input :end_date, as: :hidden %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
