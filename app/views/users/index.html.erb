@@ -1,7 +1,7 @@
 <div class="log">
   <h1>Find the best pet sitters arround you!</h1>
     <h2>Select your dates first</h2>
-      <%= form_tag users_path, method: :get do %>
+    <%= form_tag users_path, method: :get, class: "align-search-bar" do %>
         <%= datetime_field_tag(:start_date, value = nil, options = {
           min: DateTime.now,
           max: DateTime.now + 2.months
