@@ -8,7 +8,7 @@
     <%= f.input :breed, collection: ["dog", "cat", "fish", "bird", "rabbit"], label: false, wrapper_html: { class: 'forced-columns' } %>
     Upload a nice picture of your pet :-)
     <%= f.input :photo, as: :file ,
-                     wrapper_html: { class: 'forced-columns' }, required: true, label: false %>
+                     wrapper_html: { class: 'forced-columns' }, label: false %>
     <div class="form-actions btn btn-ghost">
 
       <%= f.button :submit, "Add my pet" , class: "btn btn-green"%>
