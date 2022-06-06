@@ -1,92 +1,89 @@
-<div class="container container-profile">
-  <div class="cards">
-
-  <div class="cards-profile">
-    <% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
-      <div class="log">
-        <h2>My profile</h2>
-        <div class="card-trip">
-            <div class="card-trip-info">
-              <% if @user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
-            <% else %>
-              <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
-            <% end %>
-            </div>
-              <div class="card-trip-infos">
-                  <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
-                    <p>I have
-                    <% @user.pets.map { |pet| pet.breed }.each do |breed| %>
-                      <% case breed %>
-                      <% when 'fish' %>
-                        🐠
-                      <% when 'rabbit' %>
-                        🐰
-                      <% when 'dog' %>
-                        <p>🐶</p>
-                      <% when 'bird' %>
-                        <p>🦜</p>
-                      <% when 'cat' %>
-                        <p>🐱</p>
-                      <% end %>
-                    <% end %>
-                    </p>
+<% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
+  <div class="container container-profile">
+    <div class="cards">
+    <div class="cards-profile">
+        <div class="log">
+          <h2>My profile</h2>
+          <div class="card-trip">
+              <div class="card-trip-info">
+                <% if current_user.photo.attached? %>
+                <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+              <% else %>
+                <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+              'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+              'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+              'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+              'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+              'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+              <% end %>
               </div>
-                            </div>
+                <div class="card-trip-infos">
+                    <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
+                      <p>I have
+                      <% @user.pets.map { |pet| pet.breed }.each do |breed| %>
+                        <% case breed %>
+                        <% when 'fish' %>
+                          🐠
+                        <% when 'rabbit' %>
+                          🐰
+                        <% when 'dog' %>
+                          <p>🐶</p>
+                        <% when 'bird' %>
+                          <p>🦜</p>
+                        <% when 'cat' %>
+                          <p>🐱</p>
+                        <% end %>
+                      <% end %>
+                      </p>
+                </div>
+              </div>
+          </div>
         </div>
       </div>
-    </div>
 
-      <% if @user.pets.exists?  %>
-          <div class="log">
-            <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
-              </div>
-              <div class="log">
-                <div class="container-wide">
-                  <div class="cards">
-
-                    <% @user.pets.each do |pet| %>
-                    <div class="card-trip">
-                     <% if pet.photo.attached? %>
-                    <%= cl_image_tag pet.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
-                    <% else %>
-                        <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-                      'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-                      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-                      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-                      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-                      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
-                      <% end %>
-                        <div class="card-trip-infos">
-                            <div>
-                            <h2><%= pet.name %></h2>
-                                <p><%= pet.breed %></p>
-                                <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
-                                <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
-                            </div>
-                        </div>
-                    </div>
-            <% end %>
+        <% if @user.pets.exists?  %>
+            <div class="log">
+              <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
                 </div>
+                  <div class="container">
+                    <div class="cards">
+
+                      <% @user.pets.each do |pet| %>
+                      <div class="card-trip">
+                      <% if pet.photo.attached? %>
+                      <%= cl_image_tag pet.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                      <% else %>
+                          <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                        'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+                        'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+                        'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+                        'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+                        'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+                        <% end %>
+                          <div class="card-trip-infos">
+                              <div>
+                              <h2><%= pet.name %></h2>
+                                  <p><%= pet.breed %></p>
+                                  <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
+                                  <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+                              </div>
+                          </div>
+                      </div>
+              <% end %>
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
+          <% else %>
+            <div class="log">
+              <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
+              </div>
+          <% end %>
           </div>
-        <% else %>
-          <div class="log">
-            <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
-            </div>
-        <% end %>
-        </div>
-</div>
+  </div>
 <% else %>
-<div class="log">
+<div class="container">
+  <div class="log">
   <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
     <div>
         <div class="card-trip">
@@ -127,5 +124,4 @@
     </div>
     <% end %>
     </div>
-</div>
 </div>
