@@ -10,18 +10,14 @@
           min: DateTime.now + 1.hour,
           max: DateTime.now + 2.months
         }) %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Add your adress and find the closest a pet-sitter"
+        %>
         <%= submit_tag "Search", class: "btn btn-green" %>
       <% end %>
 </div>
-
-<%= form_tag users_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Add your adress and find the closest a pet-sitter"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
 
 <div class="container-wide">
     <div style="width: 40%; height: 100vh; position: sticky"
@@ -62,8 +58,13 @@
 
             <% if params[:start_date] && params[:end_date] %>
               <%= simple_form_for([user, Contract.new]) do |f| %>
-                <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
-                <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                <% if params[:start_date].present? && params[:end_date].present?   %>
+                  <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+                  <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                <% else %>
+                  <%= f.input :start_date, as: :hidden %>
+                  <%= f.input :end_date, as: :hidden %>
+                <% end %>
                 <%= f.submit "Book #{user.first_name}" %>
               <% end %>
             <% end %>
