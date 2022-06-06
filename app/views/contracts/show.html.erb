@@ -11,7 +11,12 @@
 
       <div class="messages" data-contract-subscription-target="posts">
         <% @contract.posts.each do |post| %>
-          <%= render "posts/post", post: post %>
+          <% if post.photo.attached?%>
+            <%= render "posts/post", post: post %>
+            <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+            <%= render "posts/post", post: post %>
+          <% end %>
         <% end %>
       </div>
     <%= simple_form_for [@contract, @post],
@@ -22,6 +27,7 @@
         placeholder: "Message ##{@contract.user.first_name}",
         wrapper_html: {class: "flex-grow-1"}
       %>
+      <%= f.input :photo, as: :file, wrapper_html: { class: 'forced-columns' }, label: false %>
       <%= f.submit "Send", class: "btn btn-green" %>
     <% end %>
   </div>
