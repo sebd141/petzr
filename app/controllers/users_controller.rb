@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   def index
     @users = User.where(pet_sitters_status: true).order("created_at desc")
     @markers = @users.geocoded.map do |user|
