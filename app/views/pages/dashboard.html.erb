@@ -1,111 +1,113 @@
-<div class="cointainer-wide">
-  <% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
-    <% if current_user.contracts_user.exists? %>
-      <div style="text-align: center;">
-        <h1>Your bookings</h1>
-      </div>
-  <div class="cards">
-      <% current_user.contracts_user.each do |contract| %>
-        <% if contract.status.nil? %>
-          <div>
-              <% pet_sitter = User.find(contract.id_pet_sitter) %>
-              <div class="card-trip">
-                <div class="status">
-                    <h2 class="badge bg-secondary">pending</h2>
-                </div>
-                    <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
-                  <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
-                  <%# #'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
-                  <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
-                  <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
-                <div class="card-trip-infos">
-                  <div>
-                    <H2><%= pet_sitter.first_name %> <%= pet_sitter.last_name %></H2>
-                    <p><%= pet_sitter.short_desc %></p>
-                    <p><%= pet_sitter.description %></p>
-                    <p><strong><%= pet_sitter.location %></strong></p>
-                    <p>What <%= pet_sitter.first_name %> offers: </p>
-                      <% pet_sitter.type_of_service[1..-1].each do |service| %>
-                        <span class="badge bg-secondary"><%= service %></span>
-                      <% end %>
-                      <%start_date = contract.start_date%><% end_date = contract.end_date%>
-                      <p>From: <strong><%= start_date.day %>/<%= start_date.month %>/<%= start_date.year %></strong> - To: <strong><%= end_date.day %>/<%= end_date.month %>/<%= end_date.year %></strong></p>
-                    <div>
-                      <%= link_to "Edit", edit_contract_path(contract), class: "btn btn-blue" %>
-                      <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
-                      <%= link_to "Start a chat with #{pet_sitter.first_name}", contract_path(contract), class: "btn btn-blue" %>
+ <div class="wrapper-footer">
+    <div class="cointainer-wide">
+      <% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
+        <% if current_user.contracts_user.exists? %>
+          <div style="text-align: center;">
+            <h1>Your bookings</h1>
+          </div>
+      <div class="cards">
+          <% current_user.contracts_user.each do |contract| %>
+            <% if contract.status.nil? %>
+              <div>
+                  <% pet_sitter = User.find(contract.id_pet_sitter) %>
+                  <div class="card-trip">
+                    <div class="status">
+                        <h2 class="badge bg-secondary">pending</h2>
+                    </div>
+                        <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+                      <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
+                      <%# #'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
+                      <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
+                      <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
+                    <div class="card-trip-infos">
+                      <div>
+                        <H2><%= pet_sitter.first_name %> <%= pet_sitter.last_name %></H2>
+                        <p><%= pet_sitter.short_desc %></p>
+                        <p><%= pet_sitter.description %></p>
+                        <p><strong><%= pet_sitter.location %></strong></p>
+                        <p>What <%= pet_sitter.first_name %> offers: </p>
+                          <% pet_sitter.type_of_service[1..-1].each do |service| %>
+                            <span class="badge bg-secondary"><%= service %></span>
+                          <% end %>
+                          <%start_date = contract.start_date%><% end_date = contract.end_date%>
+                          <p>From: <strong><%= start_date.day %>/<%= start_date.month %>/<%= start_date.year %></strong> - To: <strong><%= end_date.day %>/<%= end_date.month %>/<%= end_date.year %></strong></p>
+                        <div>
+                          <%= link_to "Edit", edit_contract_path(contract), class: "btn btn-blue" %>
+                          <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+                          <%= link_to "Start a chat with #{pet_sitter.first_name}", contract_path(contract), class: "btn btn-blue" %>
+                        </div>
+                      </div>
+                      <h2 class="card-trip-pricing"><%= pet_sitter.price %>€/hour</h2>
                     </div>
                   </div>
-                  <h2 class="card-trip-pricing"><%= pet_sitter.price %>€/hour</h2>
                 </div>
-              </div>
-            </div>
 
+            <% end %>
+          <% end %>
+        <% else %>
+        <div style="text-align: center;">
+          <h1>Hooo.. It's seems you don't have any booking yet!</h1>
+          <p>Maybe you want to book a pet sitter?</p>
+        </div>
+          <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
         <% end %>
-      <% end %>
-    <% else %>
-    <div style="text-align: center;">
-      <h1>Hooo.. It's seems you don't have any booking yet!</h1>
-      <p>Maybe you want to book a pet sitter?</p>
-    </div>
-      <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
-    <% end %>
-  <% else %>
+      <% else %>
 
-    <div style="text-align: center;">
-      <h1>Your pet sitter missions</h1>
-    </div>
-    <div class="cards">
-      <% current_user.contracts_pet_sitter.each do |contract| %>
-          <div>
-              <% user = User.find(contract.user_id) %>
-              <div class="card-trip">
-                <div class="status">
-                </div>
-                    <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-                  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
-                  <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
-                  <%# #'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
-                  <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
-                  <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
-                <div class="card-trip-infos">
-                  <div>
-                    <H2>Request from: <%= user.email %></H2>
-                    <p><strong>Contract ID: <%=contract.id%></strong></p>
-                    <p>Descr: <%=contract.description%></p>
-                      <% current_user.type_of_service[1..-1].each do |service| %>
-                        <span class="badge bg-secondary"><%= service %></span>
+        <div style="text-align: center;">
+          <h1>Your pet sitter missions</h1>
+        </div>
+        <div class="cards">
+          <% current_user.contracts_pet_sitter.each do |contract| %>
+              <div>
+                  <% user = User.find(contract.user_id) %>
+                  <div class="card-trip">
+                    <div class="status">
+                    </div>
+                        <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+                      <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
+                      <%# #'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
+                      <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
+                      <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
+                    <div class="card-trip-infos">
+                      <div>
+                        <H2>Request from: <%= user.email %></H2>
+                        <p><strong>Contract ID: <%=contract.id%></strong></p>
+                        <p>Descr: <%=contract.description%></p>
+                          <% current_user.type_of_service[1..-1].each do |service| %>
+                            <span class="badge bg-secondary"><%= service %></span>
+                          <% end %>
+                          <%start_date = contract.start_date%><% end_date = contract.end_date%>
+                          <p>From: <strong><%= start_date.day %>/<%= start_date.month %>/<%= start_date.year %></strong> - To: <strong><%= end_date.day %>/<%= end_date.month %>/<%= end_date.year %></strong></p>
+                        <div>
+                          <% if contract.status.nil? %>
+                            <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
+                          <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+                          <% elsif contract.status == true %>
+                            <%= link_to "Decline", decline_contract_path(contract), class: "btn btn-blue" %>
+                          <% else %>
+                            <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
+                          <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+                          <% end %>
+                            <%= link_to "Start a chat with #{user.first_name}", contract_path(contract), class: "btn btn-blue" %>
+                        </div>
+                      </div>
+                      <h2 class="card-trip-pricing"><%= current_user.price %>€/hour</h2>
                       <% end %>
-                      <%start_date = contract.start_date%><% end_date = contract.end_date%>
-                      <p>From: <strong><%= start_date.day %>/<%= start_date.month %>/<%= start_date.year %></strong> - To: <strong><%= end_date.day %>/<%= end_date.month %>/<%= end_date.year %></strong></p>
-                    <div>
-                      <% if contract.status.nil? %>
-                        <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
-                      <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
-                      <% elsif contract.status == true %>
-                        <%= link_to "Decline", decline_contract_path(contract), class: "btn btn-blue" %>
-                      <% else %>
-                        <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
-                      <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
-                      <% end %>
-                        <%= link_to "Start a chat with #{user.first_name}", contract_path(contract), class: "btn btn-blue" %>
                     </div>
                   </div>
-                  <h2 class="card-trip-pricing"><%= current_user.price %>€/hour</h2>
-                   <% end %>
                 </div>
-              </div>
-            </div>
-      <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
