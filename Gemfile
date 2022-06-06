@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'devise'
 gem 'faker'
+gem 'cloudinary', '~> 1.16.0'
+gem "geocoder"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

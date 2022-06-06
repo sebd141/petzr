@@ -1,28 +1,29 @@
-<div class="container chatroom">
-<h1>Current user email is: <%= current_user.email %></h1>
-  <h1>#<%= @contract.user.first_name%></h1>
+<div class="log">
+  <div class="container chatroom" data-controller="contract-subscription"
+    data-contract-subscription-contract-id-value="<%= @contract.id %>">
+    <% pet_sitter = User.find(@contract.id_pet_sitter) %>
+    <h2>Chat with <%if pet_sitter.first_name.empty?%>
+      <%= "your pet sitter" %>
+      <% else pet_sitter.first_name %>
+      <% end %>
+    </h2>
+      <%# <h1>#<%= @contract.user.first_name%>
 
-  <div class="messages">
-    <% @contract.posts.each do |post| %>
-      <div id="message-<%= post.id %>">
-        <small>
-          <strong><%= post.user.first_name %></strong>
-          <i><%= post.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= post.content %></p>
+      <div class="messages" data-contract-subscription-target="posts">
+        <% @contract.posts.each do |post| %>
+          <%= render "posts/post", post: post %>
+        <% end %>
       </div>
+    <%= simple_form_for [@contract, @post],
+      remote: true,
+      html: {data: {action: "ajax:success->contract-subscription#resetForm"}, class: "d-flex" } do |f| %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message ##{@contract.user.first_name}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-green" %>
     <% end %>
   </div>
-</div>
 
-<%= simple_form_for [@contract, @post],
-  remote: true,
-  html: {class: "d-flex"} do |f|
-%>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{@contract.user.first_name}",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
-  <%= f.submit "Send", class: "btn btn-primary" %>
-<% end %>
+</div>

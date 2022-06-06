@@ -15,9 +15,13 @@ class PostsController < ApplicationController
     @post.contract = @contract
     @post.user = current_user
     if @post.save
-      redirect_to contract_path(@contract, anchor: "message-#{@message.id}" )
+      ContractChannel.broadcast_to(
+        @contract,
+        render_to_string(partial: "post", locals: { post: @post })
+      )
+      head :ok
     else
-      render "chatrooms/show"
+      render "contract/show"
     end
   end
 

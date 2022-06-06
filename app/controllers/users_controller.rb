@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def index
     @users = User.where(pet_sitters_status: true).order("created_at desc")
-    # if params[:start_date] && params[:end_date]
-    #   @users =
-
-    # end
+    @markers = @users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
   end
 
   def update
@@ -21,20 +23,19 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(pet_sitters_status: true)
      if @user.save
-      redirect_to new_pet_sitter_form_path
+       redirect_to new_pet_sitter_form_path
      else
-      render :edit
+       render :edit
      end
   end
 
-
   def add_pet_sitter_details
     @user = current_user
-
   end
+
   private
 
   def user_params
-    params.require(:user).permit(:description, :short_desc, :location, { type_of_pet: [] }, { type_of_service: [] }, :price)
+    params.require(:user).permit(:description, :short_desc, :location, { type_of_pet: [] }, { type_of_service: [] }, :price, :photo)
   end
 end

@@ -45,6 +45,7 @@
                 </div>
               </div>
             </div>
+
         <% end %>
       <% end %>
     <% else %>
@@ -97,10 +98,10 @@
                       <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
                       <% end %>
                         <%= link_to "Start a chat with #{user.first_name}", contract_path(contract), class: "btn btn-blue" %>
-                   <% end %>
                     </div>
                   </div>
                   <h2 class="card-trip-pricing"><%= current_user.price %>€/hour</h2>
+                   <% end %>
                 </div>
               </div>
             </div>
