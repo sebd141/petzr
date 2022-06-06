@@ -1,0 +1,23 @@
+<div class="card-trip-infos-map">
+  <div>
+      <H6><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%> </H6>
+        <p>Adress: <strong><%= user.location %></strong></p>
+        <p>What I offer:
+        <% user.type_of_service[1..-1].each do |service| %>
+          <span class="badge bg-secondary"><%= service %></span>
+        <% end %></p>
+        <p>Animals I take care of:
+        <% user.type_of_pet[1..-1].each do |pet|  %>
+        <span class="badge bg-secondary"><%= pet %></span>
+        <% end %></p>
+      <% if params[:start_date] && params[:end_date] %>
+      <%= simple_form_for([User, Contract.new]) do |f| %>
+        <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+        <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+        <%= f.submit "Book #{user.first_name}" %>
+      <% end %>
+    <% end %>
+  </div>
+  <P class="card-trip-pricing">My rates: <STRONG><%= user.price %>€/hour</STRONG></P>
+   <%= link_to "show more", user_path(user)%>
+</div>

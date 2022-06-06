@@ -33,15 +33,25 @@
   position: relative;
 }
 
-.card-trip-infos .card-trip-user {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
-}
 
 .card-trip .status {
 
   top: 5px;
   left: 5px;
- }
+}
+
+/// map edition
+
+.card-trip-map .card-trip-infos-map {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+
+.card-trip-infos-map .card-trip-user-map {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
