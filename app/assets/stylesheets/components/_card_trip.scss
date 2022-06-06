@@ -3,6 +3,7 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 0% 2% 2% 2%;
+  border-radius: 2%;
 }
 
 .card-trip > img {
@@ -23,6 +24,18 @@
   margin: 0;
 }
 
+.card-trip a {
+  text-decoration: none;
+  color: #04DDF1;
+}
+
+.card-trip a:hover {
+  color: grey;
+}
+
+#show-more-users {
+  margin-top: 3%;
+}
 
 .card-trip .card-trip-infos {
   padding: 16px;
@@ -35,7 +48,6 @@
 
 
 .card-trip .status {
-
   top: 5px;
   left: 5px;
 }
