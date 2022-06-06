@@ -14,21 +14,17 @@
 
         <%= f.input :first_name,
                     hint: "How can we call you? :)",
-                    required: false,
                     input_html: { autocomplete: "Your first name" },
-                     wrapper_html: { class: 'forced-columns' } %>
+                     wrapper_html: { class: 'forced-columns' }, required: true %>
         <%= f.input :last_name,
                     hint: "What is your last name :)",
-                    required: false,
                     input_html: { autocomplete: "Your last name" },
-                     wrapper_html: { class: 'forced-columns' } %>
+                     wrapper_html: { class: 'forced-columns' }, required: true %>
         <%= f.input :password,
                     hint: "leave it blank if you don't want to change it",
-                    required: false,
                     input_html: { autocomplete: "new-password" } ,
                      wrapper_html: { class: 'forced-columns' } %>
         <%= f.input :password_confirmation,
-                    required: false,
                     input_html: { autocomplete: "new-password" } ,
                      wrapper_html: { class: 'forced-columns' } %>
         <%= f.input :current_password,
@@ -36,7 +32,8 @@
                     required: true,
                     input_html: { autocomplete: "current-password" } ,
                      wrapper_html: { class: 'forced-columns' } %>
-        <%= f.input :photo, as: :file %>
+        <%= f.input :photo, as: :file ,
+                     wrapper_html: { class: 'forced-columns' }, required: true %>
 
           <% if current_user.pet_sitters_status == true  %>
 
@@ -46,14 +43,15 @@
                             :size=>"40",
                             placeholder: 'Street number, street name, postal code, country',
                             input_html: { autocomplete: "your address" },
+                            required: true,
                             wrapper_html: { class: 'forced-columns' } %>
           <%= f.input :type_of_pet, collection: ["dog", "cat", "fish", "bird", "rabbit"], multiple: true, as: :check_boxes,
-                     wrapper_html: { class: 'forced-columns' } %>
+                     wrapper_html: { class: 'forced-columns' }, required: true %>
           <%= f.input :type_of_service, collection: ["walk", "feed", "wash"], multiple: true, as: :check_boxes ,
-                     wrapper_html: { class: 'forced-columns' } %>
+                     wrapper_html: { class: 'forced-columns' }, required: true %>
           <%= f.input :price,
                       hint: "What is your price per hour?",
-                      required: false,
+                      required: true,
                       input_html: { autocomplete: "Your first name" },
                      wrapper_html: { class: 'forced-columns' } %>
 
