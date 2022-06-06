@@ -1,19 +1,29 @@
-<div class="log" id="log_user_index">
-<h1 id="user_index_first_title">Find the best pet sitters arround you !</h1>
-  <h2 id="user_index_second_title">Select your dates first</h2>
-    <%= form_tag users_path, method: :get do %>
-      <%= datetime_field_tag(:start_date, value = nil, options = {
-        min: DateTime.now,
-        max: DateTime.now + 2.months
-      }) %>
-      <%= datetime_field_tag(:end_date, value = nil, options = {
-        min: DateTime.now + 1.hour,
-        max: DateTime.now + 2.months
-      }) %>
-      <%= submit_tag "Search", class: "btn btn-green" %>
-    <% end %>
+<div class="log">
+  <h1>Find the best pet sitters arround you!</h1>
+    <h2>Select your dates first</h2>
+      <%= form_tag users_path, method: :get do %>
+        <%= datetime_field_tag(:start_date, value = nil, options = {
+          min: DateTime.now,
+          max: DateTime.now + 2.months
+        }) %>
+        <%= datetime_field_tag(:end_date, value = nil, options = {
+          min: DateTime.now + 1.hour,
+          max: DateTime.now + 2.months
+        }) %>
+        <%= submit_tag "Search", class: "btn btn-green" %>
+      <% end %>
 </div>
-<div class="container-wide" id="container-wide-user-index">
+
+<%= form_tag users_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a pet-sitter"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<div class="container-wide">
     <div style="width: 40%; height: 100vh; position: sticky"
   data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
