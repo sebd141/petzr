@@ -17,4 +17,7 @@ export default class extends Controller {
     this.postsTarget.insertAdjacentHTML("beforeend", data)
     this.postsTarget.scrollTo(0, this.postsTarget.scrollHeight)
   }
+  resetForm(event) {
+    event.target.reset()
+  }
 }
