@@ -2,20 +2,21 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+    @users = User.where(pet_sitters_status: true).order("created_at desc")
     if params[:query].present? && params[:end_date].present? && params[:start_date].present?
       sql_query = " \
       OR users.location ILIKE :query \
       "
-      @users = User.near("%#{params[:query]}%", 4)
+      @users = User.near("%#{params[:query]}%", 2)
       if @users.empty?
         @users = User.where(pet_sitters_status: true).order("created_at desc")
       else
-        @users = User.near("%#{params[:query]}%", 4)
+        @users = User.near("%#{params[:query]}%", 2)
       end
-    elsif params[:end_date].blank? && params[:start_date].blank?
+    else
       @users = User.where(pet_sitters_status: true).order("created_at desc")
     end
-    @users = User.where(pet_sitters_status: true).order("created_at desc")
+
     @markers = @users.geocoded.map do |user|
       {
         lat: user.latitude,
