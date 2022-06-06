@@ -1,0 +1,31 @@
+#user_index_first_title {
+  margin-top: 1%;
+}
+
+#user_index_second_title {
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+#user_index_first_title, #user_index_second_title {
+  font-family: inherit;
+  color: white;
+}
+
+#log_user_index {
+  background-color: grey;
+  margin-bottom: 0px;
+  padding-bottom: 2%;
+}
+
+#container-wide-user-index {
+  background-color: grey;
+}
+
+#blue-badge {
+  background-color: rgb(46, 46, 46);
+}
+
+#blue-badge:hover {
+  background-color: red;
+}

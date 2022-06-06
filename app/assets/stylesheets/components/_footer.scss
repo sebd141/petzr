@@ -7,6 +7,8 @@
   padding: 25px 25px 25px;
   color: rgba(255, 255, 255, 0.3);
   flex-direction: column;
+  bottom: 0;
+  width: 100%;
 }
 .footer-links {
   display: flex;
@@ -24,4 +26,9 @@
 }
 .footer .fa-heart {
   color: #D23333;
+}
+
+.wrapper-footer {
+  min-height: 100vh;
+  margin-bottom: -12.5%;
 }
