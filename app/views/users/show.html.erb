@@ -7,12 +7,16 @@
         <h2>My profile</h2>
         <div class="card-trip">
             <div class="card-trip-info">
-                <img class="img-profile" src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+              <% if current_user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+            <% else %>
+              <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+            <% end %>
             </div>
               <div class="card-trip-infos">
                   <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
@@ -48,12 +52,16 @@
 
                     <% @user.pets.each do |pet| %>
                     <div class="card-trip">
-                          <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                     <% if pet.photo.attached? %>
+                    <%= cl_image_tag pet.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                    <% else %>
+                        <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+                      <% end %>
                         <div class="card-trip-infos">
                             <div>
                             <h2><%= pet.name %></h2>
@@ -82,16 +90,16 @@
   <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
     <div>
         <div class="card-trip">
+        <% if current_user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+            <% else %>
               <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
             'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
-            <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
-            <%# #'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
-            <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
-            <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
+            <% end %>
             <div class="card-trip-infos">
           <div>
           <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
