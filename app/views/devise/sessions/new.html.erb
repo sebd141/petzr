@@ -12,8 +12,7 @@
                   required: false,
                   input_html: { autocomplete: "current-password" },
                      wrapper_html: { class: 'forced-columns' } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable?,
-                     wrapper_html: { class: 'forced-columns' } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
     <div class="form-actions">
