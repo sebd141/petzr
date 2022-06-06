@@ -36,7 +36,8 @@
                     required: true,
                     input_html: { autocomplete: "current-password" } ,
                      wrapper_html: { class: 'forced-columns' } %>
-        <%= f.input :photo, as: :file %>
+        <%= f.input :photo, as: :file ,
+                     wrapper_html: { class: 'forced-columns' } %>
 
           <% if current_user.pet_sitters_status == true  %>
 
