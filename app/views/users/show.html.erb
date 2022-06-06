@@ -64,11 +64,9 @@
 </div>
     <% end %>
   <% end %>
-</div>
-    <div class="log">
-
     <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %>
-    </div>
+</div>
+
 <% else %>
 <div class="log">
   <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
