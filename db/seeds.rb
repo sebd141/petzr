@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # require 'open-uri'
 require 'faker'
+require "open-uri"
 
 puts "Cleaning database..."
 
@@ -16,44 +17,57 @@ puts "Cleaning database..."
   Pet.destroy_all
   User.destroy_all
 
-
-puts "Creating User"
-
-bob = User.create({ email: "a@a.com", password: "lewagon", pet_sitters_status: false})
-seb = User.create({ email: "b@b.com", password: "lewagon", pet_sitters_status: true, first_name: "Sébastien", last_name: "Dellis",  location: "Be Central, Brussels", price: 10, type_of_pet: ["cat", "dog", "bird"], type_of_service: ["walk", "feed"] })
-archi = User.create({ email: "archibaldsaen98@gmail.com", password: "lewagon", pet_sitters_status: true, first_name: "Archibald", last_name: "Khutse",  location: "Be Central, Brussels", price: 10, type_of_pet: ["cat", "dog", "bird"], type_of_service: ["walk", "feed"] })
-
-# seb = User.create({email: "sebastien.dellis@gmail.com", password: "lewagon"})
-
-# puts "Creating Toilets.."
-# 10.times do
-#   Toilet.create!(
-#     name: Faker::Name.middle_name,
-#     location: ['34C, Rue de Thisnes, 4280 Liège', '50, Sint-Barbarastraat, 3920 Lommel', '146, Rue de la Misbour, 6637 Bastogne', '199, Tuinstraat, 8953 Ypres', '41, Rue de la Platinerie, 5660 Philippeville','5A, Groenedijkstraat, 8460 Ostende', '126, Meersveldweg, 9340 Alost', '178, Merktweg, 9310 Alost', '77, Flère, 4860 Pepinster', '16, Rue du Hameau, 7951 Ladeuze'].sample,
-#     description: Faker::Lorem.paragraph,
-#     price: Faker::Number.number(digits: 2),
-#     category: ['urinal', 'washing toilet', 'Turkish toilet', 'dry toilet', 'chemical toilet'].sample,
-#     user: bob,
-#     gender: [0, 1, 2, 3].sample
-#   )
-# end
-
+puts "Creating User for testing"
+1.times do (
+@bob = User.new({ email: "a@a.com", password: "lewagon", first_name: "Archi", last_name: "Saen", pet_sitters_status: false})
+file_bob = URI.open('https://res.cloudinary.com/sebd141/image/upload/v1653047425/kknxc2lusyegbjjjoqia.jpg')
+@bob.photo.attach(io: file_bob, filename: 'profile.jpeg', content_type: 'image/jpeg')
+@bob.save
+seb = User.new({ email: "b@b.com", password: "lewagon", pet_sitters_status: true, first_name: "Sébastien", last_name: "Dellis",  location: "Be Central, Brussels", price: 10, type_of_pet: ["cat", "dog", "bird"], type_of_service: ["walk", "feed"] })
+file_seb = URI.open(['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample)
+seb.photo.attach(io: file_seb, filename: 'profile.jpeg', content_type: 'image/jpeg')
+seb.save
+archi = User.new({ email: "archibaldsaen98@gmail.com", password: "lewagon", pet_sitters_status: true, first_name: "Archibald", last_name: "Khutse",  location: "Be Central, Brussels", price: 10, type_of_pet: ["cat", "dog", "bird"], type_of_service: ["walk", "feed"] })
+file_archi = URI.open(['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+  'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample)
+archi.photo.attach(io: file_archi, filename: 'profile.jpeg', content_type: 'image/jpeg')
+archi.save
+)
+end
 puts "Creating Pet sitters"
 
 15.times do
-  User.create!(
+  user = User.new(
     email: Faker::Internet.email,
     password: "lewagon",
     pet_sitters_status: true,
     first_name: ['Seb', 'Val', 'Archi', 'Antoine', 'Nikos', 'Jack', 'Valentin', 'Alexandre'].sample,
     last_name: ['RobinHood', 'Pocaonthas', 'Simba', 'Snow', 'Targaryan', 'Conor', 'Smith', 'Dupont'].sample,
-    location: ['Be Central, Brussels', 'Rue Neuve, 1000 Brussels', 'Boulevard de l industrie, 100, Brussels', 'Bozar, 1000 Brussels', 'Avenue louise 86, Brussels', 'Atomium, Brussels', 'Avenue Louise 203, 1050 Ixells'].sample,
+    location: ['Be Central, Brussels', 'Rue Neuve, 1000 Brussels', 'rue du progrès, 100, Brussels', 'Bozar, 1000 Brussels', 'Avenue louise 86, Brussels', 'Atomium, Brussels', 'Avenue Louise 203, 1050 Ixells'].sample,
     price: [10.5, 5.5, 6.5, 7.5].sample,
-    type_of_pet: ["cat", "dog", "bird", "fish", "snake"].sample(rand(2..5)),
+    type_of_pet: ["cat", "dog", "bird", "fish", "snake"].sample(rand(2..4)),
     type_of_service: ["walk", "feed", "medication"].sample(rand(2..3)),
     description: Faker::Lorem.paragraph,
     short_desc: "Hello I'm User, I will take care of your pet!",
   )
+  file = URI.open(['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                    'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+                    'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+                    'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+                    'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+                    'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample)
+
+  user.photo.attach(io: file, filename: 'profile.jpeg', content_type: 'image/jpeg')
+  user.save
 end
 puts "Creating Pets"
 
@@ -61,7 +75,7 @@ puts "Creating Pets"
   Pet.create!(
     name: ['bobby', 'val', 'sebby', 'tony', 'pierouk'].sample,
     breed: ['cat', 'dog', 'bird'].sample,
-    user: bob
+    user: @bob
   )
 end
 
