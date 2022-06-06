@@ -1,10 +1,10 @@
 <div class="log">
-  <div class="container chatroom" data-controller="contract-subscription"
+  <div class="chatroom" data-controller="contract-subscription"
     data-contract-subscription-contract-id-value="<%= @contract.id %>">
     <% pet_sitter = User.find(@contract.id_pet_sitter) %>
-    <h2>Chat with <%if pet_sitter.first_name.empty?%>
+    <h2>Chat with <%if pet_sitter.first_name.nil?%>
       <%= "your pet sitter" %>
-      <% else pet_sitter.first_name %>
+      <% else%> <%= @contract.user.first_name  %>
       <% end %>
     </h2>
       <%# <h1>#<%= @contract.user.first_name%>
@@ -27,7 +27,7 @@
         placeholder: "Message ##{@contract.user.first_name}",
         wrapper_html: {class: "flex-grow-1"}
       %>
-      <%= f.input :photo, as: :file, wrapper_html: { class: 'forced-columns' }, label: false %>
+      <%= f.input :photo, as: :file, label: false %>
       <%= f.submit "Send", class: "btn btn-green" %>
     <% end %>
   </div>
