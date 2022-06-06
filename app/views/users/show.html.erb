@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container container-profile">
   <div class="cards-profile">
     <% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
       <div class="logg">
@@ -36,37 +36,40 @@
     </div>
 
       <% if @user.pets.exists?  %>
-          <div class="logg">
+          <div class="log">
             <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
-            </div>
-              <div class="container-wide2">
-                <div class="cards">
+              </div>
+              <div class="log">
+                <div class="container-wide">
                     <% @user.pets.each do |pet| %>
-                  <div class="card-trip">
-                        <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-                    'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
-                    <div class="card-trip-infos">
-                      <div>
-                        <h2><%= pet.name %></h2>
-                            <p><%= pet.breed %></p>
-                            <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
-                            <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
-                      </div>
+                    <div class="card-trip">
+                          <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+                      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+                        <div class="card-trip-infos">
+                            <div>
+                            <h2><%= pet.name %></h2>
+                                <p><%= pet.breed %></p>
+                                <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
+                                <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+            <% end %>
                 </div>
               </div>
             </div>
-          <% end %>
-      <% else %>
-        <div class="log">
-          <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
+            </div>
           </div>
-      <% end %>
+        <% else %>
+          <div class="log">
+            <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
+            </div>
+        <% end %>
+        </div>
 </div>
 <% else %>
 <div class="log">
