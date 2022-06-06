@@ -2,11 +2,11 @@
   <div class="home_centered">
     <h1>Petzr helps you to find the <strong>best</strong> pet sitter for your pet !</h1>
     <p>Rest assured with our pet sitter experts</p>
-    <% if user_signed_in? %>
+    <%# <% if user_signed_in? %>
       <%= link_to "Discover our pet sitters", users_path, class: "btn btn-green"  %>
-    <% else %>
-      <%= link_to "Sign up now", new_user_registration_path, class: "btn btn-green"  %>
-    <% end %>
+    <%# <% else %>
+      <%# <%= link_to "Sign up now", new_user_registration_path, class: "btn btn-green"  %>
+    <%# <% end %>
   </div>
 </div>
 

@@ -7,16 +7,16 @@
     <div class="form-inputs">
       <%= f.input :email,
                   required: true,
-                  autofocus: true,
+                  autofocus: true, wrapper_html: { class: 'forced-columns' },
                   input_html: { autocomplete: "email" }%>
       <%= f.input :password,
-                  required: true,
+                  required: true, wrapper_html: { class: 'forced-columns' },
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
-                  required: true,
+                  required: true, wrapper_html: { class: 'forced-columns' },
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :photo, as: :file %>
+      <%= f.input :photo, as: :file, wrapper_html: { class: 'forced-columns' } %>
     </div>
 
     <div class="form-actions">
