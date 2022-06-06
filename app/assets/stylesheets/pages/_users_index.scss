@@ -23,9 +23,20 @@
 }
 
 #blue-badge {
-  background-color: rgb(46, 46, 46);
+  background: #04DDF199;
+  transition: opacity 0.3s ease;
 }
 
 #blue-badge:hover {
-  background-color: red;
+  background: #04DDF1;
 }
+
+.the-mapbox {
+  width: 40%;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  justify-content: end;
+  border-radius: 10px;
+  margin-right: 1%;
+ }
