@@ -6,17 +6,24 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
+      Enter your email address
         <%= f.input :email,
                     required: true,
+                    label: false,
                     autofocus: true, wrapper_html: { class: 'forced-columns' },
                     input_html: { autocomplete: "email" }%>
+        Enter your password
         <%= f.input :password,
                     required: true, wrapper_html: { class: 'forced-columns' },
+                    label: false,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                     input_html: { autocomplete: "new-password" } %>
+        Confirm your password
         <%= f.input :password_confirmation,
+                    label: false,
                     required: true, wrapper_html: { class: 'forced-columns' },
                     input_html: { autocomplete: "new-password" } %>
+        Add a nice photo :-)
         <%= f.input :photo, as: :file, wrapper_html: { class: 'forced-columns' }, label: false %>
       </div>
 
