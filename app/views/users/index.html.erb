@@ -1,6 +1,6 @@
-<div class="log">
-<h1>Find the best pet sitters arround you!</h1>
-  <h2>Select your dates first</h2>
+<div class="log" id="log_user_index">
+<h1 id="user_index_first_title">Find the best pet sitters arround you !</h1>
+  <h2 id="user_index_second_title">Select your dates first</h2>
     <%= form_tag users_path, method: :get do %>
       <%= datetime_field_tag(:start_date, value = nil, options = {
         min: DateTime.now,
@@ -13,7 +13,7 @@
       <%= submit_tag "Search", class: "btn btn-green" %>
     <% end %>
 </div>
-<div class="container-wide">
+<div class="container-wide" id="container-wide-user-index">
     <div style="width: 40%; height: 100vh; position: sticky"
   data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
@@ -21,44 +21,46 @@
   <%# <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoicGllcnJpY2sxMTIyIiwiYSI6ImNsMnVlenBjNzAxZW0zZG96ZmVsa3hvMTMifQ.VdN2bQ6VRMmZVMzdwAp-UA'> %>
   <div class="cards">
     <% @users.each do |user| %>
-    <div class="card-trip">
-     <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-      'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-      'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-      'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
-      <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
-<%# #       'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
-      <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
-      <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
-      <div class="card-trip-infos">
-
-        <div>
-          <H2><%= user.first_name %> <%= user.last_name %> </H2>
+      <div class="card-trip">
+      <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+        'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+        'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+        'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+        'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+        'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+              <%# <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp', %>
+        <%# #       'https://res.cloudinary.com/sebd141/image/upload/v1654120801/de58bfe3d33dada41a9398c30e21eeed-1654006349_sscifu.jpg', %>
+              <%# # 'https://res.cloudinary.com/sebd141/image/upload/v1654120800/i106625-signes-bonne-sante-chien_ouckm1.webp','https://res.cloudinary.com/sebd141/image/upload/v1654120801/i106626-signes-bonne-sante-du-chat_uob2ji.webp'].sample%>
+              <%# <img src='https://res.cloudinary.com/sebd141/image/upload/v1654120825/chat-maison_2079791452_ban_xup5fp.webp'> %>
+        <div class="card-trip-infos">
+          <div>
+            <H2><%= user.first_name %> <%= user.last_name %></H2>
             <p><%= user.short_desc %></p>
             <p><strong><%= user.location %></strong></p>
+
             <p>What I offer: </p>
             <% user.type_of_service[1..-1].each do |service| %>
-              <span class="badge bg-secondary"><%= service %></span>
+              <span class="badge bg-secondary" id="blue-badge"><%= service %></span>
             <% end %>
+
             <p>Animals I take care of: </p>
             <% user.type_of_pet[1..-1].each do |pet|  %>
-            <span class="badge bg-secondary"><%= pet %></span>
+              <span class="badge bg-secondary" id="blue-badge"><%= pet %></span>
             <% end %>
-            <%= link_to "show more", user_path(user)%>
-              <% if params[:start_date] && params[:end_date] %>
-                <%= simple_form_for([user, Contract.new]) do |f| %>
-                  <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
-                  <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
-                  <%= f.submit "Book #{user.first_name}" %>
-                <% end %>
-              <% end %>
-          </div>
-              <h2 class="card-trip-pricing"><%= user.price %>€/hour</h2>
 
+            <%= link_to "show more", user_path(user)%>
+
+            <% if params[:start_date] && params[:end_date] %>
+              <%= simple_form_for([user, Contract.new]) do |f| %>
+                <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+                <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                <%= f.submit "Book #{user.first_name}" %>
+              <% end %>
+            <% end %>
+          </div>
+          <h2 class="card-trip-pricing"><%= user.price %>€/hour</h2>
+        </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>
