@@ -97,46 +97,44 @@
     </div>
   </div>
 <% else %>
-<div class="container">
-  <div class="log">
-  <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
-    <div>
+    <div class="log">
+        <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
+      <div>
         <div class="card-trip">
-        <% if @user.photo.attached? %>
+            <% if @user.photo.attached? %>
               <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
             <% else %>
               <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
-            'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
+              'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
+              'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
+              'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
+              'https://res.cloudinary.com/sebd141/image/upload/v1654171971/femme_chat1_vcvj9m.jpg',
+              'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
             <% end %>
             <div class="card-trip-infos">
-          <div>
-          <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
-            <p><%= @user.short_desc %></p>
-            <p><%= @user.description %></p>
-            <p><strong><%= @user.location %></strong></p>
-            <p>What I offer: </p>
-            <% @user.type_of_service[1..-1].each do |service| %>
-              <span class="badge bg-secondary"><%= service %></span>
-            <% end %>
-            <p>Animals I take care of: </p>
-            <% @user.type_of_pet[1..-1].each do |pet|  %>
-            <span class="badge bg-secondary"><%= pet %></span>
-            <% end %>
-        <% if params[:start_date] && params[:end_date] %>
-          <%= simple_form_for([@user, Contract.new]) do |f| %>
-            <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
-            <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
-            <%= f.submit "Book #{@user.first_name}" %>
-          <% end %>
-        <% end %>
-          </div>
-              <h2 class="card-trip-pricing"><%= @user.price %>€/hour</h2>
-
+              <div>
+                <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
+                  <p><%= @user.short_desc %></p>
+                  <p><%= @user.description %></p>
+                  <p><strong><%= @user.location %></strong></p>
+                  <p>What I offer: </p>
+                  <% @user.type_of_service[1..-1].each do |service| %>
+                    <span class="badge bg-secondary"><%= service %></span>
+                  <% end %>
+                  <p>Animals I take care of: </p>
+                  <% @user.type_of_pet[1..-1].each do |pet|  %>
+                  <span class="badge bg-secondary"><%= pet %></span>
+                  <% end %>
+                  <% if params[:start_date] && params[:end_date] %>
+                    <%= simple_form_for([@user, Contract.new]) do |f| %>
+                      <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+                      <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                      <%= f.submit "Book #{@user.first_name}" %>
+                    <% end %>
+                <% end %>
+              </div>
+                <h2 class="card-trip-pricing"><%= @user.price %>€/hour</h2>
+        </div>
+      </div>
     </div>
-    <% end %>
-    </div>
-</div>
+<% end %>
