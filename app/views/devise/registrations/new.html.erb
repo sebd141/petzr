@@ -17,7 +17,7 @@
         <%= f.input :password_confirmation,
                     required: true, wrapper_html: { class: 'forced-columns' },
                     input_html: { autocomplete: "new-password" } %>
-        <%= f.input :photo, as: :file, wrapper_html: { class: 'forced-columns' } %>
+        <%= f.input :photo, as: :file, wrapper_html: { class: 'forced-columns' }, label: false %>
       </div>
 
       <div class="form-actions">
