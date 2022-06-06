@@ -2,21 +2,26 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    if params[:query].present?
+    if params[:query].present? && params[:end_date].present? && params[:start_date].present?
       sql_query = " \
-        users.first_name ILIKE :query \
-        OR users.last_name ILIKE :query \
-        OR users.location ILIKE :query \
-        "
-      @users = User.where(sql_query, query: "%#{params[:query]}%")
-    else
+      OR users.location ILIKE :query \
+      "
+      @users = User.near("%#{params[:query]}%", 4)
+      if @users.empty?
+        @users = User.where(pet_sitters_status: true).order("created_at desc")
+      else
+        @users = User.near("%#{params[:query]}%", 4)
+      end
+    elsif params[:end_date].blank? && params[:start_date].blank?
       @users = User.where(pet_sitters_status: true).order("created_at desc")
     end
-
+    @users = User.where(pet_sitters_status: true).order("created_at desc")
     @markers = @users.geocoded.map do |user|
       {
         lat: user.latitude,
-        lng: user.longitude
+        lng: user.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { user: user }),
+        image_url: helpers.asset_url("https://res.cloudinary.com/sebd141/image/upload/v1654512889/picto_petzr_ia6c0j.png")
       }
     end
   end

@@ -10,24 +10,22 @@
           min: DateTime.now + 1.hour,
           max: DateTime.now + 2.months
         }) %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Add your adress and find the closest pet-sitter"
+        %>
         <%= submit_tag "Search", class: "btn btn-green" %>
       <% end %>
 </div>
 
-<%= form_tag users_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a pet-sitter"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
 <div class="container-wide">
-    <div style="width: 40%; height: 100vh; position: sticky"
-  data-controller="mapbox"
-  data-mapbox-markers-value="<%= @markers.to_json %>"
-  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div class="the-mapbox"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
   <%# <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoicGllcnJpY2sxMTIyIiwiYSI6ImNsMnVlenBjNzAxZW0zZG96ZmVsa3hvMTMifQ.VdN2bQ6VRMmZVMzdwAp-UA'> %>
   <div class="cards">
     <% @users.each do |user| %>
@@ -50,20 +48,27 @@
 
             <p>What I offer: </p>
             <% user.type_of_service[1..-1].each do |service| %>
-              <span class="badge bg-secondary" id="blue-badge"><%= service %></span>
+              <span class="badge" id="blue-badge"><%= service %></span>
             <% end %>
 
             <p>Animals I take care of: </p>
             <% user.type_of_pet[1..-1].each do |pet|  %>
-              <span class="badge bg-secondary" id="blue-badge"><%= pet %></span>
+              <span class="badge" id="blue-badge"><%= pet %></span>
             <% end %>
 
-            <%= link_to "show more", user_path(user)%>
+            <div id="show-more-users">
+              <%= link_to "Show more", user_path(user)%>
+            </div>
 
             <% if params[:start_date] && params[:end_date] %>
               <%= simple_form_for([user, Contract.new]) do |f| %>
-                <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
-                <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                <% if params[:start_date].present? && params[:end_date].present?   %>
+                  <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+                  <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                <% else %>
+                  <%= f.input :start_date, as: :hidden %>
+                  <%= f.input :end_date, as: :hidden %>
+                <% end %>
                 <%= f.submit "Book #{user.first_name}" %>
               <% end %>
             <% end %>
