@@ -125,12 +125,22 @@
                   <% @user.type_of_pet[1..-1].each do |pet|  %>
                   <span class="badge bg-secondary"><%= pet %></span>
                   <% end %>
+                  <br>
+                          <%= @user.reviews_recieved.each do |review| %>
+                      <div class="card-trip card-trip-review">
+                        <div class="card-trip-infos">
+                              <h2><%= review.comment %></h2>
+                              <h2><%= review.rating %></h2>
+                           </div>
+                      </div>
+                          <% end %>
+
                   <% if params[:start_date] && params[:end_date] %>
-                    <%= simple_form_for([@user, Contract.new]) do |f| %>
-                      <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
-                      <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
-                      <%= f.submit "Book #{@user.first_name}" %>
-                    <% end %>
+                      <%= simple_form_for([@user, Contract.new]) do |f| %>
+                        <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+                        <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                        <%= f.submit "Book #{@user.first_name}" %>
+                      <% end %>
                 <% end %>
               </div>
                 <h2 class="card-trip-pricing"><%= @user.price %>€/hour</h2>

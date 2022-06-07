@@ -1,4 +1,4 @@
-<div class="cointainer-wide">
+<div class="log">
   <% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
     <% if current_user.contracts_user.exists? %>
       <div style="text-align: center;">
@@ -26,9 +26,13 @@
                   <%start_date = contract.start_date%><% end_date = contract.end_date%>
                   <p>From: <strong><%= start_date.day %>/<%= start_date.month %>/<%= start_date.year %></strong> - To: <strong><%= end_date.day %>/<%= end_date.month %>/<%= end_date.year %></strong></p>
                   <div>
-                    <%= link_to "Edit", edit_contract_path(contract), class: "btn btn-blue" %>
-                    <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
-                    <%= link_to "Start a chat with #{pet_sitter.first_name}", contract_path(contract), class: "btn btn-blue" %>
+                    <% if contract.end_date > DateTime.now %>
+                      <%= link_to "Edit", edit_contract_path(contract), class: "btn btn-blue" %>
+                      <%= link_to "Delete", contract_path(contract), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+                      <%= link_to "Start a chat with #{pet_sitter.first_name}", contract_path(contract), class: "btn btn-blue" %>
+                    <% else %>
+                      <%= link_to "How was #{pet_sitter.first_name}? Make a review", new_user_review_path(pet_sitter), class: "btn btn-blue" %>
+                    <% end %>
                   </div>
                 </div>
                 <h2 class="card-trip-pricing"><%= pet_sitter.price %>€/hour</h2>
@@ -65,18 +69,20 @@
               <p>Descr: <%=contract.description%></p>
               <%start_date = contract.start_date%><% end_date = contract.end_date%>
               <p>From: <strong><%= start_date.day %>/<%= start_date.month %>/<%= start_date.year %></strong> - To: <strong><%= end_date.day %>/<%= end_date.month %>/<%= end_date.year %></strong></p>
-              <div>
-                <% if contract.status.nil? %>
-                  <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
-                  <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
-                <% elsif contract.status == true %>
-                  <%= link_to "Decline", decline_contract_path(contract), class: "btn btn-blue" %>
-                <% else %>
-                  <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
-                  <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
-                <% end %>
-                <%= link_to "Start a chat with #{user.first_name}", contract_path(contract), class: "btn btn-blue" %>
-              </div>
+                  <div>
+                      <% if contract.status.nil? %>
+                        <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
+                        <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+                      <% elsif contract.status == true %>
+                        <%= link_to "Decline", decline_contract_path(contract), class: "btn btn-blue" %>
+                      <% else %>
+                        <%= link_to "Accept", accept_contract_path(contract), class: "btn btn-blue" %>
+                        <%= link_to "Decline", contract_path(contract), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this booking ?"} %></p>
+                      <% end %>
+                      <%= link_to "Start a chat with #{user.first_name}", contract_path(contract), class: "btn btn-blue" %>
+                    <%= link_to "How was #{user.first_name}? Make a review", user_reviews_path(user_id), class: "btn btn-blue" %>
+                  </div>
+
             </div>
             <h2 class="card-trip-pricing"><%= user.price %>€/hour</h2>
           </div>
