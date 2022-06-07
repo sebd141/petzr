@@ -1,4 +1,5 @@
 meta_product_name: "Petzr"
 meta_title: "Petr | The best pet sitter for your pet"
-meta_description: "Petzr helps you to find the best pet sitter for your pet"
+
 meta_image: "https://res.cloudinary.com/sebd141/image/upload/c_fill,h_630,w_1200/v1654605580/cover_ujpo2m.jpg" # should exist in `app/assets/images/`
+
