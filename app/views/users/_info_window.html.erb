@@ -1,7 +1,7 @@
 <div class="card-trip-infos-map">
   <div>
       <H6><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%> </H6>
-        <p>Adress: <strong><%= user.location %></strong></p>
+        <p>Address: <strong><%= user.location %></strong></p>
         <p>What I offer:
         <% user.type_of_service[1..-1].each do |service| %>
           <span class="badge bg-secondary"><%= service %></span>
