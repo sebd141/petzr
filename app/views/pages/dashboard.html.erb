@@ -4,7 +4,11 @@
       <div style="text-align: center;">
         <h1 id="first_title_">Your bookings</h1>
       </div>
+      <% if current_user.contracts_user.count > 1 %>
       <div class="cards">
+      <% else %>
+      <div class="log">
+      <% end %>
         <% current_user.contracts_user.each do |contract| %>
           <% if contract.status.nil? %>
             <% pet_sitter = User.find(contract.id_pet_sitter) %>
