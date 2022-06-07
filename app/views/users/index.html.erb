@@ -11,13 +11,36 @@
           max: DateTime.now + 2.months
         }) %>
         <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Add your adress and find the closest pet-sitter"
-        %>
-        <%= submit_tag "Search", class: "btn btn-green" %>
-      <% end %>
+          params[:query], class: "form-control", id: "address_bar",
+          placeholder: "Add your adress and find the closest pet-sitter" %>
+          <div class="search-form-control form-group">
+            <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+            <button name="button" type="submit" class="btn btn-green">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+    <% end %>
 </div>
+
+
+
+
+
+
+        <%# <%= submit_tag "Search", class: "btn btn-green", id: "search_button" %> %>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="container-wide">
   <div class="the-mapbox" id="container-wide-mapbox"
