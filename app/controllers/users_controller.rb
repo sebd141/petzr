@@ -13,6 +13,8 @@ class UsersController < ApplicationController
       else
         @users = User.near("%#{params[:query]}%", 2)
       end
+    elsif params[:query].present?
+      @users = User.near("%#{params[:query]}%", 2)
     else
       @users = User.where(pet_sitters_status: true).order("created_at desc")
     end

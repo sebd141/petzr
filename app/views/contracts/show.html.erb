@@ -3,11 +3,15 @@
     data-contract-subscription-contract-id-value="<%= @contract.id %>">
     <% pet_sitter = User.find(@contract.id_pet_sitter) %>
     <% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
-    <h2>Chat with <%= pet_sitter.first_name %>
-      <%= "your pet sitter" %>
-      <% else%> <h2>Chat with <%= @contract.user.first_name  %></h2>
+      <% if pet_sitter.first_name.present? %>
+      <h2>Chat with <%= pet_sitter.first_name %></h2>
+      <% else  %>
+      <h2>Chat with</h2>
+        <%= "your pet sitter" %>
       <% end %>
-    </h2>
+    <% else%> <h2>Chat with <%= @contract.user.first_name  %></h2>
+    <% end %>
+
       <%# <h1>#<%= @contract.user.first_name%>
 
       <div class="messages" data-contract-subscription-target="posts">
@@ -27,7 +31,7 @@
         label: false,
         placeholder: "Message ##{@contract.user.first_name}",
         wrapper_html: {class: "content", style: "width: 700px"},
-        input_html: {style: "width: 700px"}
+        input_html: {style: "width: 701px"}
       %>
       <%= f.input :photo, as: :file, label: false,
         input_html: {style: "width: 153px;", class: "mt-2"}%>
