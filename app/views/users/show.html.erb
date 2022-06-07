@@ -18,14 +18,16 @@
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
                       <% end %>
                   </div>
-                  <br>
-                  <div class="card-trip">
 
                         <div class="card-trip-infos">
-                            <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
+                            <H2>Hello, I'm <%= @user.first_name %> <%= @user.last_name %> </H2>
                         </div>
                         <div class="card-trip-infos">
-                              <h2>I have
+                            <% if @user.pets.count > 1  %>
+                              <h2>Pets I have:
+                            <% else %>
+                              <h2> I have a
+                              <% end %>
                               <% @user.pets.map { |pet| pet.breed }.each do |breed| %>
                                 <% case breed %>
                                 <% when 'fish' %>
@@ -42,24 +44,35 @@
                               <% end %>
                               </h2>
                         </div>
-                      </div>
+                          <div class="card-trip-infos">
+                            <%= link_to "Edit #{current_user.first_name}", edit_user_registration_path, class: "btn btn-blue" %>
+                          </div>
                   </div>
               </div>
             </div>
           </div>
 
             <% if @user.pets.exists?  %>
+              <% if @user.pets.count > 1  %>
                 <div class="container">
                   <div class="log">
                     <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
                     </div>
                   </div>
-                        <div class="cards">
+                        <div class="cards-pet">
+              <% else %>
+                <div class="container">
+                  <div class="log">
+                    <div><h2>My Pet | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
+                    </div>
+                  </div>
+                        <div class="cards-pet-one">
+                          <% end %>
 
                           <% @user.pets.each do |pet| %>
                           <div class="card-trip">
                           <% if pet.photo.attached? %>
-                          <%= cl_image_tag pet.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                          <%= cl_image_tag pet.photo.key%>
                           <% else %>
                               <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
                             'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
@@ -70,10 +83,10 @@
                             <% end %>
                               <div class="card-trip-infos">
                                   <div>
-                                  <h2><%= pet.name %></h2>
-                                      <p><%= pet.breed %></p>
+                                  <h2>My lovely name is: <%= pet.name %></h2>
+                                      <H5>I'm a <%= pet.breed %></H5>
                                       <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
-                                      <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+                                      <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this pet ?"} %></p>
                                   </div>
                               </div>
                           </div>
