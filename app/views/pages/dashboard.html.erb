@@ -63,6 +63,12 @@
               <H2>Request from: <%= user.email %></H2>
               <p><strong>Contract ID: <%=contract.id%></strong></p>
               <p>Descr: <%=contract.description%></p>
+<<<<<<< HEAD
+              <%# <% user.type_of_service[1..-1].each do |service| %>
+                <%# <span class="badge bg-secondary"><%= service</span> %>
+              <%# <% end %>
+=======
+>>>>>>> master
               <%start_date = contract.start_date%><% end_date = contract.end_date%>
               <p>From: <strong><%= start_date.day %>/<%= start_date.month %>/<%= start_date.year %></strong> - To: <strong><%= end_date.day %>/<%= end_date.month %>/<%= end_date.year %></strong></p>
               <div>
