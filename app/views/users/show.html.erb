@@ -10,7 +10,7 @@
                       <% if current_user.photo.attached? %>
                       <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
                       <% else %>
-                        <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                        <img  class="img-profile" src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
@@ -102,7 +102,7 @@
       <div>
         <div class="card-trip">
             <% if @user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+              <%= cl_image_tag @user.photo.key, id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
             <% else %>
               <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
               'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
@@ -126,14 +126,19 @@
                   <span class="badge bg-secondary"><%= pet %></span>
                   <% end %>
                   <br>
-                          <%= @user.reviews_recieved.each do |review| %>
-                      <div class="card-trip card-trip-review">
+                  <br>
+                  <p><strong>Reviews: </strong></p>
+                  <br>
+                      <% @user.reviews_recieved.each do |review| %>
+                      <div class="card-trip">
                         <div class="card-trip-infos">
-                              <h2><%= review.comment %></h2>
+                              <p><strong><%= review.comment %><strong></p>
                               <h2><%= review.rating %></h2>
-                           </div>
+                        </div>
                       </div>
-                          <% end %>
+                      <% end %>
+                  <br>
+                  <br>
 
                   <% if params[:start_date] && params[:end_date] %>
                       <%= simple_form_for([@user, Contract.new]) do |f| %>

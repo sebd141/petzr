@@ -20,4 +20,8 @@
   color: rgba(255, 255, 255, 0.882);
   margin-left: 20px ;
   margin-right: 40px ;
+  transition: opacity 0.3s ease;
+}
+.nav-link:hover {
+  opacity: 1;
 }
