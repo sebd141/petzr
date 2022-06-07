@@ -1,23 +1,54 @@
 <div class="log">
   <h1>Find the best pet sitters arround you!</h1>
-    <h2>Select your dates first</h2>
-    <%= form_tag users_path, method: :get, class: "align-search-bar" do %>
-        <%= datetime_field_tag(:start_date, value = nil, options = {
-          min: DateTime.now,
-          max: DateTime.now + 2.months
-        }) %>
-        <%= datetime_field_tag(:end_date, value = nil, options = {
-          min: DateTime.now + 1.hour,
-          max: DateTime.now + 2.months
-        }) %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Add your address and find the closest pet-sitter"
-        %>
-        <%= submit_tag "Search", class: "btn btn-green" %>
-      <% end %>
+  <h2>Select your dates first</h2>
+
+
+  <%= form_tag users_path, method: :get, class: "align-search-bar", data: { controller: "flatpickr"} do %>
+    <div id="dates_div">
+      <%= datetime_field_tag(:start_date, value = nil, options = {
+        min: DateTime.now,
+        max: DateTime.now + 2.months,
+        class: "datepicker",
+        placeholder: "Start date"
+      }) %>
+      <%= datetime_field_tag(:end_date, value = nil, options = {
+        min: DateTime.now + 1.hour,
+        max: DateTime.now + 2.months,
+        class: "datepicker",
+        placeholder: 'End date'
+      }) %>
+    </div>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Type here your address" style="padding:1.5%; margin-bottom:3%;"/>
+      <button name="button" type="submit" class="btn btn-green">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
 </div>
+
+
+
+
+
+
+
+
+
+<%# <%= text_field_tag :query,
+          params[:query], class: "form-control", id: "address_bar",
+          placeholder: "Add your adress and find the closest pet-sitter"
+        %>
+        <%# <%= submit_tag "Search", class: "btn btn-green", id: "search_button" %>
+
+
+
+
+
+
+
+
+
 
 <div class="container-wide">
   <div class="the-mapbox" id="container-wide-mapbox"
