@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-  border-radius: 20px;
+  border-radius: 10px;
 
   h1 {
     border-bottom: 1px solid $gray-200;
@@ -31,7 +31,7 @@
 }
 
 .content {
-  width: 300px;
+  width: 301px;
   display: flex;
   resize: vertical;
 }
