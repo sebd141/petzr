@@ -1,14 +1,14 @@
 <% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
   <div class="container">
-     <div class="container container-profile">
-      <div class="cards-cards">
+     <div class="container-profile">
+      <div>
         <div class="cards-profile">
             <div class="log">
               <h2>My profile</h2>
               <div class="card-trip">
                   <div class="card-trip-info">
                       <% if current_user.photo.attached? %>
-                      <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                      <%= cl_image_tag @user.photo.key, class: "img-profile-pet", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
                       <% else %>
                         <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
@@ -110,12 +110,13 @@
     </div>
   </div>
 <% else %>
+  <div class="wrapper-footer">
     <div class="log">
         <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
       <div>
         <div class="card-trip">
             <% if @user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+              <%= cl_image_tag @user.photo.key, class: "img-profile-sitter", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
             <% else %>
               <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
               'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
@@ -148,6 +149,10 @@
               </div>
                 <h2 class="card-trip-pricing"><%= @user.price %>€/hour</h2>
         </div>
+                          <div class="card-trip-infos">
+                            <%= link_to "Edit #{current_user.first_name}", edit_user_registration_path, class: "btn btn-blue" %>
+                          </div>
       </div>
     </div>
+  </div>
 <% end %>
