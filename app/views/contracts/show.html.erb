@@ -4,12 +4,12 @@
     <% pet_sitter = User.find(@contract.id_pet_sitter) %>
     <% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
       <% if pet_sitter.first_name.present? %>
-      <h2>Chat with <%= pet_sitter.first_name %></h2>
+      <h2 class="center-title">Chat with <%= pet_sitter.first_name %></h2>
       <% else  %>
-      <h2>Chat with</h2>
+      <h2 class="center-title">Chat with</h2>
         <%= "your pet sitter" %>
       <% end %>
-    <% else%> <h2>Chat with <%= @contract.user.first_name  %></h2>
+    <% else%> <h2 class="center-title">Chat with <%= @contract.user.first_name  %></h2>
     <% end %>
 
       <%# <h1>#<%= @contract.user.first_name%>
@@ -27,15 +27,17 @@
     <%= simple_form_for [@contract, @post],
       remote: true,
       html: {data: {action: "ajax:success->contract-subscription#resetForm"}, class: "d-flex" } do |f| %>
-      <%= f.input :content,
-        label: false,
-        placeholder: "Message ##{@contract.user.first_name}",
-        wrapper_html: {class: "content", style: "width: 700px"},
-        input_html: {style: "width: 701px"}
-      %>
-      <%= f.input :photo, as: :file, label: false,
-        input_html: {style: "width: 153px;", class: "mt-2"}%>
-      <%= f.submit "Send", class: "btn btn-green mt-1" %>
+      <div class="discussion">
+        <%= f.input :content,
+          label: false,
+          placeholder: "Message ##{@contract.user.first_name}",
+          wrapper_html: {class: "content", style: "width: 700px"},
+          input_html: {style: "width: 701px"}
+        %>
+        <%= f.input :photo, as: :file, label: false,
+          input_html: {style: "width: 153px;", class: "mt-2"}%>
+        <%= f.submit "Send", class: "btn btn-green mt-1" %>
+      </div>
     <% end %>
   </div>
 
