@@ -12,11 +12,11 @@
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
-      By which first name can we call you? :)
+      What's your first name?
         <%= f.input :first_name,
                     input_html: { autocomplete: "Your first name" },
                      wrapper_html: { class: 'forced-columns' }, required: true , label: false %>
-      Enter your last name
+     And your last name?
         <%= f.input :last_name,
                     input_html: { autocomplete: "Your last name" },
                      wrapper_html: { class: 'forced-columns' }, required: true , label: false %>
