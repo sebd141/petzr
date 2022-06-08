@@ -28,6 +28,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem "geocoder"
 gem 'open-uri'
 gem 'letter_opener', group: :development
+gem 'postmark-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
