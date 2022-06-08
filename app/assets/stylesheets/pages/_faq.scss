@@ -6,7 +6,7 @@
 
 .faq_item h2 {
   text-align: center;
-  color: #04DDF1;
+  color: white;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -14,7 +14,9 @@
 .faq_item h4 {
   text-decoration-line: underline;
 }
-
+.faq_item p {
+color: white;
+}
 .faq_item {
   margin: 20px;
   display: flex;

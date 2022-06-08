@@ -1,6 +1,12 @@
 <div class="card-trip-infos-map">
   <div>
-      <H6><%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%> </H6>
+      <H6><%= cl_image_tag user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>  <%= link_to "#{user.first_name} #{user.last_name}", user_path(user)%></H6>
+        <% recipient_id = user.reviews_recieved %>
+                  <% unless recipient_id.empty? %>
+                  <div class="card-trip-infos-user-show">
+                    <p><strong>Average rating: <%= user.average_rating %>/5</strong></p>
+                  </div>
+                  <% end %>
         <p>Address: <strong><%= user.location %></strong></p>
         <p>What I offer:
         <% user.type_of_service[1..-1].each do |service| %>
@@ -24,5 +30,5 @@
     <% end %>
   </div>
   <P class="card-trip-pricing">My rates: <STRONG><%= user.price %>€/hour</STRONG></P>
-   <%= link_to "show more", user_path(user)%>
+   <%= link_to "More info", user_path(user)%>
 </div>

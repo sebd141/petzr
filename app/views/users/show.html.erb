@@ -114,7 +114,7 @@
     <div class="log">
         <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
       <div>
-        <div class="card-trip">
+        <div class="card-trip-profile">
             <% if @user.photo.attached? %>
               <%= cl_image_tag @user.photo.key, class: "img-profile-sitter", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
             <% else %>
@@ -143,20 +143,29 @@
                     <% @user.type_of_pet[1..-1].each do |pet|  %>
                     <span class="badge bg-secondary"><%= pet %></span>
                     <% end %>
-                  <div class="card-trip-infos-user-show">
-                    <p><strong></strong></p>
-                    <h2 class="card-trip-pricing">Rates is <%= @user.price %>€/hour</h2>
-                  </div>
                   <% @recipient_id = @user.reviews_recieved %>
                   <% unless @recipient_id.empty? %>
+                  <div class="card-trip-infos-user-show">
+                    <h2>Average rating:</h2>
+                    <h2><%= @user.average_rating %> /5</h2>
+                  </div>
                   <H2>Reviews: </h2>
                       <% @user.reviews_recieved.each do |review| %>
                         <div class="card-trip-infos-user-show">
-                              <p><strong><%= review.comment %><strong></p>
+                              <% writer_id = review.writer_id %>
+                              <% writer = User.find(writer_id)%>
+                              <%= cl_image_tag writer.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                              <p><strong>"<%= review.comment %>"<strong> by
+                              <%= writer.first_name%></p>
                               <h2><%= "⭐️" * review.rating.to_i %></h2>
                         </div>
                       <% end %>
                   <% end %>
+                  <br>
+                  <div class="card-trip-infos-user-show">
+                    <p><strong></strong></p>
+                    <h2 class="card-trip-pricing">Rates is <%= @user.price %>€/hour</h2>
+                  </div>
                   <% if params[:start_date] && params[:end_date] %>
                       <%= simple_form_for([@user, Contract.new]) do |f| %>
                         <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
@@ -166,11 +175,6 @@
                 <% end %>
               </div>
         </div>
-         <% if current_user.pet_sitters_status == true %>
-                          <div class="card-trip-infos">
-                            <%= link_to "Edit your profile", become_pet_sitter_path, class: "btn btn-blue" %>
-                        </div>
-          <% end %>
       </div>
     </div>
   </div>
