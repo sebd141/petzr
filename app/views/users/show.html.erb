@@ -156,7 +156,7 @@
                               <% writer = User.find(writer_id)%>
                               <%= cl_image_tag writer.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
                               <p><strong>"<%= review.comment %>"<strong> by
-                              <%= writer.first_name%> <%= writer.last_name%> </p>
+                              <%= writer.first_name%></p>
                               <h2><%= "⭐️" * review.rating.to_i %></h2>
                         </div>
                       <% end %>
