@@ -47,13 +47,19 @@
   position: relative;
 }
 
-
-.card-trip .card-trip-infos-user-show {
+.card-trip-infos-users {
+  padding: 16px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+}
+
+.card-trip .card-trip-infos-user-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding-bottom: 2%;
   margin-top: 1%;
 }
