@@ -1,4 +1,4 @@
-<div class="log">
+<div class="log-special">
   <h1>Find the best pet sitters arround you!</h1>
   <h2>Select your dates first</h2>
 
@@ -78,7 +78,10 @@
                   <%= f.input :start_date, as: :hidden %>
                   <%= f.input :end_date, as: :hidden %>
                 <% end %>
-                <%= f.submit "Book #{user.first_name}" %>
+                            <div id="show-more-users">
+
+                <%= f.submit "Book #{user.first_name}" %>             </div>
+
               <% end %>
             <% end %>
           </div>
