@@ -24,6 +24,11 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
+  # def average_rating
+  #   @recipient = User.find(params[:user_id])
+
+  # end
+
   private
 
 

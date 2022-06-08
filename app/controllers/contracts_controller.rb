@@ -51,7 +51,6 @@ class ContractsController < ApplicationController
 
   def accept
     @accept = Contract.find(params[:id])
-    @accept.user = current_user
     @accept.update_attribute(:status, true)
     # UserMailer.with(user: current_user).notification.deliver_now
     redirect_to dashboard_path
@@ -59,7 +58,6 @@ class ContractsController < ApplicationController
 
   def decline
     @decline = Contract.find(params[:id])
-    @decline.user = current_user
     @decline.update_attribute(:status, false)
     redirect_to dashboard_path
   end
