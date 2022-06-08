@@ -24,6 +24,12 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
+  def average_rating
+    rating = Rating.find(params[:id])
+    average_rating = rating.count
+
+  end
+
   private
 
 

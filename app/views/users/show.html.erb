@@ -129,31 +129,43 @@
               <div>
                 <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
                   <p><%= @user.short_desc %></p>
+                  <p><strong>A little more about me:</strong> </p>
                   <p><%= @user.description %></p>
-                  <p><strong><%= @user.location %></strong></p>
-                  <p>What I offer: </p>
-                  <% @user.type_of_service[1..-1].each do |service| %>
-                    <span class="badge bg-secondary"><%= service %></span>
-                  <% end %>
-                  <p>Animals I take care of: </p>
-                  <% @user.type_of_pet[1..-1].each do |pet|  %>
-                  <span class="badge bg-secondary"><%= pet %></span>
-                  <% end %>
-                  <br>
-                  <br>
-                  <p><strong>Reviews: </strong></p>
-                  <br>
+                  <div class="card-trip-infos-user-show">
+                    <p><strong>My place:</strong></p>
+                    <p><strong><%= @user.location %></strong> </p>
+                  </div>
+                    <p><strong>What I offer:</strong></p>
+                    <% @user.type_of_service[1..-1].each do |service| %>
+                      <span class="badge bg-secondary"><%= service %></span>
+                    <% end %>
+                     <p><strong>Animal I take care of:</strong></p>
+                    <% @user.type_of_pet[1..-1].each do |pet|  %>
+                    <span class="badge bg-secondary"><%= pet %></span>
+                    <% end %>
+                  <% @recipient_id = @user.reviews_recieved %>
+                  <% unless @recipient_id.empty? %>
+                  <div class="card-trip-infos-user-show">
+                    <h2>Average rating:</h2>
+                    <h2><%= @user.average_rating %> /5</h2>
+                  </div>
+                  <H2>Reviews: </h2>
                       <% @user.reviews_recieved.each do |review| %>
-                      <div class="card-trip">
-                        <div class="card-trip-infos">
-                              <p><strong><%= review.comment %><strong></p>
+                        <div class="card-trip-infos-user-show">
+                              <% writer_id = review.writer_id %>
+                              <% writer = User.find(writer_id)%>
+                              <%= cl_image_tag writer.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                              <p><strong>"<%= review.comment %>"<strong> by
+                              <%= writer.first_name%> <%= writer.last_name%> </p>
                               <h2><%= "⭐️" * review.rating.to_i %></h2>
                         </div>
-                      </div>
                       <% end %>
+                  <% end %>
                   <br>
-                  <br>
-
+                  <div class="card-trip-infos-user-show">
+                    <p><strong></strong></p>
+                    <h2 class="card-trip-pricing">Rates is <%= @user.price %>€/hour</h2>
+                  </div>
                   <% if params[:start_date] && params[:end_date] %>
                       <%= simple_form_for([@user, Contract.new]) do |f| %>
                         <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
@@ -162,11 +174,7 @@
                       <% end %>
                 <% end %>
               </div>
-                <h2 class="card-trip-pricing"><%= @user.price %>€/hour</h2>
         </div>
-                          <div class="card-trip-infos">
-                            <%= link_to "Edit #{current_user.first_name}", edit_user_registration_path, class: "btn btn-blue" %>
-                          </div>
       </div>
     </div>
   </div>

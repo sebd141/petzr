@@ -5,7 +5,7 @@
       <div style="text-align: center;">
         <h1 id="first_title_">Your bookings</h1>
       </div>
-      <div class="cards">
+      <div class="cards-dash">
       <% else %>
       <div style="text-align: center;">
         <h1 id="first_title_">Your booking</h1>
@@ -59,28 +59,24 @@
   <% if current_user.contracts_pet_sitter.exists? %>
   <div class="wrapper-footer">
    <% if current_user.contracts_pet_sitter.count > 1 %>
-      <div style="text-align: center;">
-        <h1 id="first_title_">Your pet sitter missions</h1>
-      </div>
-      <div class="cards">
-      <% else %>
-      <div style="text-align: center;">
-        <h1 id="first_title_">Your pet sitter mission</h1>
-      </div>
+        <div style="text-align: center">
+          <h1>Your pet sitter mission requests</h1>
+        </div>
+      <div class="cards-dash">
+        <% else %>
+        <div style="text-align: center">
+          <h1>Your pet sitter mission request</h1>
+        </div>
       <div class="log">
-      <% end %>
-      <% current_user.contracts_pet_sitter.each do |contract| %>
-      <div>
+        <% end %>
+        <% current_user.contracts_pet_sitter.each do |contract| %>
         <% user = User.find(contract.user_id) %>
         <div class="card-trip">
-          <div class="status">
-          </div>
            <%= cl_image_tag user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
           <div class="card-trip-infos">
             <div>
               <H2>Request from: <%= user.email %></H2>
               <p><strong>Contract ID: <%=contract.id%></strong></p>
-              <p>Descr: <%=contract.description%></p>
               <%start_date = contract.start_date%><% end_date = contract.end_date%>
               <p>From: <strong><%= start_date.day %>/<%= start_date.month %>/<%= start_date.year %></strong> - To: <strong><%= end_date.day %>/<%= end_date.month %>/<%= end_date.year %></strong></p>
                   <div>
@@ -95,14 +91,11 @@
                       <% end %>
                       <%= link_to "Start a chat with #{user.first_name}", contract_path(contract), class: "btn btn-blue" %>
                   </div>
-
             </div>
-            <h2 class="card-trip-pricing"><%= user.price %>€/hour</h2>
           </div>
         </div>
-      </div>
-      </div>
       <% end %>
+      </div>
     <% else %>
       <div class="wrapper-footer" style="text-align: center">
           <h1>Hooo.. It's seems you don't have any mission yet!</h1>
