@@ -5,6 +5,7 @@
   margin: 0% 2% 2% 2%;
   border-radius: 1%;
   padding-bottom: 15%;
+  min-height: 500px;
 }
 .card-trip-profile {
   overflow: hidden;
@@ -23,33 +24,32 @@
 }
 
 .card-trip h2 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bolder;
-  margin: 0;
   color: #545955;
 }
 
 .card-trip p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
-.card-trip a {
-  text-decoration: none;
-  color: #484747;
-  border: 1px solid #343434;
-  padding: 8px 24px;
-  border-radius: 1px;
   font-size: 13px;
-  font-weight: lighter;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
+  opacity: 1;
+  margin: 2px;
 }
 
-.card-trip a:hover {
-  color: grey;
-}
+// .card-trip a {
+//   text-decoration: none;
+//   color: #484747;
+//   border: 1px solid #343434;
+// //   padding: 8px 24px;
+// //   border-radius: 1px;
+// //   font-size: 13px;
+// //   font-weight: lighter;
+// //   // opacity: 0.6;
+// //   transition: opacity 0.3s ease;
+// // }
+
+// .card-trip a:hover {
+//   color: grey;
+// }
 
 #show-more-users {
   margin-top: 3%;
@@ -63,10 +63,8 @@
   align-items: flex-end;
   position: relative;
   color: #545955;
-  text-shadow: 0 0 15px rgba(0,0,0,0.2);
   font-size: 20px;
-  opacity: .7;
-  font-weight: bolder;
+  opacity: .9;
 }
 
 .card-trip-infos-users {
