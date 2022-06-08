@@ -114,7 +114,7 @@
     <div class="log">
         <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
       <div>
-        <div class="card-trip">
+        <div class="card-trip-profile">
             <% if @user.photo.attached? %>
               <%= cl_image_tag @user.photo.key, class: "img-profile-sitter", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
             <% else %>
