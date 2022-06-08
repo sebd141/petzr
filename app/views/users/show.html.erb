@@ -3,7 +3,7 @@
      <div class="container-profile">
       <div>
         <div class="cards-profile">
-            <div class="log">
+            <div class="log-special">
               <h2>My profile</h2>
               <div class="card-trip">
                   <div class="card-trip-info">
@@ -55,14 +55,14 @@
             <% if @user.pets.exists?  %>
               <% if @user.pets.count > 1  %>
                 <div class="container">
-                  <div class="log">
+                  <div class="log-special">
                     <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
                     </div>
                   </div>
                         <div class="cards-pet">
               <% else %>
                 <div class="container">
-                  <div class="log">
+                  <div class="log-special">
                     <div><h2>My Pet | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
                     </div>
                   </div>
