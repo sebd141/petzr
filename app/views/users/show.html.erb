@@ -139,21 +139,19 @@
                   <% @user.type_of_pet[1..-1].each do |pet|  %>
                   <span class="badge bg-secondary"><%= pet %></span>
                   <% end %>
-                  <br>
-                  <br>
-                  <p><strong>Reviews: </strong></p>
-                  <br>
+                <h2 class="card-trip-pricing-profile">Your price is <%= @user.price %>€/hour</h2>
+                  <% if @user.reviews_recieved.nil? %>
+                  <% else %>
+                  <strong>Your reviews: </strong>
                       <% @user.reviews_recieved.each do |review| %>
-                      <div class="card-trip">
+                      <div>
                         <div class="card-trip-infos">
                               <p><strong><%= review.comment %><strong></p>
                               <h2><%= "⭐️" * review.rating.to_i %></h2>
                         </div>
                       </div>
                       <% end %>
-                  <br>
-                  <br>
-
+                     <% end %>
                   <% if params[:start_date] && params[:end_date] %>
                       <%= simple_form_for([@user, Contract.new]) do |f| %>
                         <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
@@ -162,10 +160,9 @@
                       <% end %>
                 <% end %>
               </div>
-                <h2 class="card-trip-pricing"><%= @user.price %>€/hour</h2>
         </div>
                           <div class="card-trip-infos">
-                            <%= link_to "Edit #{current_user.first_name}", edit_user_registration_path, class: "btn btn-blue" %>
+                            <%= link_to "Edit your profile", become_pet_sitter_path, class: "btn btn-blue" %>
                           </div>
       </div>
     </div>
