@@ -1,16 +1,16 @@
 <% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
   <div class="container">
-     <div class="container container-profile">
-      <div class="cards-cards">
+     <div class="container-profile">
+      <div>
         <div class="cards-profile">
-            <div class="log">
+            <div class="log-special">
               <h2>My profile</h2>
               <div class="card-trip">
                   <div class="card-trip-info">
                       <% if current_user.photo.attached? %>
-                      <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                      <%= cl_image_tag @user.photo.key, class: "img-profile-pet", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
                       <% else %>
-                        <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                        <img  class="img-profile" src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
@@ -18,14 +18,16 @@
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
                       <% end %>
                   </div>
-                  <br>
-                  <div class="card-trip">
 
                         <div class="card-trip-infos">
-                            <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
+                            <H2>Hello, I'm <%= @user.first_name %> <%= @user.last_name %> </H2>
                         </div>
                         <div class="card-trip-infos">
-                              <h2>I have
+                            <% if @user.pets.count > 1  %>
+                              <h2>Pets I have:
+                            <% else %>
+                              <h2> I have a
+                              <% end %>
                               <% @user.pets.map { |pet| pet.breed }.each do |breed| %>
                                 <% case breed %>
                                 <% when 'fish' %>
@@ -42,24 +44,35 @@
                               <% end %>
                               </h2>
                         </div>
-                      </div>
+                          <div class="card-trip-infos">
+                            <%= link_to "Edit #{current_user.first_name}", edit_user_registration_path, class: "btn btn-blue" %>
+                          </div>
                   </div>
               </div>
             </div>
           </div>
 
             <% if @user.pets.exists?  %>
+              <% if @user.pets.count > 1  %>
                 <div class="container">
-                  <div class="log">
+                  <div class="log-special">
                     <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
                     </div>
                   </div>
-                        <div class="cards">
+                        <div class="cards-pet">
+              <% else %>
+                <div class="container">
+                  <div class="log-special">
+                    <div><h2>My Pet | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
+                    </div>
+                  </div>
+                        <div class="cards-pet-one">
+                          <% end %>
 
                           <% @user.pets.each do |pet| %>
                           <div class="card-trip">
                           <% if pet.photo.attached? %>
-                          <%= cl_image_tag pet.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                          <%= cl_image_tag pet.photo.key%>
                           <% else %>
                               <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
                             'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
@@ -70,10 +83,10 @@
                             <% end %>
                               <div class="card-trip-infos">
                                   <div>
-                                  <h2><%= pet.name %></h2>
-                                      <p><%= pet.breed %></p>
+                                  <h2>My lovely name is: <%= pet.name %></h2>
+                                      <H5>I'm a <%= pet.breed %></H5>
                                       <%= link_to "Edit #{pet.name}", edit_pet_path(pet), class: "btn btn-blue" %>
-                                      <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-blue", data: {confirm: "Do you really want to delete this pet ?"} %></p>
+                                      <%= link_to "Delete #{pet.name}", pet_path(pet), method: :delete, class: "btn btn-red", data: {confirm: "Do you really want to delete this pet ?"} %></p>
                                   </div>
                               </div>
                           </div>
@@ -97,12 +110,13 @@
     </div>
   </div>
 <% else %>
+  <div class="wrapper-footer">
     <div class="log">
         <h1><%= @user.first_name %> <%= @user.last_name %> pet sitter's profile</h1>
       <div>
         <div class="card-trip">
             <% if @user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+              <%= cl_image_tag @user.photo.key, class: "img-profile-sitter", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
             <% else %>
               <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
               'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
@@ -125,16 +139,35 @@
                   <% @user.type_of_pet[1..-1].each do |pet|  %>
                   <span class="badge bg-secondary"><%= pet %></span>
                   <% end %>
+                  <br>
+                  <br>
+                  <p><strong>Reviews: </strong></p>
+                  <br>
+                      <% @user.reviews_recieved.each do |review| %>
+                      <div class="card-trip">
+                        <div class="card-trip-infos">
+                              <p><strong><%= review.comment %><strong></p>
+                              <h2><%= "⭐️" * review.rating.to_i %></h2>
+                        </div>
+                      </div>
+                      <% end %>
+                  <br>
+                  <br>
+
                   <% if params[:start_date] && params[:end_date] %>
-                    <%= simple_form_for([@user, Contract.new]) do |f| %>
-                      <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
-                      <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
-                      <%= f.submit "Book #{@user.first_name}" %>
-                    <% end %>
+                      <%= simple_form_for([@user, Contract.new]) do |f| %>
+                        <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+                        <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                        <%= f.submit "Book #{@user.first_name}" %>
+                      <% end %>
                 <% end %>
               </div>
                 <h2 class="card-trip-pricing"><%= @user.price %>€/hour</h2>
         </div>
+                          <div class="card-trip-infos">
+                            <%= link_to "Edit #{current_user.first_name}", edit_user_registration_path, class: "btn btn-blue" %>
+                          </div>
       </div>
     </div>
+  </div>
 <% end %>
