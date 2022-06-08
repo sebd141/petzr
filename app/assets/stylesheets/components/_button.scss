@@ -16,12 +16,11 @@
 .btn-blue {
   color: white !important;
   border-radius: 4px;
-  background: #04DDF1;
+  background: #0D6EFD;
   border: 0px !important;
   padding: 2px 6px;
   font-weight: lighter;
   font-size: 13px;
-  opacity: 0.8;
   transition: opacity 0.3s ease;
   align-items: center;
   margin-top: 2%;
@@ -36,15 +35,20 @@
   opacity: 0.9;
   align-items: center;
   margin-top: 2%;
+  border: 0px !important;
 }
 
 
 .btn-blue:hover {
   opacity: 1;
-  background: #21ecff;
+  background: #5f93e0;
   color: white;
 }
 .btn-red:hover {
   background: darkred;
   color: white;
+}
+
+#badge {
+  font-size: 14px;
 }
