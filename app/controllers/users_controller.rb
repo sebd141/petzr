@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def create
+
+  end
+
   def update
     @user = current_user
     @user.update(user_params)
