@@ -14,8 +14,25 @@
   margin: 0% 2% 2% 0%;
   border-radius: 1%;
   padding-bottom: 6%;
-  padding-left: 6%;
+  // padding-left: 6%;
   min-width: 500px;
+}
+
+.card-trip-profile .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  color: #545955;
+  font-size: 20px;
+  opacity: .9;
+}
+
+.card-trip .card-trip-infos a {
+  color: #545955;
+  text-decoration: none;
 }
 .card-trip > img {
   height: 200px;
