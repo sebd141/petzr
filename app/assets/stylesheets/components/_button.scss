@@ -16,11 +16,12 @@
 .btn-blue {
   color: white !important;
   border-radius: 4px;
-  background: #1400F5;
+  background: #04DDF1;
+  ;
   padding: 2px 6px;
   font-weight: lighter;
   font-size: 13px;
-  opacity: 0.6;
+  opacity: 0.8;
   transition: opacity 0.3s ease;
   align-items: center;
   margin-top: 2%;
@@ -39,7 +40,8 @@
 
 
 .btn-blue:hover {
-  background: #1205a8;
+  opacity: 1;
+  background: #21ecff;
   color: white;
 }
 .btn-red:hover {

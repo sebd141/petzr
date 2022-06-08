@@ -1,13 +1,21 @@
-h2 {
+h1 {
 color: white;
-text-shadow: 1px 1px 3px rgb(0 0 0 / 20%);
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 font-size: 32px;
-font-weight: bold;}
- h1 {
-  text-shadow: 1px 1px 3px rgb(0 0 0 / 20%);
-  font-size: 32px;
-  font-weight: bold;
+font-weight: bold;
+}
+
+ h2 {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+}
+ a {
+  color: #545955;
  }
-* {
-  background-color: #6d755f;
+ p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #545955;
 }
