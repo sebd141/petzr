@@ -48,6 +48,18 @@
 }
 
 
+.card-trip .card-trip-infos-user-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  padding-bottom: 2%;
+  margin-top: 1%;
+}
+
+
+
 .card-trip .status {
   top: 5px;
   left: 5px;

@@ -135,23 +135,25 @@
                   <% @user.type_of_service[1..-1].each do |service| %>
                     <span class="badge bg-secondary"><%= service %></span>
                   <% end %>
-                  <p>Animals I take care of: </p>
-                  <% @user.type_of_pet[1..-1].each do |pet|  %>
-                  <span class="badge bg-secondary"><%= pet %></span>
-                  <% end %>
-                <h2 class="card-trip-pricing-profile">Your price is <%= @user.price %>€/hour</h2>
-                  <% if @user.reviews_recieved.nil? %>
+                    <p>Animals I take care of: </p>
+                    <% @user.type_of_pet[1..-1].each do |pet|  %>
+                    <span class="badge bg-secondary"><%= pet %></span>
+                    <% end %>
+                  <div class="card-trip-infos-user-show">
+                    <p><strong></strong></p>
+                    <h2 class="card-trip-pricing">Rates for <%= @user.first_name %> is <%= @user.price %>€/hour</h2>
+                  </div>
+                  <% @recipient_id = @user.reviews_recieved %>
+                  <% if @recipient_id.count.nil? %>
                   <% else %>
-                  <strong>Your reviews: </strong>
+                  <H2>Reviews: </h2>
                       <% @user.reviews_recieved.each do |review| %>
-                      <div>
-                        <div class="card-trip-infos">
+                        <div class="card-trip-infos-user-show">
                               <p><strong><%= review.comment %><strong></p>
                               <h2><%= "⭐️" * review.rating.to_i %></h2>
                         </div>
-                      </div>
                       <% end %>
-                     <% end %>
+                  <% end %>
                   <% if params[:start_date] && params[:end_date] %>
                       <%= simple_form_for([@user, Contract.new]) do |f| %>
                         <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
