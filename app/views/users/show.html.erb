@@ -10,7 +10,7 @@
                       <% if current_user.photo.attached? %>
                       <%= cl_image_tag @user.photo.key, class: "img-profile-pet", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
                       <% else %>
-                        <img src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
+                        <img  class="img-profile" src=<%=['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171972/femme_chien1_ec9xg5.jpg',
@@ -139,12 +139,27 @@
                   <% @user.type_of_pet[1..-1].each do |pet|  %>
                   <span class="badge bg-secondary"><%= pet %></span>
                   <% end %>
+                  <br>
+                  <br>
+                  <p><strong>Reviews: </strong></p>
+                  <br>
+                      <% @user.reviews_recieved.each do |review| %>
+                      <div class="card-trip">
+                        <div class="card-trip-infos">
+                              <p><strong><%= review.comment %><strong></p>
+                              <h2><%= "⭐️" * review.rating.to_i %></h2>
+                        </div>
+                      </div>
+                      <% end %>
+                  <br>
+                  <br>
+
                   <% if params[:start_date] && params[:end_date] %>
-                    <%= simple_form_for([@user, Contract.new]) do |f| %>
-                      <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
-                      <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
-                      <%= f.submit "Book #{@user.first_name}" %>
-                    <% end %>
+                      <%= simple_form_for([@user, Contract.new]) do |f| %>
+                        <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+                        <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                        <%= f.submit "Book #{@user.first_name}" %>
+                      <% end %>
                 <% end %>
               </div>
                 <h2 class="card-trip-pricing"><%= @user.price %>€/hour</h2>

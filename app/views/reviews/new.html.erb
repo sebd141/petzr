@@ -1,11 +1,13 @@
 <div class="log">
   <h1>Happy for your pet sitter, review him!</h1>
-  <%= simple_form_for([@receiver, @review]) do |f|%>
-    <%= f.input :comment %>
-    <%= f.input :rating %>
+  <%= simple_form_for([@recipient, @review]) do |f|%>
+  Let your comment
+    <%= f.input :comment, label: false %>
+    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience"%>
     <div class="log_btn">
       <div class="form-actions btn btn-ghost">
         <%= f.button :submit, "Send my booking", class: "btn-green" %>
+
       </div>
     </div>
   <% end %>
