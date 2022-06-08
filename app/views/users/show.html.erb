@@ -143,20 +143,29 @@
                     <% @user.type_of_pet[1..-1].each do |pet|  %>
                     <span class="badge bg-secondary"><%= pet %></span>
                     <% end %>
-                  <div class="card-trip-infos-user-show">
-                    <p><strong></strong></p>
-                    <h2 class="card-trip-pricing">Rates is <%= @user.price %>€/hour</h2>
-                  </div>
                   <% @recipient_id = @user.reviews_recieved %>
                   <% unless @recipient_id.empty? %>
+                  <div class="card-trip-infos-user-show">
+                    <h2>Average rating:</h2>
+                    <h2><%= @user.average_rating %> /5</h2>
+                  </div>
                   <H2>Reviews: </h2>
                       <% @user.reviews_recieved.each do |review| %>
                         <div class="card-trip-infos-user-show">
-                              <p><strong><%= review.comment %><strong></p>
+                              <% writer_id = review.writer_id %>
+                              <% writer = User.find(writer_id)%>
+                              <%= cl_image_tag writer.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                              <p><strong>"<%= review.comment %>"<strong> by
+                              <%= writer.first_name%> <%= writer.last_name%> </p>
                               <h2><%= "⭐️" * review.rating.to_i %></h2>
                         </div>
                       <% end %>
                   <% end %>
+                  <br>
+                  <div class="card-trip-infos-user-show">
+                    <p><strong></strong></p>
+                    <h2 class="card-trip-pricing">Rates is <%= @user.price %>€/hour</h2>
+                  </div>
                   <% if params[:start_date] && params[:end_date] %>
                       <%= simple_form_for([@user, Contract.new]) do |f| %>
                         <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
