@@ -33,7 +33,6 @@ class ContractsController < ApplicationController
 
   def edit
     @contract = Contract.find(params[:id])
-    @contract.user = current_user
   end
 
   def update

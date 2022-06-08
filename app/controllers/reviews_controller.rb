@@ -24,10 +24,11 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  # def average_rating
-  #   @recipient = User.find(params[:user_id])
+  def average_rating
+    rating = Rating.find(params[:id])
+    average_rating = rating.count
 
-  # end
+  end
 
   private
 
