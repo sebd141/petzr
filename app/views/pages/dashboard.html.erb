@@ -1,12 +1,15 @@
 <div class="log">
   <% if current_user.pet_sitters_status == false || current_user.pet_sitters_status == nil %>
     <% if current_user.contracts_user.exists? %>
+      <% if current_user.contracts_user.count > 1 %>
       <div style="text-align: center;">
         <h1 id="first_title_">Your bookings</h1>
       </div>
-      <% if current_user.contracts_user.count > 1 %>
       <div class="cards">
       <% else %>
+      <div style="text-align: center;">
+        <h1 id="first_title_">Your booking</h1>
+      </div>
       <div class="log">
       <% end %>
         <% current_user.contracts_user.each do |contract| %>
@@ -55,10 +58,17 @@
 <% else %>
   <% if current_user.contracts_pet_sitter.exists? %>
   <div class="wrapper-footer">
-    <div style="text-align: center">
-      <h1>Your pet sitter missions</h1>
-    </div>
-    <div class="cards">
+   <% if current_user.contracts_pet_sitter.count > 1 %>
+      <div style="text-align: center;">
+        <h1 id="first_title_">Your pet sitter missions</h1>
+      </div>
+      <div class="cards">
+      <% else %>
+      <div style="text-align: center;">
+        <h1 id="first_title_">Your pet sitter mission</h1>
+      </div>
+      <div class="log">
+      <% end %>
       <% current_user.contracts_pet_sitter.each do |contract| %>
       <div>
         <% user = User.find(contract.user_id) %>
@@ -71,12 +81,6 @@
               <H2>Request from: <%= user.email %></H2>
               <p><strong>Contract ID: <%=contract.id%></strong></p>
               <p>Descr: <%=contract.description%></p>
-<<<<<<< HEAD
-              <%# <% user.type_of_service[1..-1].each do |service| %>
-                <%# <span class="badge bg-secondary"><%= service</span> %>
-              <%# <% end %>
-=======
->>>>>>> master
               <%start_date = contract.start_date%><% end_date = contract.end_date%>
               <p>From: <strong><%= start_date.day %>/<%= start_date.month %>/<%= start_date.year %></strong> - To: <strong><%= end_date.day %>/<%= end_date.month %>/<%= end_date.year %></strong></p>
                   <div>
