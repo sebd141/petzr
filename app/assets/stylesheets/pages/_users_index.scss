@@ -25,7 +25,16 @@
 #blue-badge {
   background: #04DDF1;
   transition: opacity 0.3s ease;
+  display: inline-block;
+  padding: 0.35em 0.65em;
   font-size: 0.6em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 2px;
 }
 
 #blue-badge:hover {
@@ -43,3 +52,13 @@
 
  #container-wide-mapbox {
  }
+
+ button:not(:disabled),
+ [type="submit"]:not(:disabled) {
+  cursor: pointer;
+  text-decoration: none;
+  color: #606060;
+  border: 1px solid #aaaaaa;
+  padding: 8px 24px;
+  border-radius: 1px;
+  font-size: 13px;}
