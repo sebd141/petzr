@@ -52,7 +52,7 @@
               <p><%= user.short_desc %></p>
             </div>
             <div class="card-trip-index-infos">
-              <p><strong>My address:</strong> <strong><%= user.location %></strong></p>
+              <p><strong><%= user.location %></strong></p>
               <p>What I offer:<strong>
               <% user.type_of_service[1..-1].each do |service| %>
                 <span id="badge" class="badge bg-secondary"><%= service %></span></strong></p>
@@ -63,7 +63,7 @@
               <% end %></strong></p>
             </div>
             <div class="card-trip-index-booking">
-                <%= link_to "Show more", user_path(user), class:"btn-ghost"%>
+                <%= link_to "Show more", user_path(user), class:"btn-ghost", style:"color:black"%>
                 <% if params[:start_date] && params[:end_date] %>
                 <%= simple_form_for([user, Contract.new]) do |f| %>
                   <% if params[:start_date].present? && params[:end_date].present?   %>
@@ -76,8 +76,8 @@
                   <%= f.submit "Book #{user.first_name}", class:"btn-blue" %>
               <% end %>
             <% end %>
+          <h6 class="card-trip-pricing" style="color:black"><strong><%= user.price %>€/hour</strong></h6>
           </div>
-          <h6 class="card-trip-pricing"><strong><%= user.price %>€/hour</strong></h6>
         </div>
       </div>
     <% end %>
