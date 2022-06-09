@@ -31,15 +31,15 @@
                               <% @user.pets.map { |pet| pet.breed }.each do |breed| %>
                                 <% case breed %>
                                 <% when 'fish' %>
-                                  <span class="badge" id="blue-badge"><%= "🐠" %></span>
+                                  <span class="badge"><%= "🐠" %></span>
                                 <% when 'rabbit' %>
-                                  <span class="badge" id="blue-badge"><%= "🐰" %></span>
+                                  <span class="badge"><%= "🐰" %></span>
                                 <% when 'dog' %>
-                                  <span class="badge" id="blue-badge"><%= "🐶" %></span>
+                                  <span class="badge"><%= "🐶" %></span>
                                 <% when 'bird' %>
-                                  <span class="badge" id="blue-badge"><%= "🦜" %></span>
+                                  <span class="badge"><%= "🦜" %></span>
                                 <% when 'cat' %>
-                                  <span class="badge" id="blue-badge"><%= "🐱" %></span>
+                                  <span class="badge"><%= "🐱" %></span>
                                 <% end %>
                               <% end %>
                               </h2>
