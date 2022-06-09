@@ -9,11 +9,11 @@
                   <% end %>
         <p>Address: <strong><%= user.location %></strong></p>
         <p>What I offer:
-        <% user.type_of_service[1..-1].each do |service| %>
+        <% user.type_of_service.each do |service| %>
           <span id="blue-badge "><%= service %></span>
         <% end %></p>
         <p>Animals I take care of:
-        <% user.type_of_pet[1..-1].each do |pet|  %>
+        <% user.type_of_pet.each do |pet|  %>
         <span id="blue-badge "><%= pet %></span>
         <% end %></p>
       <% if params[:start_date] && params[:end_date] %>

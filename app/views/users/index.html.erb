@@ -54,11 +54,11 @@
             <div class="card-trip-index-infos">
               <p><strong><%= user.location %></strong></p>
               <p>What I offer:<strong>
-              <% user.type_of_service[1..-1].each do |service| %>
+              <% user.type_of_service.each do |service| %>
                 <span id="badge" class="badge bg-secondary"><%= service %></span></strong></p>
               <% end %>
               <p>Animals I take care of <strong>
-              <% user.type_of_pet[1..-1].each do |pet|  %>
+              <% user.type_of_pet.each do |pet|  %>
                 <span  id="badge" class="badge bg-secondary"><%= pet %></span>
               <% end %></strong></p>
             </div>
