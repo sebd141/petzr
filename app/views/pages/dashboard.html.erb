@@ -77,7 +77,7 @@
         <% current_user.contracts_pet_sitter.each do |contract| %>
         <% user = User.find(contract.user_id) %>
         <div class="card-trip">
-           <%= cl_image_tag user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+           <%= cl_image_tag current_user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
           <div class="card-trip-infos">
             <div>
               <H2>Request from: <%= user.email %></H2>

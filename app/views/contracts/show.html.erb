@@ -30,7 +30,7 @@
       <div class="discussion">
         <%= f.input :content,
           label: false,
-          placeholder: "Message ##{@contract.user.first_name}",
+          placeholder: "Message ##{current_user.first_name}",
           wrapper_html: {class: "content", style: "width: 700px"},
           input_html: {style: "width: 701px"}
         %>

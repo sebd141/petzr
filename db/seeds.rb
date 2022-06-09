@@ -181,19 +181,18 @@ puts "Creating Pet sitters"
 
  puts "Creating Pet owners"
 
-1.times do @bob = User.new({ email: "a@a.com", password: "lewagon", first_name: "Archi", last_name: "Saen", location: "Rue du try bara 2, 1380 Lasne", pet_sitters_status: false})
-  file_bob = URI.open('https://res.cloudinary.com/sebd141/image/upload/v1653047425/kknxc2lusyegbjjjoqia.jpg')
-  @bob.photo.attach(io: file_bob, filename: 'profile.jpeg', content_type: 'image/jpeg')
-  @bob.save
-end
-
+bob = User.new({ email: "a@a.com", password: "lewagon", first_name: "Archi", last_name: "Saen", location: "Rue du try bara 2, 1380 Lasne", pet_sitters_status: false})
+file_bob = URI.open('https://res.cloudinary.com/sebd141/image/upload/v1653047425/kknxc2lusyegbjjjoqia.jpg')
+bob.photo.attach(io: file_bob, filename: 'profile.jpeg', content_type: 'image/jpeg')
+bob.save
+binding.pry
 puts "Creating Pets"
 
 15.times do
   Pet.create!(
     name: ['bobby', 'val', 'sebby', 'tony', 'pierouk'].sample,
     breed: ['cat', 'dog', 'bird'].sample,
-    user: @bob
+    user: bob
   )
 end
 
