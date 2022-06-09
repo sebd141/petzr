@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         lat: user.latitude,
         lng: user.longitude,
         info_window: render_to_string(partial: "info_window", locals: { user: user }),
-        image_url: helpers.asset_url("https://res.cloudinary.com/sebd141/image/upload/v1654512889/picto_petzr_ia6c0j.png")
+        image_url: helpers.asset_url("https://res.cloudinary.com/sebd141/image/upload/v1654763568/map_pin_biatd4.png")
       }
     end
   end
