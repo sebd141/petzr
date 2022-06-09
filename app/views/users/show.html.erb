@@ -130,11 +130,11 @@
                   </div>
                     <p><strong>What I offer:
                     <% @user.type_of_service[1..-1].each do |service| %>
-                      <span id="badge" class="badge bg-secondary"><%= service %></span>
+                        <span id="blue-badge" class="badge"><%= service %></span>
                     <% end %></strong></p>
                      <p><strong>Animal I take care of:
                     <% @user.type_of_pet[1..-1].each do |pet|  %>
-                    <span id="badge" class="badge bg-secondary"><%= pet %></span>
+                     <span id="blue-badge" class="badge"><%= pet %></span>
                     <% end %></strong></p>
                   <% @recipient_id = @user.reviews_recieved %>
                   <% unless @recipient_id.empty? %>
@@ -169,5 +169,6 @@
         </div>
       </div>
     </div>
+    <%= link_to "Go back", users_path, class: "btn btn-green"%>
   </div>
 <% end %>
