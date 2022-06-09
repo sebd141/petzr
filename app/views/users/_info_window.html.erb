@@ -10,11 +10,11 @@
         <p>Address: <strong><%= user.location %></strong></p>
         <p>What I offer:
         <% user.type_of_service[1..-1].each do |service| %>
-          <span class="badge bg-secondary"><%= service %></span>
+          <span id="blue-badge "><%= service %></span>
         <% end %></p>
         <p>Animals I take care of:
         <% user.type_of_pet[1..-1].each do |pet|  %>
-        <span class="badge bg-secondary"><%= pet %></span>
+        <span id="blue-badge "><%= pet %></span>
         <% end %></p>
       <% if params[:start_date] && params[:end_date] %>
       <%= simple_form_for([User, Contract.new]) do |f| %>
