@@ -3,7 +3,7 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 0% 2% 2% 2%;
-  border-radius: 1%;
+  border-radius: 3%;
   // min-height: 500px;
 }
 .card-trip-profile {
@@ -43,6 +43,7 @@
   font-size: 20px;
   font-weight: bolder;
   color: #545955;
+  padding-bottom: 3px;
 }
 
 .card-trip p {
