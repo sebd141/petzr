@@ -58,8 +58,15 @@
  [type="submit"]:not(:disabled) {
   cursor: pointer;
   text-decoration: none;
-  color: #606060;
-  border: 1px solid #aaaaaa;
-  padding: 8px 24px;
-  border-radius: 1px;
-  font-size: 13px;}
+  color: #484747;
+  border: 1px solid #343434;
+  padding: 6px 9px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  width: fit-content;
+  background: white
+}
