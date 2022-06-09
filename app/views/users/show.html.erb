@@ -137,11 +137,11 @@
                   </div>
                     <p><strong>What I offer:</strong></p>
                     <% @user.type_of_service[1..-1].each do |service| %>
-                      <span class="badge bg-secondary"><%= service %></span>
+                      <span class="badge" id="blue-badge"><%= service %></span>
                     <% end %>
                      <p><strong>Animal I take care of:</strong></p>
                     <% @user.type_of_pet[1..-1].each do |pet|  %>
-                    <span class="badge bg-secondary"><%= pet %></span>
+                    <span class="badge" id="blue-badge"><%= pet %></span>
                     <% end %>
                   <% @recipient_id = @user.reviews_recieved %>
                   <% unless @recipient_id.empty? %>
