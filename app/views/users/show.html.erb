@@ -1,9 +1,9 @@
 <% if @user.pet_sitters_status == false || @user.pet_sitters_status == nil %>
   <div class="container">
-     <div class="container-profile">
+    <div class="container-profile">
       <div>
         <div class="cards-profile">
-            <div class="log-special">
+          <div class="log-special">
               <h2>My profile</h2>
               <div class="card-trip">
                   <div class="card-trip-info">
@@ -18,7 +18,6 @@
                       'https://res.cloudinary.com/sebd141/image/upload/v1654171971/homme_chien1_oadq64.jpg'].sample%>>
                       <% end %>
                   </div>
-
                         <div class="card-trip-infos">
                             <H2>Hello, I'm <%= @user.first_name %> <%= @user.last_name %> </H2>
                         </div>
@@ -27,7 +26,7 @@
                               <h2>Pets I have:
                             <% else %>
                               <h2> I have a
-                              <% end %>
+                            <% end %>
                               <% @user.pets.map { |pet| pet.breed }.each do |breed| %>
                                 <% case breed %>
                                 <% when 'fish' %>
@@ -52,23 +51,21 @@
             </div>
           </div>
 
-            <% if @user.pets.exists?  %>
-              <% if @user.pets.count > 1  %>
+          <% if @user.pets.exists?  %>
+            <% if @user.pets.count > 1  %>
                 <div class="container">
                   <div class="log-special">
-                    <div><h2>My Pets | <%= link_to "Add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
-                    </div>
-                  </div>
-                        <div class="cards-pet">
-              <% else %>
-                <div class="container">
-                  <div class="log-special">
-                    <div><h2>My Pets | <%= link_to "Add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
-                    </div>
-                  </div>
-                        <div class="cards-pet-one">
-                          <% end %>
+                    <div><h2>My Pets | <%= link_to "Add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2></div>
 
+                  </div>
+                <div class="cards-pet">
+            <% else %>
+                <div class="container">
+                  <div class="log-special">
+                    <div><h2>My Pets | <%= link_to "Add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2></div>
+                  </div>
+                  <div class="cards-pet-one">
+            <% end %>
                           <% @user.pets.each do |pet| %>
                           <div class="card-trip">
                           <% if pet.photo.attached? %>
@@ -90,7 +87,7 @@
                                   </div>
                               </div>
                           </div>
-                  <% end %>
+                    <% end %>
                       </div>
                     </div>
                   </div>
@@ -100,11 +97,8 @@
                   <div><h2>My Pets | <%= link_to "Add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
                   </div>
               <% end %>
-              </div>
-
-
-
-        </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -148,18 +142,18 @@
                     <p>Average rating:</p>
                     <p><%= @user.average_rating %> /5</p>
                   </div>
-                  <strong><p>Reviews: </p></strong>
-                      <% @user.reviews_recieved.each do |review| %>
-                        <div class="card-trip-infos-user-show">
-                              <% writer_id = review.writer_id %>
-                              <% writer = User.find(writer_id)%>
-                              <%= cl_image_tag writer.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
-                              <p><strong>"<%= review.comment %>"<strong> by
-                              <%= writer.first_name%></p>
-                              <h2><%= "⭐️" * review.rating.to_i %></h2>
-                        </div>
-                      <% end %>
-                  <% end %>
+                    <strong><p>Reviews: </p></strong>
+                        <% @user.reviews_recieved.each do |review| %>
+                          <div class="card-trip-infos-user-show">
+                                <% writer_id = review.writer_id %>
+                                <% writer = User.find(writer_id)%>
+                                <%= cl_image_tag writer.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+                                <p><strong>"<%= review.comment %>"<strong> by
+                                <%= writer.first_name%></p>
+                                <h2><%= "⭐️" * review.rating.to_i %></h2>
+                          </div>
+                        <% end %>
+          <% end %>
                   <br>
                   <div class="card-trip-infos-user-show">
                    <H2 style="color:#676a6a" class="card-trip-pricing"><strong>Rates is <%= @user.price %>€/hour</strong></h2>
@@ -168,7 +162,7 @@
                       <%= simple_form_for([@user, Contract.new]) do |f| %>
                         <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
                         <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
-                        <%= f.submit "Book #{@user.first_name}" %>
+                        <%= f.submit "Book #{@user.first_name}", class:"btn-blue" %>
                       <% end %>
                 <% end %>
               </div>
