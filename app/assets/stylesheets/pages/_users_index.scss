@@ -23,11 +23,11 @@
 }
 
 #blue-badge {
-  background: #04DDF1;
+  background: #1400F5;
   transition: opacity 0.3s ease;
   display: inline-block;
   padding: 0.35em 0.65em;
-  font-size: 0.6em;
+  font-size: 0.9em;
   font-weight: 700;
   line-height: 1;
   color: #fff;
@@ -35,10 +35,11 @@
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 2px;
+  letter-spacing: 1px;
 }
 
 #blue-badge:hover {
-  background: #04DDF1;
+  background: #0E00A2;
 }
 
 .the-mapbox {
@@ -53,12 +54,13 @@
  #container-wide-mapbox {
  }
 
- button:not(:disabled),
- [type="submit"]:not(:disabled) {
-  cursor: pointer;
-  text-decoration: none;
-  color: #606060;
-  border: 1px solid #aaaaaa;
-  padding: 8px 24px;
-  border-radius: 1px;
-  font-size: 13px;}
+//  button:not(:disabled),
+//  [type="submit"]:not(:disabled) {
+//   cursor: pointer;
+//   text-decoration: none;
+//   color: #606060;
+//   border: 1px solid #aaaaaa;
+//   padding: 8px 24px;
+//   border-radius: 1px;
+//   font-size: 13px;
+// }

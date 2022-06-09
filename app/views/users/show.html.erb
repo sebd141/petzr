@@ -129,11 +129,11 @@
                     <p><strong>My place: <%= @user.location %></strong> </p>
                   </div>
                     <p><strong>What I offer:
-                    <% @user.type_of_service.each do |service| %>
+                    <% @user.type_of_service[1..-1].each do |service| %>
                       <span id="badge" class="badge bg-secondary"><%= service %></span>
                     <% end %></strong></p>
                      <p><strong>Animal I take care of:
-                    <% @user.type_of_pet.each do |pet|  %>
+                    <% @user.type_of_pet[1..-1].each do |pet|  %>
                     <span id="badge" class="badge bg-secondary"><%= pet %></span>
                     <% end %></strong></p>
                   <% @recipient_id = @user.reviews_recieved %>
