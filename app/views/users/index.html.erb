@@ -33,62 +33,56 @@
       %>
       <%= submit_tag "Search", class: "btn btn-green", id: "search_button" %>
     </div>
-  <% end %>
-</div>
-
-<div class="container-wide">
-  <div class="the-mapbox" id="container-wide-mapbox"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-
-  <%# <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoicGllcnJpY2sxMTIyIiwiYSI6ImNsMnVlenBjNzAxZW0zZG96ZmVsa3hvMTMifQ.VdN2bQ6VRMmZVMzdwAp-UA'> %>
-  <div class="cards">
-    <% @users.each do |user| %>
-      <div class="card-trip">
-        <%= cl_image_tag user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
-        <div class="card-trip-infos">
-          <div>
-            <H2><%= user.first_name %> <%= user.last_name %></H2>
-            <p><%= user.short_desc %></p>
-            <br>
-            <p><strong>My address:</strong> <strong><%= user.location %></strong></p>
-
-            <p>What I offer:<strong>
-            <% user.type_of_service[1..-1].each do |service| %>
-              <span id="badge" class="badge bg-secondary"><%= service %></span></strong></p>
-            <% end %>
-            <p>Animals I take care of <strong>
-            <% user.type_of_pet[1..-1].each do |pet|  %>
-              <span  id="badge" class="badge bg-secondary"><%= pet %></span>
-            <% end %></strong></p>
-
-            <br>
-
-            <div class="btn-ghost">
-              <%= link_to "Show more", user_path(user)%>
-            </div>
-
-            <% if params[:start_date] && params[:end_date] %>
-              <%= simple_form_for([user, Contract.new]) do |f| %>
-                <% if params[:start_date].present? && params[:end_date].present?   %>
-                  <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
-                  <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
-                <% else %>
-                  <%= f.input :start_date, as: :hidden %>
-                  <%= f.input :end_date, as: :hidden %>
-                <% end %>
-                            <div id="show-more-users">
-
-                <%= f.submit "Book #{user.first_name}" %>             </div>
-
-              <% end %>
-            <% end %>
-          </div>
-          <h6 class="card-trip-pricing"><strong><%= user.price %>€/hour</strong></h6>
-        </div>
-      </div>
     <% end %>
   </div>
-</div>
+
+  <div class="container-wide">
+    <div class="the-mapbox" id="container-wide-mapbox"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    <div class="cards">
+      <% @users.each do |user| %>
+        <div class="card-trip">
+          <%= cl_image_tag user.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+          <div class="card-trip-index">
+            <div class="card-trip-index-title">
+              <H2><%= user.first_name %> <%= user.last_name %></H2>
+              <p><%= user.short_desc %></p>
+            </div>
+
+            <div class="card-trip-index-infos">
+              <p><strong>My address:</strong> <strong><%= user.location %></strong></p>
+              <p>What I offer:<strong>
+              <% user.type_of_service[1..-1].each do |service| %>
+                <span id="badge" class="badge bg-secondary"><%= service %></span></strong></p>
+              <% end %>
+              <p>Animals I take care of <strong>
+              <% user.type_of_pet[1..-1].each do |pet|  %>
+                <span  id="badge" class="badge bg-secondary"><%= pet %></span>
+              <% end %></strong></p>
+            </div>
+
+            <div class="card-trip-index-booking">
+                <%= link_to "Show more", user_path(user), class:"btn-ghost"%>
+                <% if params[:start_date] && params[:end_date] %>
+                <%= simple_form_for([user, Contract.new]) do |f| %>
+                  <% if params[:start_date].present? && params[:end_date].present?   %>
+                    <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
+                    <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
+                  <% else %>
+                    <%= f.input :start_date, as: :hidden %>
+                    <%= f.input :end_date, as: :hidden %>
+                  <% end %>
+                  <%= f.submit "Book #{user.first_name}", class:"btn-blue" %>
+                <% end %>
+              <% end %>
+              <h6 class="card-trip-pricing"><strong><%= user.price %>€/hour</strong></h6>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+ </div>
