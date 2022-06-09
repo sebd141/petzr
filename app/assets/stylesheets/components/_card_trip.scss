@@ -4,8 +4,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 0% 2% 2% 2%;
   border-radius: 3%;
-  padding-bottom: 15%;
-  min-height: 500px;
+  // min-height: 500px;
 }
 .card-trip-profile {
   overflow: hidden;
@@ -125,3 +124,32 @@
   top: -20px;
   width: 40px;
 }
+
+
+.card-trip-index {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 5%;
+}
+
+.card-trip-index-title {
+width: 200px !important;
+padding-bottom: 3%;
+}
+
+.card-trip-index-infos {
+  width: 300px !important;
+  }
+
+  .card-trip-index-booking {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2%;
+    width: 350px;
+    }
+
+  .card-trip-index-booking h6 {
+    color: black;
+    }

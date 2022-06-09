@@ -1,6 +1,10 @@
 <div id="message-<%= post.id %>">
   <small>
-    <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+  <% if post.user.pet_sitters_status == true %>
+    <%= cl_image_tag post.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+    <% elsif post.user.pet_sitters_status == false || post.user.pet_sitters_status == nil %>
+    <%= cl_image_tag post.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
+    <% end %>
     <strong><%= post.user.first_name %></strong>
     <i><%= post.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>

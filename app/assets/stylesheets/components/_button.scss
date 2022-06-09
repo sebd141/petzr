@@ -33,7 +33,7 @@
 .btn-blue {
   color: white !important;
   border-radius: 4px;
-  background: #0D6EFD;
+  background: #04ddf1;
   border: 0px !important;
   padding: 2px 6px;
   font-weight: lighter;
@@ -46,7 +46,7 @@
 .btn-red {
   color: white !important;
   border-radius: 4px;
-  background: red;
+  background: #ff5555;
   padding: 2px 6px;
   font-weight: lighter;
   font-size: 13px;
@@ -59,11 +59,11 @@
 
 .btn-blue:hover {
   opacity: 1;
-  background: #5f93e0;
+  background: #38eeff;
   color: white;
 }
 .btn-red:hover {
-  background: darkred;
+  background: #f60808;
   color: white;
 }
 

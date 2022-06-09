@@ -56,14 +56,14 @@
               <% if @user.pets.count > 1  %>
                 <div class="container">
                   <div class="log-special">
-                    <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
+                    <div><h2>My Pets | <%= link_to "Add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
                     </div>
                   </div>
                         <div class="cards-pet">
               <% else %>
                 <div class="container">
                   <div class="log-special">
-                    <div><h2>My Pet | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
+                    <div><h2>My Pets | <%= link_to "Add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
                     </div>
                   </div>
                         <div class="cards-pet-one">
@@ -97,7 +97,7 @@
                 </div>
               <% else %>
                 <div class="log">
-                  <div><h2>My Pets | <%= link_to "add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
+                  <div><h2>My Pets | <%= link_to "Add a pet",   new_user_pet_path(@user), class: "btn btn-green" %> </h2>
                   </div>
               <% end %>
               </div>
