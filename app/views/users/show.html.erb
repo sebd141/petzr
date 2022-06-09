@@ -127,22 +127,21 @@
             <% end %>
             <div class="card-trip-infos">
               <div>
-                <H2><%= @user.first_name %> <%= @user.last_name %> </H2>
+                <H1 style="color:#676a6a"><%= @user.first_name %> <%= @user.last_name %> </H1>
                   <p><%= @user.short_desc %></p>
                   <p><strong>A little more about me:</strong> </p>
                   <p><%= @user.description %></p>
                   <div class="card-trip-infos-user-show">
-                    <p><strong>My place:</strong></p>
-                    <p><strong><%= @user.location %></strong> </p>
+                    <p><strong>My place: <%= @user.location %></strong> </p>
                   </div>
-                    <p><strong>What I offer:</strong></p>
+                    <p><strong>What I offer:
                     <% @user.type_of_service[1..-1].each do |service| %>
-                      <span class="badge bg-secondary"><%= service %></span>
-                    <% end %>
-                     <p><strong>Animal I take care of:</strong></p>
+                      <span id="badge" class="badge bg-secondary"><%= service %></span>
+                    <% end %></strong></p>
+                     <p><strong>Animal I take care of:
                     <% @user.type_of_pet[1..-1].each do |pet|  %>
-                    <span class="badge bg-secondary"><%= pet %></span>
-                    <% end %>
+                    <span id="badge" class="badge bg-secondary"><%= pet %></span>
+                    <% end %></strong></p>
                   <% @recipient_id = @user.reviews_recieved %>
                   <% unless @recipient_id.empty? %>
                   <div class="card-trip-infos-user-show">
@@ -163,8 +162,7 @@
                   <% end %>
                   <br>
                   <div class="card-trip-infos-user-show">
-                    <p><strong></strong></p>
-                    <h2 class="card-trip-pricing">Rates is <%= @user.price %>€/hour</h2>
+                   <H2 style="color:#676a6a" class="card-trip-pricing"><strong>Rates is <%= @user.price %>€/hour</strong></h2>
                   </div>
                   <% if params[:start_date] && params[:end_date] %>
                       <%= simple_form_for([@user, Contract.new]) do |f| %>
