@@ -43,6 +43,42 @@
   align-items: center;
   margin-top: 2%;
 }
+.btn-purple {
+  color: white !important;
+  border-radius: 4px;
+  background: #6b5ff3;
+  border: 0px !important;
+  padding: 2px 6px;
+  font-weight: lighter;
+  font-size: 13px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.btn-chat {
+  text-decoration: none;
+  color: #7d73f2;
+  // border: 1px solid #343434;
+  padding: 6px 9px;
+  // border-radius: 6px;
+  font-size: 13px;
+  font-weight: bolder;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  width: fit-content;
+  background-color: white;
+  border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+    margin-top: 1px;
+    border-radius: 3px;
+}
+
+
 .btn-red {
   color: white !important;
   border-radius: 4px;
