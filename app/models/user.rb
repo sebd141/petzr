@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+  # after_validation :sanitize_arrays
 
   def average_rating
     reviews = self.reviews_recieved
@@ -21,4 +22,10 @@ class User < ApplicationRecord
     end
     return 0
   end
+
+  # def sanitize_arrays
+  #   self.type_of_pet.delete("")
+  #   self.type_of_service.delete("")
+  #   self.save
+  # end
 end

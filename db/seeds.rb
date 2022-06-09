@@ -18,7 +18,7 @@ puts "Cleaning database..."
   User.destroy_all
 
 # puts "Creating User for testing"
-# 1.times do (
+# (
 # @bob = User.new({ email: "a@a.com", password: "lewagon", first_name: "Archi", last_name: "Saen", location: "Rue du try bara 2, 1380 Lasne", pet_sitters_status: false})
 # file_bob = URI.open('https://res.cloudinary.com/sebd141/image/upload/v1653047425/kknxc2lusyegbjjjoqia.jpg')
 # @bob.photo.attach(io: file_bob, filename: 'profile.jpeg', content_type: 'image/jpeg')
@@ -45,7 +45,7 @@ puts "Cleaning database..."
 # end
 puts "Creating Pet sitters"
 
-  1.times do archi = User.new(
+  archi = User.new(
     email: 'archibaldsaen98@gmail.com',
     password: "lewagon",
     pet_sitters_status: true,
@@ -87,7 +87,7 @@ puts "Creating Pet sitters"
     pet_sitters_status: true,
     first_name: 'Val',
     last_name: 'Smets',
-    location: 'Marollen 10, 1000 Bruxelles',
+    location: 'Marollen 32, 1000 Bruxelles',
     price: 9,
     type_of_pet: ["dog", "snake"],
     type_of_service: ["medication", "feed"],
@@ -105,7 +105,7 @@ puts "Creating Pet sitters"
     pet_sitters_status: true,
     first_name: 'Antoine',
     last_name: 'Thiran',
-    location: 'Jourdan 10, 1000 Bruxelles',
+    location: 'Jourdan 9, 1000 Bruxelles',
     price: 9,
     type_of_pet: ["bird", "cat"],
     type_of_service: ["medication", "walk"],
@@ -123,7 +123,7 @@ puts "Creating Pet sitters"
     pet_sitters_status: true,
     first_name: 'Alex',
     last_name: 'Latule',
-    location: 'Dailly 10, Schaerbeek',
+    location: 'Dailly 8, Schaerbeek',
     price: 8,
     type_of_pet: ["sheep", "dog"],
     type_of_service: %w(feed medication),
@@ -141,7 +141,7 @@ puts "Creating Pet sitters"
     pet_sitters_status: true,
     first_name: 'Valentin',
     last_name: 'Duche',
-    location: 'Saint-Gilles 10, Bruxelles',
+    location: 'Saint-Gilles 13, Bruxelles',
     price: 8,
     type_of_pet: %w(dog snake),
     type_of_service: %w(feed walk),
@@ -170,8 +170,97 @@ puts "Creating Pet sitters"
 
   augusto.photo.attach(io: file, filename: 'profile.jpeg', content_type: 'image/jpeg')
   augusto.save
-  end
 
+
+  maxime = User.new(
+    email: 'maxime@gmail.com',
+    password: "lewagon",
+    pet_sitters_status: true,
+    first_name: 'Maxime',
+    last_name: 'Federer',
+    location: 'Cureghem 15, Anderlecht',
+    price: 8,
+    type_of_pet: %w(dog cat bird),
+    type_of_service: %w(play walk medication),
+    description: "Hi guys, I am an ex-proffesional tennis player. I live with my wife and two lovely cats. My wife and I love to have company around.",
+    short_desc: "Your pet will be in safe hands with me, I have over 10 years of experience in pet setting"
+  )
+  file = URI.open('https://res.cloudinary.com/dlyi5kech/image/upload/v1654767158/production/cat-men-52_mwte2w.jpg')
+
+  maxime.photo.attach(io: file, filename: 'profile.jpeg', content_type: 'image/jpeg')
+  maxime.save
+
+  jack = User.new(
+    email: 'jack@gmail.com',
+    password: "lewagon",
+    pet_sitters_status: true,
+    first_name: 'Jack',
+    last_name: 'Chan',
+    location: 'Terdelt, 1030 Schaerbeek',
+    price: 11,
+    type_of_pet: %w(dog),
+    type_of_service: %w(feed walk medication),
+    description: "Hi guys, I am a big fan of Real Madrid football team. I often play football with my kids in the garden, your dog will love to play with us",
+    short_desc: "24 years old, living at my parents place with 3 dogs"
+  )
+  file = URI.open('https://res.cloudinary.com/dlyi5kech/image/upload/v1654769858/production/image_ydhos0.jpg')
+
+ jack.photo.attach(io: file, filename: 'profile.jpeg', content_type: 'image/jpeg')
+ jack.save
+
+  ted = User.new(
+    email: 'ted@gmail.com',
+    password: "lewagon",
+    pet_sitters_status: true,
+    first_name: 'Ted',
+    last_name: 'James',
+    location: '40, Molenbeek-Saint-Jean 1080',
+    price: 9.5,
+    type_of_pet: %w(snake bird),
+    type_of_service: %w(feed walk medication),
+    description: "Hi guys, I have been using this website for a while now. I usually only take care of cats and snakes but feel free to send me a message if you have another type of pet ;)",
+    short_desc: "I live with my girlfriend in a small house, we have a nice garden where your pet will be able to live freely"
+  )
+  file = URI.open('https://res.cloudinary.com/dlyi5kech/image/upload/v1654767637/production/beautiful-man-snake-studio-260nw-538475650_sazhou.jpg')
+
+  ted.photo.attach(io: file, filename: 'profile.jpeg', content_type: 'image/jpeg')
+  ted.save
+
+ tony = User.new(
+    email: 'tony@gmail.com',
+    password: "lewagon",
+    pet_sitters_status: true,
+    first_name: 'Tony',
+    last_name: 'Montana',
+    location: 'Av. du Port 108, 1000 Bruxelles',
+    price: 12,
+    type_of_pet: %w(dog),
+    type_of_service: %w(feed walk play),
+    description: "Hi guys, I am from El Salvador. I moved to Belgium recently with my girlfriend. I working as a developer and love to go on walks in my free time",
+    short_desc: "Hello, I am from El Salvador and love dogs. They are the best animals our there!"
+  )
+  file = URI.open('https://res.cloudinary.com/dlyi5kech/image/upload/v1654769563/production/58733864-enjoying-sun-man-is-caressing-yellow-labrador-retriever-young-man-sitting-on-the-hill-with-his-dog-a_rgfrjk.jpg')
+
+ tony.photo.attach(io: file, filename: 'profile.jpeg', content_type: 'image/jpeg')
+ tony.save
+
+ pierrick = User.new(
+  email: 'pierrick@gmail.com',
+  password: "lewagon",
+  pet_sitters_status: true,
+  first_name: 'Pierrick',
+  last_name: 'Payet',
+  location: '32, Sint-Joost, Saint-Josse-ten-Noode',
+  price: 6,
+  type_of_pet: %w(dog cat rabbit),
+  type_of_service: %w(feed walk play),
+  description: "Hi guys, I am from France. I moved to Belgium recently with my girlfriend. I used to work in a Casino and I have a rabbit called Edwige",
+  short_desc: "Hi guys, my rabbit is lonely and would love some friends to play with!"
+)
+file = URI.open('https://res.cloudinary.com/dlyi5kech/image/upload/v1654770319/production/man-holding-rabbit_lr07lv.jpg')
+
+pierrick.photo.attach(io: file, filename: 'profile.jpeg', content_type: 'image/jpeg')
+pierrick.save
 #   file = URI.open(['https://res.cloudinary.com/sebd141/image/upload/v1654172150/rabit_kid1_wmlcdo.jpg',
 #     'https://res.cloudinary.com/sebd141/image/upload/v1654172150/human_rabbit2_xvpcee.jpg',
 #     'https://res.cloudinary.com/sebd141/image/upload/v1654171972/homme_chien2_ab94yo.jpg',
@@ -185,7 +274,6 @@ bob = User.new({ email: "a@a.com", password: "lewagon", first_name: "Archi", las
 file_bob = URI.open('https://res.cloudinary.com/sebd141/image/upload/v1653047425/kknxc2lusyegbjjjoqia.jpg')
 bob.photo.attach(io: file_bob, filename: 'profile.jpeg', content_type: 'image/jpeg')
 bob.save
-binding.pry
 puts "Creating Pets"
 
 15.times do

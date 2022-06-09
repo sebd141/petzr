@@ -32,7 +32,7 @@
                   <p><strong>My address:</strong> <strong><%= pet_sitter.location %></strong> </p>
                 </div>
                   <p><strong>What <%= pet_sitter.first_name %> offers:
-                  <% pet_sitter.type_of_service[1..-1].each do |service| %>
+                  <% pet_sitter.type_of_service.each do |service| %>
                     <span class="badge" id="blue-badge"><%= service %></span>
                   <% end %>
                   <%start_date = contract.start_date%><% end_date = contract.end_date%></strong></p>
