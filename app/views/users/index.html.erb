@@ -19,6 +19,13 @@
       }) %>
     </div>
 
+    <%# <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Type in your address to find the closest pet sitter" style="padding:1.5%; margin-bottom:3%;"/>
+      <button name="button" type="submit" class="btn btn-green">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div> %>
+
     <div class="search-form-control form-group">
       <%= text_field_tag :query,
         params[:query],
@@ -27,9 +34,8 @@
       %>
       <%= submit_tag "Search", class: "btn btn-green", id: "search_button", style: "  border: 0px;"%>
     </div>
-    <% end %>
-  </div>
-
+  <% end %>
+</div>
   <div class="container-wide">
     <div class="the-mapbox" id="container-wide-mapbox"
       data-controller="mapbox"
@@ -45,9 +51,8 @@
               <H2><%= user.first_name %> <%= user.last_name %></H2>
               <p><%= user.short_desc %></p>
             </div>
-
             <div class="card-trip-index-infos">
-              <p><strong>My address:</strong> <strong><%= user.location %></strong></p>
+              <p><strong><%= user.location %></strong></p>
               <p>What I offer:<strong>
               <% user.type_of_service[1..-1].each do |service| %>
                 <span id="blue-badge" class="badge"><%= service %></span></strong></p>
@@ -57,7 +62,6 @@
                 <span id="blue-badge" class="badge"><%= pet %></span>
               <% end %></strong></p>
             </div>
-
             <div class="card-trip-index-booking">
                 <%= link_to "Show more", user_path(user), class: "show-more-btn"%>
                 <% if params[:start_date] && params[:end_date] %>
@@ -69,14 +73,13 @@
                     <%= f.input :start_date, as: :hidden %>
                     <%= f.input :end_date, as: :hidden %>
                   <% end %>
-                  <h6 class="card-trip-pricing"><strong><%= user.price %>€/hour</strong></h6>
                   <%= f.submit "Book #{user.first_name}", class:"btn-blue" %>
-                <% end %>
               <% end %>
-            </div>
+            <% end %>
+          <h6 class="card-trip-pricing" style="color:black"><strong><%= user.price %>€/hour</strong></h6>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
- </div>
+</div>
