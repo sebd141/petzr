@@ -145,10 +145,10 @@
                   <% @recipient_id = @user.reviews_recieved %>
                   <% unless @recipient_id.empty? %>
                   <div class="card-trip-infos-user-show">
-                    <h2>Average rating:</h2>
-                    <h2><%= @user.average_rating %> /5</h2>
+                    <p>Average rating:</p>
+                    <p><%= @user.average_rating %> /5</p>
                   </div>
-                  <H2>Reviews: </h2>
+                  <strong><p>Reviews: </p></strong>
                       <% @user.reviews_recieved.each do |review| %>
                         <div class="card-trip-infos-user-show">
                               <% writer_id = review.writer_id %>

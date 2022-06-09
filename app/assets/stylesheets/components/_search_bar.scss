@@ -13,8 +13,10 @@
 #start_date {
   align-items: baseline;
   margin: 2%;
+  margin-left: 0%;
+  margin-right: 0%;
   padding: 1.5%;
-  width: 40%;
+  width: 49.7%;
   padding-left: 3%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
@@ -24,13 +26,15 @@
   border: 1px solid #04DDF1;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  width: 50%;
+  width: 60%;
 }
 
 #end_date {
   margin: 2%;
+  margin-right: 0%;
+  margin-left: 0%;
   padding: 1.5%;
-  width: 40%;
+  width: 49.7%;
   padding-left: 3%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
@@ -40,7 +44,7 @@
   border: 1px solid #04DDF1;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  width: 50%;
+  width: 60%;
 }
 
 #dates_div {
@@ -57,12 +61,13 @@
   top: 8px;
   bottom: 8px;
   right: 8px;
+  width: 25%;
 }
 
 .search-form-control .form-control {
   height: 3.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid #E7E7E7;
+  border: 1px solid #e7e7e7;
   background-color: white;
 }
 

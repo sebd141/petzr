@@ -6,11 +6,28 @@
   transition: opacity 0.3s ease;
   align-items: center;
   margin-bottom: 2%;
+  opacity: 1;
 }
 
+.btn-home {
+  color: white !important;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #04ddf19e;
+  transition: opacity 0.3s ease;
+  align-items: center;
+  margin-bottom: 2%;
+  // opacity: 0.6 !important;
+}
+.btn-home:hover {
+  background: #21ecff;
+  color: white;
+  opacity: 1;
+}
 .btn-green:hover {
   background: #21ecff;
   color: white;
+  opacity: 1;
 }
 
 .btn-blue {
@@ -21,6 +38,7 @@
   padding: 2px 6px;
   font-weight: lighter;
   font-size: 13px;
+  opacity: 1;
   transition: opacity 0.3s ease;
   align-items: center;
   margin-top: 2%;
