@@ -52,17 +52,17 @@
           <div>
             <H2><%= user.first_name %> <%= user.last_name %></H2>
             <p><%= user.short_desc %></p>
-            <p><strong><%= user.location %></strong></p>
+            <br>
+            <p><strong>My address:</strong> <strong><%= user.location %></strong></p>
 
-            <p>What I offer: </p>
+            <p>What I offer:<strong>
             <% user.type_of_service[1..-1].each do |service| %>
-              <span class="badge" id="blue-badge"><%= service %></span>
+              <span id="badge" class="badge bg-secondary"><%= service %></span></strong></p>
             <% end %>
-
-            <p>Animals I take care of: </p>
+            <p>Animals I take care of <strong>
             <% user.type_of_pet[1..-1].each do |pet|  %>
-              <span class="badge" id="blue-badge"><%= pet %></span>
-            <% end %>
+              <span  id="badge" class="badge bg-secondary"><%= pet %></span>
+            <% end %></strong></p>
 
             <div id="show-more-users">
               <%= link_to "Show more", user_path(user), class: "show-more-btn"%>
@@ -84,7 +84,7 @@
               <% end %>
             <% end %>
           </div>
-          <h2 class="card-trip-pricing"><%= user.price %>€/hour</h2>
+          <h6 class="card-trip-pricing"><strong><%= user.price %>€/hour</strong></h6>
         </div>
       </div>
     <% end %>
