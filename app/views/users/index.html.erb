@@ -53,14 +53,14 @@
             </div>
             <div class="card-trip-index-infos">
               <p><strong><%= user.location %></strong></p>
-              <p>What I offer:<strong>
+              <p>What I offer:
               <% user.type_of_service.each do |service| %>
-                <span id="badge" class="badge bg-secondary"><%= service %></span></strong></p>
-              <% end %>
-              <p>Animals I take care of <strong>
+                <span id="badge" class="badge bg-secondary"><%= service %></span>
+              <% end %></p>
+              <p>Animals I take care of:
               <% user.type_of_pet.each do |pet|  %>
                 <span  id="badge" class="badge bg-secondary"><%= pet %></span>
-              <% end %></strong></p>
+              <% end %></p>
             </div>
             <div class="card-trip-index-booking">
                 <%= link_to "Show more", user_path(user), class: "show-more-btn"%>
