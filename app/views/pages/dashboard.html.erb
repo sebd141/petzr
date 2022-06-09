@@ -17,7 +17,7 @@
             <% pet_sitter = User.find(contract.id_pet_sitter) %>
             <div class="card-trip">
               <div class="status">
-                <h2 id="pending-badge">PENDING</h2>
+                <h2 id="pending-badge" style="margin: 0px;">PENDING</h2>
               </div>
                 <%= cl_image_tag pet_sitter.photo.key, class: "img-profile", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, crop: :thumb, gravity: :face %>
               <div class="card-trip-infos">

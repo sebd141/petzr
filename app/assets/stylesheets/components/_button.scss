@@ -73,18 +73,19 @@
 
 .show-more-btn {
   text-decoration: none;
-  color: #484747;
-  border: 1px solid #343434;
+  color: #7d73f2;
+  // border: 1px solid #343434;
   padding: 6px 9px;
-  border-radius: 6px;
+  // border-radius: 6px;
   font-size: 13px;
-  font-weight: lighter;
-  opacity: 0.6;
+  font-weight: bolder;
+  opacity: 1;
   transition: opacity 0.3s ease;
   text-align: center;
   width: fit-content;
+  background-color: white;
 }
 .show-more-btn:hover {
   text-decoration: none;
-  opacity: 1;
+  color: #6b5ff3;
 }
