@@ -70,3 +70,19 @@
 #badge {
   font-size: 14px;
 }
+
+.show-more-btn {
+  text-decoration: none;
+  color: #484747;
+  border: 1px solid #343434;
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.show-more-btn:hover {
+  text-decoration: none;
+  opacity: 1;
+}

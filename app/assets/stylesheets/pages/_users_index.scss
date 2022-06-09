@@ -27,7 +27,7 @@
   transition: opacity 0.3s ease;
   display: inline-block;
   padding: 0.35em 0.65em;
-  font-size: 0.6em;
+  font-size: 0.9em;
   font-weight: 700;
   line-height: 1;
   color: #fff;
@@ -35,6 +35,7 @@
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 2px;
+  letter-spacing: 1px;
 }
 
 #blue-badge:hover {
