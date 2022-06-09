@@ -63,8 +63,12 @@
               <% end %></strong></p>
             </div>
             <div class="card-trip-index-booking">
+              <% if params[:start_date].nil? && params[:end_date].nil? %>
                 <%= link_to "Show more", user_path(user), class: "show-more-btn"%>
+              <% else %>
                 <% if params[:start_date] && params[:end_date] %>
+                  <%= link_to "Show more", user_path(user, start_date: params[:start_date], end_date: params[:end_date]), class: "show-more-btn" %>
+              <% end %>
                 <%= simple_form_for([user, Contract.new]) do |f| %>
                   <% if params[:start_date].present? && params[:end_date].present?   %>
                     <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
