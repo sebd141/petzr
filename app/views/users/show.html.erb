@@ -162,7 +162,7 @@
                       <%= simple_form_for([@user, Contract.new]) do |f| %>
                         <%= f.input :start_date, input_html: { value: DateTime.parse(params[:start_date]) }, as: :hidden %>
                         <%= f.input :end_date, input_html: { value: DateTime.parse(params[:end_date]) }, as: :hidden %>
-                        <%= f.submit "Book #{@user.first_name}", class:"btn-blue" %>
+                        <%= f.submit "Book #{@user.first_name}", class:"show-more-btn", style:"font-size: 20px;" %>
                       <% end %>
                 <% end %>
               </div>
