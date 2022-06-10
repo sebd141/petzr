@@ -7,14 +7,14 @@ class UsersController < ApplicationController
       sql_query = " \
       OR users.location ILIKE :query \
       "
-      @users = User.near("%#{params[:query]}%", 2)
+      @users = User.near("%#{params[:query]}%", 4)
       if @users.empty?
         @users = User.where(pet_sitters_status: true).order("created_at desc")
       else
-        @users = User.near("%#{params[:query]}%", 2)
+        @users = User.near("%#{params[:query]}%", 4)
       end
     elsif params[:query].present?
-      @users = User.near("%#{params[:query]}%", 2)
+      @users = User.near("%#{params[:query]}%", 4)
     else
       @users = User.where(pet_sitters_status: true).order("created_at desc")
     end
